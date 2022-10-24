@@ -1,0 +1,463 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+		<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+		<script type="text/javascript" src="solicitacaoServicoCredenciamento.js" charset="utf-8"></script>
+		<script type="text/javascript" src="customPrazo.js" charset="utf-8"></script>
+		<script type="text/javascript" src="complemento.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+		<style>
+			.panelPadrao {
+				background-color: #1a5952 !important;
+				letter-spacing: 0.7px !important;
+				color:white !important;
+				border-color: inherit !important;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="fluig-style-guide">
+			<form name="form" role="form">
+				<div class="panel panel-default">
+					<div class="panel-heading fs-txt-center panelPadrao">
+						<h2><i class="flaticon flaticon-card-user icon-md"></i>&nbsp;Solicitação Serviços Credenciamento</h2>
+					</div>
+					<div class="panel-body">
+						<!-- CAMPOS DE CONTROLE -->
+						<div class="panel panel-default" id="panelCamposControle">
+							<div class="panel-heading panelPadrao">
+								<h2 class="panel-title">
+									<i class="fluigicon fluigicon-control-log icon-sm"></i>&nbsp;Campos de Controle
+								</h2>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="form-group col-md-3">
+										<label class="control-label" for="currentLogin">Login Usuário Atual</label>
+										<input type="text" class="form-control" id="currentLogin" name="currentLogin" value="" />
+									</div>
+									<div class="form-group col-md-3">
+										<label class="control-label" for="currentNome">Login Usuário Atual</label>
+										<input type="text" class="form-control" id="currentNome" name="currentNome" value="" />
+									</div>
+									<div class="form-group col-md-3">
+										<label class="control-label" for="numeroSolicitacao">Número Solicitação</label>
+										<input type="text" class="form-control" id="numeroSolicitacao" name="numeroSolicitacao" value="" />
+									</div>
+									<div class="form-group col-md-3">
+										<label class="control-label" for="atividadeAtual">Atividade Atual</label>
+										<input type="text" class="form-control" id="atividadeAtual" name="atividadeAtual" value="" />
+									</div>
+									<div class="form-group col-md-3">
+										<label class="control-label" for="ultimaAtividade">Última Atividade</label>
+										<input type="text" class="form-control" id="ultimaAtividade" name="ultimaAtividade" value="" />
+									</div>
+									<div class="form-group col-md-3">
+										<label class="control-label" for="campoDescritor">Campo Descritor</label>
+										<input type="text" class="form-control" id="campoDescritor" name="campoDescritor" value="" />
+									</div>
+									<div class="form-group col-md-3">
+										<label class="control-label" for="loginSolicitante">Login Solicitante</label>
+										<input type="text" class="form-control" id="loginSolicitante" name="loginSolicitante" value="" />
+									</div>
+									<div class="form-group col-md-3">
+										<label class="control-label" for="idSolicitante">Id Solicitante</label>
+										<input type="text" class="form-control" id="idSolicitante" name="idSolicitante" value="" />
+									</div>
+									<div class="form-group col-md-3">
+										<label class="control-label" for="codigoPlataforma">Código Plataforma</label>
+										<input type="text" class="form-control" id="codigoPlataforma" name="codigoPlataforma" value="" />
+									</div>
+									<div class="form-group col-md-3">
+										<label class="control-label" for="codigoEmpresa">Código Empresa</label>
+										<input type="text" class="form-control" id="codigoEmpresa" name="codigoEmpresa" value="" />
+									</div>
+									<div class="form-group col-md-3">
+										<label class="control-label" for="codigoRegional">Código Regional</label>
+										<input type="text" class="form-control" id="codigoRegional" name="codigoRegional" value="" />
+									</div>
+									<div class="form-group col-md-3">
+										<label class="control-label" for="codigoUnidadeFilial">Código Unidade/Filial</label>
+										<input type="text" class="form-control" id="codigoUnidadeFilial" name="codigoUnidadeFilial"/>
+									</div>
+									<div class="form-group col-md-3">
+										<label class="control-label" for="estado">Estado</label>
+										<input type="text" class="form-control" id="estado" name="estado"/>
+									</div>
+									<div class="form-group col-md-3">
+										<label class="control-label" for="codigoCidade">Código Cidade</label>
+										<input type="text" class="form-control" id="codigoCidade" name="codigoCidade"/>
+									</div>
+									<div class="form-group col-md-3">
+										<label class="control-label" for="cidade">Cidade</label>
+										<input type="text" class="form-control" id="cidade" name="cidade"/>
+									</div>
+									<div class="form-group col-md-3">
+										<label class="control-label" for="grupoExecutor">Grupo Executor</label>
+										<input type="text" class="form-control" id="grupoExecutor" name="grupoExecutor"/>
+									</div>
+									<div class="form-group col-md-3">
+										<label class="control-label" for="prazo">Prazo</label>
+										<input type="text" class="form-control" id="prazo" name="prazo"/>
+									</div>
+									<div class="form-group col-md-3">
+										<label class="control-label" for="status">Status</label>
+										<input type="text" class="form-control" id="status" name="status"/>
+									</div>
+									<div class="form-group col-md-3">
+										<label class="control-label" for="ultimaAtividadePrazo">Atividade Alteração Prazo</label>
+										<input type="text" class="form-control" id="ultimaAtividadePrazo" name="ultimaAtividadePrazo"/>
+									</div>
+									<div class="form-group col-md-3">
+										<label class="control-label" for="alteracaoPrazo">Alteração Prazo</label>
+										<input type="text" class="form-control" id="alteracaoPrazo" name="alteracaoPrazo"/>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- DADOS SOLICITANTE -->
+						<div class="panel panel-default" id="panelDadosSolicitante">
+							<div class="panel-heading panelPadrao">
+								<h2 class="panel-title">
+									<span class="fluigicon fluigicon-user fluigicon-sm"></span>&nbsp;Dados do Solicitante
+								</h2>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-2 form-group">
+										<label class="control-label" for="dataCriacao">Data Criação</label>
+										<div class="input-group">
+											<input type="text" class="form-control" id="dataCriacao" name="dataCriacao" readonly />
+											<span class="input-group-addon">
+											<span class="fluigicon fluigicon-calendar"></span>
+										</span>
+										</div>
+									</div>
+									<div class="col-md-4 form-group">
+										<label class="control-label" for="nomeSolicitante">Nome Solicitante</label>
+										<div class="input-group">
+											<input type="text" class="form-control" id="nomeSolicitante" name="nomeSolicitante" readonly />
+											<span class="input-group-addon">
+											<span class="fluigicon fluigicon-user"></span>
+										</span>
+										</div>
+									</div>
+									<div class="col-md-6 form-group">
+										<label class="control-label" for="emailSolicitante">Email Solicitante</label>
+										<div class="input-group">
+											<input type="text" class="form-control" id="emailSolicitante" name="emailSolicitante" readonly />
+											<span class="input-group-addon">@</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- DADOS SOLICITAÇÃO -->
+						<div class="panel panel-default" id="panelDadosSolicitacao">
+							<div class="panel-heading panelPadrao">
+								<h2 class="panel-title">
+									<i class="flaticon flaticon-page-builder icon-sm"></i>&nbsp;Dados da Solicitação
+								</h2>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-3 form-group">
+										<label for="selectCarteira" class="control-label">Carteira</label>
+										<select name="selectCarteira" id="selectCarteira" class="form-control">
+											<option value=""></option>
+											<option value="Pool:Group:Proc_ServicosCredenciamento_GestaoExames">Gestão de Exames</option>
+											<option value="Pool:Group:Proc_ServicosCredenciamento_Implantacao">Implantação</option>
+											<option value="Pool:Group:Proc_ServicosCredenciamento_Rubi">Rubi</option>
+											<option value="Pool:Group:Proc_ServicosCredenciamento_Esmeralda_1">Esmeralda 1</option>
+											<option value="Pool:Group:Proc_ServicosCredenciamento_Esmeralda_2">Esmeralda 2</option>
+											<option value="Pool:Group:Proc_ServicosCredenciamento_Diamante_1">Diamante 1</option>
+											<option value="Pool:Group:Proc_ServicosCredenciamento_Diamante_2">Diamente 2</option>
+											<option value="Pool:Group:Proc_ServicosCredenciamento_Diamante_3">Diamente 3</option>
+										</select>
+									</div>
+									<div class="col-md-3 form-group" style="margin-top: 15px">
+										<label class="control-label">Todas Unidades/Filiais?</label>
+										<input class="checkbox" type="checkbox" id="switchTodasUnidadesFiliais" name="switchTodasUnidadesFiliais"
+											   data-on-text="Sim" data-off-text="Não" data-on-color="warning" data-off-color="info">
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-2 form-group">
+										<label class="control-label" for="zoomPlataforma">Plataforma</label>
+										<input type="zoom" class="form-control" id="zoomPlataforma" name="zoomPlataforma"
+											   data-zoom="{'displayKey': 'PLATAFORMA','datasetId': 'dsPlataforma','fields': [
+												{'field': 'PLATAFORMA','label': 'Plataforma','standard': 'true','search': 'true'},
+												{'field': 'COD_PLATAFORMA','label': 'Código','standard': 'true','search': 'true','visible': 'false'}]}" value="" />
+									</div>
+									<div class="col-md-4 form-group">
+										<label class="control-label" for="zoomEmpresa">Empresa (Cliente)</label>
+										<input type="zoom" class="form-control" id="zoomEmpresa" name="zoomEmpresa"
+											   data-zoom="{'displayKey': 'EMPRESA','datasetId': 'dsBuscarEmpresa','fields': [
+												{'field': 'EMPRESA','label': 'Empresa','standard': 'true','search': 'true'},
+												{'field': 'COD_EMPRESA','label': 'Código','standard': 'true','search': 'true'}]}"/>
+									</div>
+									<div class="col-md-2 form-group">
+										<label class="control-label" for="zoomRegional">Regional</label>
+										<input type="zoom" class="form-control" id="zoomRegional" name="zoomRegional"
+											   data-zoom="{'displayKey': 'REGIONAL','datasetId': 'dsBuscarRegional','filterValues': 'COD_EMPRESA','fields': [
+												{'field': 'REGIONAL','label': 'Regional','standard': 'true','search': 'true'},
+												{'field': 'COD_REGIONAL','label': 'Código','standard': 'true','search': 'true'}]}"/>
+									</div>
+									<div class="form-group col-md-4" id="divZoomUnidadeFilial">
+										<label class="control-label" for="zoomUnidadeFilial">Unidade/Filial</label>
+										<input type="zoom" class="form-control" id="zoomUnidadeFilial" name="zoomUnidadeFilial"
+											   data-zoom="{'displayKey': 'UNIDADE', 'datasetId': 'dsBuscarUnidade', 'filterValues': 'COD_PLATAFORMA,COD_EMPRESA,COD_REGIONAL','fields': [
+												{'field': 'UNIDADE','label': 'Unidade','standard': 'true','search': 'true'},
+												{'field': 'COD_UNIDADE', 'label': 'Código', 'standard': 'true', 'search': 'true'}]}"/>
+									</div>
+									<div class="form-group col-md-4" id="divInputUnidadeFilial">
+										<label class="control-label" for="inputUnidadeFilial">Unidade/Filial</label>
+										<div class="input-group">
+											<input type="text" class="form-control" id="inputUnidadeFilial" name="inputUnidadeFilial"/>
+											<span class="input-group-addon">
+											<span class="fluigicon fluigicon-company icon-sm"></span>
+										</span>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-md-3">
+										<label class="control-label" for="zoomCidade">Cidade</label>
+										<input type="zoom" class="form-control" id="zoomCidade" name="zoomCidade"
+											   data-zoom="{'displayKey': 'ESTADOEMUNICIPIO', 'datasetId': 'ds_estados_municipios','fields': [
+												{'field': 'ESTADOEMUNICIPIO','label': 'UF - Cidade','standard': 'true','search': 'true'},
+												{'field': 'CC2_EST','label': 'CC2_EST','visible': 'false'},
+												{'field': 'CC2_CODMUN','label': 'CC2_CODMUN','visible': 'false'},
+												{'field': 'CC2_MUN','label': 'CC2_MUN','visible': 'false'}]}"/>
+									</div>
+									<div class="form-group col-md-3">
+										<label class="control-label" for="servico">Serviço</label>
+										<select name="servico" id="servico" class="form-control">
+											<option value="">Selecione...</option>
+											<option value="link">Link</option>
+											<option value="prospeccao">Prospecção</option>
+											<option value="extensao">Extensão</option>
+											<option value="orientacaoRede">Orientação da Rede</option>
+											<option value="atualizacaoDadosCadastrais">Atualização de Dados Cadastrais</option>
+											<option value="pga">Custo de Procedimento já Acordado (Precificação ou PGA)</option>
+											<option value="fiscalZero">Fiscal Zero (RHVIDA)</option>
+										</select>
+									</div>
+									<div class="form-group col-md-3">
+										<label class="control-label" for="zoomOrientacao">Tipo Orientação</label>
+										<input type="zoom" class="form-control" id="zoomOrientacao" name="zoomOrientacao"
+											   data-zoom="{'displayKey': 'orientacao', 'datasetId': 'ds_form_orientacao_rede','fields': [
+												{'field': 'orientacao','label': 'Orientação','standard': 'true','search': 'true'}]}"/>
+									</div>
+									<div class="form-group col-md-3">
+										<label class="control-label" for="zoomAtualizacao">Tipo Atualização</label>
+										<input type="zoom" class="form-control" id="zoomAtualizacao" name="zoomAtualizacao"
+											   data-zoom="{'displayKey': 'atualizacao', 'datasetId': 'ds_form_atualizacao_dados','fields': [
+												{'field': 'atualizacao','label': 'Atualização','standard': 'true','search': 'true'}]}"/>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-md-4">
+										<label class="control-label" for="codigoCredenciado">Código Credenciado</label>
+										<div class="input-group">
+											<input type="text" class="form-control" id="codigoCredenciado" name="codigoCredenciado"/>
+											<span class="input-group-addon">
+												<i class="flaticon flaticon-code icon-sm"></i>
+											</span>
+										</div>
+									</div>
+									<div class="form-group col-md-4">
+										<label class="control-label" for="nomeCredenciado">Nome Credenciado</label>
+										<div class="input-group">
+											<input type="text" class="form-control" id="nomeCredenciado" name="nomeCredenciado"/>
+											<span class="input-group-addon">
+												<span class="fluigicon fluigicon-user"></span>
+											</span>
+										</div>
+									</div>
+									<div class="form-group col-md-4">
+										<label class="control-label" for="cnpjCredenciado">CNPJ Credenciado</label>
+										<div class="input-group">
+											<input type="text" class="form-control" id="cnpjCredenciado" name="cnpjCredenciado" placeholder="Digite o CPF/CNPJ" minlength="11" maxlength="18"/>
+											<span class="input-group-addon">
+												<span class="fluigicon fluigicon-company icon-sm"></span>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-md-3">
+										<label class="control-label" for="tipoSolicitacao">Tipo Solicitação</label>
+										<select name="tipoSolicitacao" id="tipoSolicitacao" class="form-control">
+											<option value="">Selecione...</option>
+											<option value="inclusao">Inclusão</option>
+											<option value="exclusao">Exclusão</option>
+										</select>
+									</div>
+									<div class="form-group col-md-3">
+										<label class="control-label">Tipo Exame</label>
+										<div class="custom-checkbox custom-checkbox-primary">
+											<input type="checkbox" id="exameClinico" name="exameClinico">
+											<label for="exameClinico">Clínico</label>
+										</div>
+										<div class="custom-checkbox custom-checkbox-primary">
+											<input type="checkbox" id="exameComplementar" name="exameComplementar">
+											<label for="exameComplementar">Complementar</label>
+										</div>
+									</div>
+									<div class="col-md-3 form-group">
+										<input type="button" value="ANEXAR GRADE EXAMES" id="anexarGradeExames" name="anexarGradeExames" class="btn btn-info" style="margin-top: 21px;">
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 form-group">
+										<label class="control-label" for="detalhamentoSolicitacao">Detalhamento da Solicitação</label>
+										<div class="input-group">
+											<textarea class="form-control" id="detalhamentoSolicitacao" name="detalhamentoSolicitacao" rows="3" style="resize:none;"></textarea>
+											<span class="input-group-addon">
+								        		<span class="fluigicon fluigicon-comment"></span>
+								    		</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- EXECUÇÃO -->
+						<div class="panel panel-default" id="panelExecucao">
+							<div class="panel-heading panelPadrao">
+								<h2 class="panel-title">
+									<span class="fluigicon fluigicon-user fluigicon-sm"></span>&nbsp;Execução
+								</h2>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-3 form-group">
+										<label for="selectAnaliseExecucao" class="control-label">Aprovação</label>
+										<select name="selectAnaliseExecucao" id="selectAnaliseExecucao" class="form-control">
+											<option value=""></option>
+											<option value="aprovar">Aprovar Solicitação</option>
+											<option value="reprovar">Solicitar Correção</option>
+											<option value="cancelar">Cancelar</option>
+											<option value="solicitarAprovacao">Solicitar Aprovação de Custos</option>
+											<option value="confirmarProspeccao">Confirmar Prospecção</option>
+										</select>
+									</div>
+									<div class="col-md-3 form-group">
+										<label for="zoomMotivoCancelamento" class="control-label">Motivo Cancelamento</label>
+										<input type="zoom" name="zoomMotivoCancelamento" id="zoomMotivoCancelamento" class="control-label"
+											data-zoom="{'displayKey': 'motivoCancelamento', 'datasetId': 'ds_form_suporte_motivosCancelamento','fields': [
+												{'field': 'motivoCancelamento','label': 'Motivo','standard': 'true','search': 'true'}]}">
+									</div>
+									<div class="col-md-3 form-group">
+										<input type="button" value="ANEXAR COTAÇÕES REALIZADAS" id="anexarCotacoes" name="anexarCotacoes" class="btn btn-info" style="margin-top: 25px;">
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-12">
+										<label for="justificativaExecucao" class="control-label">Justificativa</label>
+										<div class="input-group">
+											<textarea name="justificativaExecucao" id="justificativaExecucao" rows="4" class="form-control" style="resize:none;"></textarea>
+											<span class="input-group-addon">
+								        		<span class="fluigicon fluigicon-comment"></span>
+								    		</span>
+										</div>
+									</div>
+								</div>
+								<div class="row" id="divProspeccao" name="divProspeccao">
+									<div class="col-md-3 form-group">
+										<label class="control-label">Necessário Prospecção?</label>
+										<input class="checkbox" type="checkbox" id="switchNecessarioProspeccao" name="switchNecessarioProspeccao"
+											   data-on-text="Sim" data-off-text="Não" data-on-color="warning" data-off-color="info">
+									</div>
+									<div class="form-group col-sm-12">
+										<label for="motivoProspeccao" class="control-label">Motivo Prospecção</label>
+										<div class="input-group">
+											<textarea name="motivoProspeccao" id="motivoProspeccao" rows="4" class="form-control" style="resize:none;"></textarea>
+											<span class="input-group-addon">
+								        		<span class="fluigicon fluigicon-comment"></span>
+								    		</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- GESTOR SOLICITANTE -->
+						<div class="panel panel-default" id="panelGestor">
+							<div class="panel-heading panelPadrao">
+								<h2 class="panel-title">
+									<span class="fluigicon fluigicon-user fluigicon-sm"></span>&nbsp;Gestor
+								</h2>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-3 form-group">
+										<label for="selectAnaliseGestor" class="control-label">Análise</label>
+										<select name="selectAnaliseGestor" id="selectAnaliseGestor" class="form-control">
+											<option value=""></option>
+											<option value="aprovadoGestor">Custo Aprovado pelo Gestor</option>
+											<option value="aprovadoCliente">Custo Aprovado pelo Cliente</option>
+											<option value="cancelar">Cancelar Solicitação</option>
+										</select>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-12">
+										<label for="justificativaSolicitante" class="control-label">Justificativa</label>
+										<div class="input-group">
+											<textarea name="justificativaSolicitante" id="justificativaSolicitante" rows="4" class="form-control" style="resize:none;"></textarea>
+											<span class="input-group-addon">
+								        		<span class="fluigicon fluigicon-comment"></span>
+								    		</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- OBSERVAÇÕES ADICIONAIS -->
+						<div class="panel panel-default">
+							<div class="panel-heading panelPadrao">
+								<h2 class="panel-title">
+									<a class="collapse-icon up titulo-panel" style="text-decoration: none;" data-toggle="collapse">
+										<span class="flaticon flaticon-message icon-sm"></span> Dados Adicionais
+									</a>
+								</h2>
+							</div>
+							<div id="collapseDadosAdicionais" class="panel-collapse collapse in">
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-md-12 form-group">
+											<label for="origem">Observações:</label>&nbsp;<span class="fluigicon fluigicon-info-sign fluigicon-sm" data-toggle="tooltip" data-placement="top" title="Após preencher a OBSERVAÇÃO, clicar no botão ENVIAR."></span>
+											<div class="input-group">
+												<textarea class="form-control" name="origem" id="origem" style="height: 70px" value=""></textarea>
+												<span class="input-group-addon fs-cursor-pointer" id="preencheAcompanhamento"
+													onclick="preencheAcompanhamento()" tabindex="0" onkeypress="preencheAcompanhamento()" onblur="preencheAcompanhamento()">
+													<span class="input-group-addon"><b>ENVIAR</b><br/>observação</span>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12 form-group">
+											<textarea class="form-control" name="destino" id="destino" style="height: 200px; vertical-align: top; width: 100%; display:none;" 	onKeyPress="alteraMaiusculo(this);" onkeyup="alteraMaiusculo(this);"
+												value="" readonly></textarea>
+											<div name="acompanhamento" id="acompanhamento" readonly></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>

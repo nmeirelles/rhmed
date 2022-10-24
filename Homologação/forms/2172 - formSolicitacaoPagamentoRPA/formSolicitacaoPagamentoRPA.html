@@ -1,0 +1,601 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+		<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+		<script src="jquery.mask.min.js"></script>
+		<script type="text/javascript" src="numeral.js"></script>
+		<script src="/webdesk/vcXMLRPC.js"></script>
+		<script type="text/javascript" src="complementos.js" charset="utf-8"></script>		
+		<link type="text/css" rel="stylesheet" href="formSolicitacaoPagamentoRPA.css"/>
+		<link type="text/css" rel="stylesheet" href="style.css"/>
+		<script type="text/javascript" src="formSolicitacaoPagamentoRPA.js" charset="utf-8"></script>
+		<style type="text/css">
+	      	select[readonly] {
+	      	  background: #eee;
+	      	  pointer-events: none;
+	      	  touch-action: none;
+	      	}
+		</style>
+		<script type="text/javascript">
+			$(function() {								
+				$('label').css('font-size', '12px');
+			});
+		</script>
+	</head>
+	<body class="fluig-style-guide sequoiacss">
+		<div class="fluig-style-guide">
+			<form name="form" role="form">
+				<input type="hidden" id="codcoligada" name="codcoligada"/>
+				<input type="hidden" id="chapa" name="chapa"/>
+				<input type="hidden" id="anocomp" name="anocomp"/>
+				<input type="hidden" id="mescomp" name="mescomp"/>
+				<input type="hidden" id="nroperiodo" name="nroperiodo"/>
+				<input type="hidden" id="inserted" name="inserted"/>
+
+				<!-- SLA -->
+				<input type="hidden" id="dataDisponibilidadeS" name="dataDisponibilidadeS" value="" />
+				<input type="hidden" id="dataFinalizouS" name="dataFinalizouS" value="" />
+				<input type="hidden" id="usuarioS" name="usuarioS" value="" />
+
+				<input type="hidden" id="dataDisponibilidadeC" name="dataDisponibilidadeC" value="" />
+				<input type="hidden" id="dataFinalizouC" name="dataFinalizouC" value="" />
+				<input type="hidden" id="usuarioC" name="usuarioC" value="" />
+
+				<input type="hidden" id="dataDisponibilidadeG" name="dataDisponibilidadeG" value="" />
+				<input type="hidden" id="dataFinalizouG" name="dataFinalizouG" value="" />
+				<input type="hidden" id="usuarioG" name="usuarioG" value="" />
+
+				<input type="hidden" id="dataDisponibilidadeD" name="dataDisponibilidadeD" value="" />
+				<input type="hidden" id="dataFinalizouD" name="dataFinalizouD" value="" />
+				<input type="hidden" id="usuarioD" name="usuarioD" value="" />
+				
+				<input type="hidden" id="dataDisponibilidadeRH1" name="dataDisponibilidadeRH1" value="" />
+				<input type="hidden" id="dataAssumiuRH1" name="dataAssumiuRH1" value="" />
+				<input type="hidden" id="dataFinalizouRH1" name="dataFinalizouRH1" value="" />
+				<input type="hidden" id="usuarioRH1" name="usuarioRH1" value="" />
+
+				<input type="hidden" id="dataDisponibilidadeSolicitante" name="dataDisponibilidadeSolicitante" value="" />
+				<input type="hidden" id="dataFinalizouSolicitante" name="dataFinalizouSolicitante" value="" />
+				<input type="hidden" id="usuarioSolicitante" name="usuarioSolicitante" value="" />
+
+				<input type="hidden" id="dataDisponibilidadeRH2" name="dataDisponibilidadeRH2" value="" />
+				<input type="hidden" id="dataAssumiuRH2" name="dataAssumiuRH2" value="" />
+				<input type="hidden" id="dataFinalizouRH2" name="dataFinalizouRH2" value="" />
+				<input type="hidden" id="usuarioRH2" name="usuarioRH2" value="" />
+				<!-- SLA -->
+				<!-- [Inicio] campos de controle -->
+				<input type="hidden" id="dataEntrada" name="dataEntrada" value="" />
+				<input type="hidden" id="mesEntrada" name="mesEntrada" value="" />
+				<input type="hidden" id="anoEntrada" name="anoEntrada" value="" />
+				<input type="hidden" id="numeroFluxo" name="numeroFluxo" value="" />
+				<input type="hidden" id="dataFinalizacao" name="dataFinalizacao" value="" />
+				<input type="hidden" id="situacao" name="situacao" value="" />
+				<input type="hidden" id="campoDescritor" name="campoDescritor" value="" />
+				<input type="hidden" id="solicitanteMatricula" name="solicitanteMatricula" value="" />
+				<input type="hidden" id="currentNome" name="currentNome" value="" />
+				<input type="hidden" id="currentLogin" name="currentLogin" value="" />
+				<input type="hidden" id="atividadeAtual" name="atividadeAtual" value="" />
+				<input type="hidden" id="currentEmail" name="currentEmail" value="">
+				<input type="hidden" id="loginAprovador" name="loginAprovador" value="">
+				<input type="hidden" id="nomeAprovador" name="nomeAprovador" value="">
+				<input type="hidden" id="loginAprovadorAnterior" name="loginAprovadorAnterior" value="">
+				<input type="hidden" id="nomeAprovadorAnterior" name="nomeAprovadorAnterior" value="">
+				<input type="hidden" id="matriculaAprovador" name="matriculaAprovador" value=""> <!--Valida Substituto-->
+				<!-- <input type="hidden" id="hiddenNovoPrestador" name="hiddenNovoPrestador" value=""> -->
+				<input type="hidden" id="hiddenOutroVinculo" name="hiddenOutroVinculo" value="">
+				<!-- [Fim] campos de controle -->
+				<input type="hidden" id="aprovadorCoordenador" name="aprovadorCoordenador" value="" />
+				<input type="hidden" id="aprovadorSupervisor" name="aprovadorSupervisor" value="" />
+				<input type="hidden" id="aprovadorGerente" name="aprovadorGerente" value="" />
+				<input type="hidden" id="aprovadorDiretor" name="aprovadorDiretor" value="" />
+				<input type="hidden" id="aprovadorDestino" name="aprovadorDestino" value="" />
+
+				<input type="hidden" id="valorCoordenador" name="valorCoordenador" value="" />
+				<input type="hidden" id="valorSupervisor" name="valorSupervisor" value="" />
+				<input type="hidden" id="valorGerente" name="valorGerente" value="" />
+				<input type="hidden" id="valorDiretor" name="valorDiretor" value="" />
+															
+				<div class="page-header">
+					<h2 class="panel-title"><img src="rhmed_rhvida_logo2.png" alt="logo RHMed" class="align-right"><span class="fluigicon fluigicon-sticky-note fluigicon-md"></span>&nbsp;SPR – Solicitação de Pagamento de RPA (Autônomo)</h2>
+				</div>
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Dados do Solicitante</a>
+						</h2>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="form-group col-md-6">
+								<label class="control-label" for="solicitanteNome">Solicitante</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="solicitanteNome" name="solicitanteNome" readonly />
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-user"></span>
+									</span>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="control-label" for="solicitanteEmail">Email</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="solicitanteEmail" name="solicitanteEmail" readonly />
+									<span class="input-group-addon">@</span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-lg-3 col-md-3 col-sm-12">
+								<label class="control-label" for="solicitanteTelefone">Telefone</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="solicitanteTelefone" name="solicitanteTelefone" readonly />
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-phone"></span>
+									</span>
+								</div>
+							</div>
+							<div class="form-group col-lg-3 col-md-3 col-sm-12">
+								<label class="control-label" for="solicitanteDepartamento">Departamento</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="solicitanteDepartamento" name="solicitanteDepartamento" readonly />
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-company"></span>
+									</span>
+								</div>
+							</div>
+						</div> 
+					</div> 
+				</div>
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Status da Solicitação</a>
+						</h2>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="form-group col-md-3">
+								<label class="control-label" for="Status">Status</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="Status" name="Status" readonly/>
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-calendar"></span>
+									</span>
+								</div>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" for="ultimoUsuario">Ultimo Usuário</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="ultimoUsuario" name="ultimoUsuario" readonly/>
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-calendar"></span>
+									</span>
+								</div>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" for="hora">Hora</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="hora" name="hora" readonly/>
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-calendar"></span>
+									</span>
+								</div>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" for="idSolicitacao">Nº Solicitação</label>
+								<input type="text" class="form-control" id="idSolicitacao" name="idSolicitacao" readonly/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Dados da Solicitação</a>
+						</h2>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="form-group col-md-2">
+								<label class="control-label required" for="inputNrCPF">Nº CPF</label>&nbsp;<span class="fluigicon fluigicon-info-sign fluigicon-sm" data-toggle="tooltip" data-placement="top" title="Caso não encontrado, favor solicitar cadastro através do formulário SCA - Solicitação de Cadastro de Autônomo. Clique no ícone ao lado para ser redirecionado."></span><a class="flaticon flaticon-link icon-sm" href="https://rhmedconsultores114678.fluig.cloudtotvs.com.br/portal/p/1/pageworkflowview?processID=SCA%20-%20Solicita%C3%A7%C3%A3o%20Cadastro%20de%20Autonomo" target="_blank"></a>
+								<input type="text" name="inputNrCPF" id="inputNrCPF" class="form-control" autocomplete="nope">
+							</div>
+							<div class="form-group col-md-1" style="margin-left: -30px; margin-top: 2;">
+								<input type="button" value="Consultar" id="buscarCPF" id="buscarCPF" class="btn btn-info" style="margin-top: 23px;">
+							</div>
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,4,11" for="inputNomePrestador">Nome do Prestador</label>&nbsp;<span class="fluigicon fluigicon-info-sign fluigicon-sm" data-toggle="tooltip" data-placement="top" title="Preenchimento automático após consulta do CPF."></span>
+								<input type="text" class="form-control" id="inputNomePrestador" name="inputNomePrestador" autocomplete="nope" readonly/>
+							</div>
+							<div class="form-group col-md-2">
+								<label class="control-label required" atividades="0,4,11" for="tipoPagamento">Tipo</label>
+								<select class="form-control" name="tipoPagamento" id="tipoPagamento">
+									<option value="" selected>---- Selecione ----</option>
+									<option value="Normal">Normal</option>
+									<option value="Emergencial">Emergencial</option>
+								</select>
+							</div>	
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,11" for="zoomCentroCusto">Centro de Custo</label>
+								<input type="hidden" id="centroCusto" name="centroCusto" value="" />
+								<input type="zoom" class="form-control" id="zoomCentroCusto" name="zoomCentroCusto"
+									data-zoom="{'displayKey': 'ccusto','datasetId': 'dsCadastroCentrodeCusto','filterValues': 'CCbloqueado,nao','fields': [
+												{'field': 'ccusto','label': 'Centro de Custo','standard': 'true','search': 'true'}]}" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-7">
+								<label class="control-label required" atividades="0,4,11" for="zoomFilial">Filial</label>
+								<input type="zoom" class="form-control" id="zoomFilial" name="zoomFilial"
+									data-zoom="{'displayKey': 'Filial','datasetId': 'dsCadastroFiliais','filterValues': 'Filial','fields': [
+												{'field': 'Filial','label': 'Filial','standard': 'true','search': 'true'},
+												{'field': 'Empresa','label': 'Empresa','search': 'true'},
+												{'field': 'cnpjFilial','label': 'cnpjFilial','search': 'true'}]}" />
+							</div>
+							<div class="form-group col-md-1">
+								<label class="control-label required" atividades="0,4,11" for="empresaCod">Empresa</label>
+								<input type="number" class="form-control" id="empresaCod" name="empresaCod" maxlength="40" readonly></input>
+							</div>
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,4,11" for="cnpjFilial">CNPJ Filial</label>&nbsp;<span class="fluigicon fluigicon-info-sign fluigicon-sm" data-toggle="tooltip" data-placement="top" title="Essa informação é de preenchimento automático, mediante a seleção da Filial."></span>
+								<input type="number" class="form-control" id="cnpjFilial" name="cnpjFilial" maxlength="40" readonly></input>
+							</div>								
+						</div>
+						<!-- <div class="row">
+							<div class="form-group col-md-12">
+								<legend style="font-size: 12px; font-weight: 700; color: #58595b; -webkit-tap-highlight-color: transparent; font-family: 'Verdana' !important;">Novo Prestador?<span style="color: red"> *</span></legend>
+								<div class="custom-radio custom-radio-primary custom-radio-inline">
+									<input type="radio" name="radiobtnNovoPrestador" value="nao" id="radiobtnNovoPrestadorNao">
+									<label for="radiobtnNovoPrestadorNao">Não</label>
+								</div>
+								<div class="custom-radio custom-radio-primary custom-radio-inline">
+									<input type="radio" name="radiobtnNovoPrestador" value="sim" id="radiobtnNovoPrestadorSim">	
+									<label for="radiobtnNovoPrestadorSim">Sim</label>
+								</div>
+								<p class="text-danger" id="spanNovoPrestador2" style="display: none;">Favor encaminhar a ficha registro em anexo!</p>
+							</div>
+						</div> -->
+						<br/>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<legend style="font-size: 12px; font-weight: 700; color: #58595b; -webkit-tap-highlight-color: transparent; font-family: 'Verdana' !important;">Prestador possui outro vínculo empregatício?<span style="color: red"> *</span></legend>
+								<div class="custom-radio custom-radio-primary custom-radio-inline">
+									<input type="radio" name="radiobtnOutroVinculo" value="nao" id="radiobtnOutroVinculoNao">
+									<label for="radiobtnOutroVinculoNao">Não</label>
+								</div>
+								<div class="custom-radio custom-radio-primary custom-radio-inline">
+									<input type="radio" name="radiobtnOutroVinculo" value="sim" id="radiobtnOutroVinculoSim">
+									<label for="radiobtnOutroVinculoSim">Sim</label>																		
+								</div>
+								<p class="text-danger" id="spanOutroVinculo2" style="display: none;">Favor encaminhar em anexo contracheque ou demonstrativo!</p>
+							</div>
+						</div>
+						<br/>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label for="obsDadosSolicitacao" class="control-label">Observações:</label>
+								<div class="input-group">
+									<textarea class="form-control" name="obsDadosSolicitacao" id="obsDadosSolicitacao" rows="3"></textarea>
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-user-comment fluigicon-lg"></span>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-4">
+								<label class="control-label required">Anexo</label>
+								<div class="componentAnexo" id="divAnexo">
+									<button type="button" class="btn btn-info" id="documentoAnexo" name="documentoAnexo" data-file-upload onclick="anexarArquivo();"><strong>Anexar Arquivos</strong></button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Dados do Serviço</a>
+						</h2>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="form-group col-md-4">
+								<label for="zoomProfissional" atividades="0,4,11" class="control-label required">Tipo de Profissional </label>
+								<input type="zoom" class="form-control" id="zoomProfissional" name="zoomProfissional"
+									data-zoom="{'displayKey': 'inputFuncao','datasetId': 'ds_SuporteSpcFuncoes','filterValues': 'CCbloqueado,nao','fields': [
+									{'field': 'inputFuncao','label': 'Função','standard': 'true','search': 'true'}]}" />
+							</div>
+							<div class="form-group col-sm-4">
+								<label for="" class="control-label">Outro tipo de profissional (não listado ao lado)?</label>
+								<input id="switchOutroTipoProfissional" name="switchOutroTipoProfissional" type="checkbox" 
+									data-on-color="success"
+									data-off-color="danger"
+									data-on-text="Sim"
+									data-off-text="Não"
+									data-size="mini"
+								>
+							</div>
+							<!-- <div class="form-group col-sm-4">
+								<legend>Outros </legend>
+								<label class="radio-inline">
+									<input type="radio" name="radioTipoProfissionalOutro" id="radioTipoProfissionalOutroNao" value="nao" checked> Não
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="radioTipoProfissionalOutro" id="radioTipoProfissionalOutroSim" value="sim"> Sim
+								</label>
+							</div> -->
+							<div class="form-group col-md-4" style="display: none;">
+								<label for="inputOutroTipoProfissional" class="control-label required">Outro Tipo Profissional</label>
+								<input type="text" name="inputOutroTipoProfissional" id="inputOutroTipoProfissional" class="form-control">
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-4">
+								<label for="zoomServico" class="control-label required" atividades="0,4,11">Tipo de Serviço </label>
+								<input type="zoom" class="form-control" id="zoomServico" name="zoomServico"
+								data-zoom="{'displayKey': 'inputServico','datasetId': 'ds_form_suporte_tipo_servico','filterValues': 'CCbloqueado,nao','fields': [
+								{'field': 'inputServico','label': 'Serviço','standard': 'true','search': 'true'}]}" />
+							</div>
+							<div class="form-group col-sm-4">
+								<label for="" class="control-label">Outro tipo de serviço (não listado ao lado)?</label>
+								<input id="switchOutroTipoServico" name="switchOutroTipoServico" type="checkbox" 
+									data-on-color="success"
+									data-off-color="danger"
+									data-on-text="Sim"
+									data-off-text="Não"
+									data-size="mini"
+								>
+							</div>
+							<!-- <div class="form-group col-sm-4">
+								<legend>Outros </legend>
+								<label class="radio-inline">
+									<input type="radio" name="radioTipoServicoOutro" id="radioTipoServicoOutroNao" value="nao" checked> Não
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="radioTipoServicoOutro" id="radioTipoServicoOutroSim" value="sim"> Sim
+								</label>
+							</div> -->
+							<div class="form-group col-md-4" style="display: none;">
+								<label for="inputOutroTipoServico" class="control-label required">Outro Tipo Serviço</label>
+								<input type="text" name="inputOutroTipoServico" id="inputOutroTipoServico" class="form-control">
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-4">
+								<label for="inputNumeroSCP" class="control-label">Número da RP</label>&nbsp;<span class="fluigicon fluigicon-info-sign fluigicon-sm" data-toggle="tooltip" data-placement="top" title="Código da 'RP - Requisição de Pessoal' na qual esse autônomo foi contratado."></span>
+								<input type="text" name="inputNumeroSCP" id="inputNumeroSCP" class="form-control">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<label for="textareaDescricaoAtividade" class="control-label required">Descrição das Atividades</label>
+								<div class="input-group">
+									<textarea class="form-control" name="textareaDescricaoAtividade" id="textareaDescricaoAtividade" rows="3"></textarea>
+									<span class="input-group-addon" id="spanDadosSolicitação">
+										<span class="fluigicon fluigicon-user-comment fluigicon-lg"></span>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Dados de Pagamento</a>
+						</h2>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="form-group col-md-12 fs-txt-left">
+								<input type="button" id="btnAddCliente" name="btnAddCliente" value="Adicionar" class="btn btn-info"/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12 table-responsive">
+								<table tablename="tabelaClientes" class="table" id="tabelaClientes" noaddbutton=true nodeletebutton=true>
+									<thead>
+										<tr>
+											<th>&nbsp;</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td><i id="spanRemoverCliente" name="spanRemoverCliente" class="fluigicon fluigicon-remove-circle icon-lg fs-txt-center fs-cursor-pointer" onclick="fnCustomDelete(this);"></i></td>
+											<td>
+												<div class="row">
+													<div class="form-group col-md-4">
+														<label class="control-label required" for="tdCliente">Cliente onde foi prestado serviço</label>
+														<input type="zoom" class="form-control" id="tdCliente" name="tdCliente"
+															data-zoom="{'displayKey': 'NOME','datasetId': 'ds_consulta_clientes_protheus','filterValues': '','fields': [
+																{'field': 'CGC','label': 'CGC'},
+																{'field': 'NOME','label':'NOME','standard': 'true','search': 'true'}]}" />
+													</div>
+													<div class="form-group col-md-4" style="display: none;">
+														<label for="tdCGC" class="control-label">CNPJ do Cliente</label>
+														<input type="text" name="tdCGC" id="tdCGC" class="form-control" readonly>
+													</div>
+													<div class="form-group col-md-2">
+														<label for="tdUnidade" class="control-label required">Unidade</label>
+														<input type="text" name="tdUnidade" id="tdUnidade" class="form-control">
+													</div>
+													<div class="form-group col-md-2">
+														<label for="tdDataInicio" class="control-label required">Data Inicio</label>
+														<input type="text" name="tdDataInicio" id="tdDataInicio" class="form-control">
+													</div>
+													<div class="form-group col-md-2">
+														<label for="tdDataFim" class="control-label required">Data Fim</label>
+														<input type="text" name="tdDataFim" id="tdDataFim" class="form-control">
+													</div>
+													<div class="form-group col-md-2">
+														<label for="tdValorCliente" class="control-label required">Valor Bruto</label>
+														<div class="input-group">
+															<span class="input-group-addon">
+																<span class="fluigicon fluigicon-money"></span>
+															</span>
+															<input 
+																type="text" 
+																name="tdValorCliente" 
+																id="tdValorCliente" 
+																class="form-control" 
+																placeholder="0,00"  
+																onchange="somaProdutos();" 
+																onkeypress="aplicaMask();" 
+																style="text-align: right;"  
+																mask="#00.000.000.000.000,00"
+															>
+														</div>
+													</div>
+												</div>
+											</td>                                                   
+										</tr>       
+									</tbody>       
+								</table> 
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-sm-3">
+								<label for="" class="control-label">Profissional já recolheu impostos em outra empresa nesse período?</label>
+								<div>
+									<input id="switchRecolheuImpPeriodo" name="switchRecolheuImpPeriodo" type="checkbox" 
+										data-on-color="success"
+										data-off-color="danger"
+										data-on-text="Sim"
+										data-off-text="Não"
+										data-size="mini"
+									>
+								</div>
+							</div>
+							<div class="form-group col-md-3 inputValorRecolhido" style="display: none;">
+								<label class="control-label required" for="inputValorRecolhido">Valor já recolhido no período</label>
+								<input type="text" name="inputValorRecolhido" id="inputValorRecolhido" class="form-control" placeholder="0,00" style="text-align: right;"  mask="#00.000.000.000.000,00">
+								<p style="color: darkred;">Obrigatório anexar comprovante de pagamento</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-3">
+								<label class="control-label" for="valorTotalDocumento">Valor Bruto do RPA</label>&nbsp;<span class="fluigicon fluigicon-info-sign fluigicon-sm" data-toggle="tooltip" data-placement="top" title="Preenchimento automático. Somatório dos valores da tabela acima."></span>
+								<div class="input-group">
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-money"></span>
+									</span>
+									<input type="text" class="form-control" id="valorTotalDocumento" name="valorTotalDocumento" placeholder="0,00" style="text-align: right;"  mask="#00.000.000.000.000,00" readonly/>
+								</div>
+							</div>
+							<div class="form-group col-md-3">
+								<label id="lblDataCriacao" class="control-label required" atividades="0,4,11" for="dataVencimentoNota">Data Sugerida para Pagamento</label><span style="color: red">*</span>
+								<div class="input-group">
+									<input type="date" class="form-control" id="dataVencimentoNota" name="dataVencimentoNota" max="2999-12-31"/>
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-calendar"></span>
+									</span>
+								</div>
+								<input type="hidden" id="mesVencimentoNota" name="mesVencimentoNota" value="" />
+								<input type="hidden" id="anoVencimentoNota" name="anoVencimentoNota" value="" />
+							</div>						
+						</div>
+						<div class="row">
+							<div class="form-group col-md-2">
+								<label for="inputValorINSS" class="control-label">Valor INSS</label>
+								<div class="input-group">
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-money"></span>
+									</span>
+									<input type="text" name="inputValorINSS" id="inputValorINSS" class="form-control" readonly>
+								</div>
+							</div>
+							<div class="form-group col-md-2">
+								<label for="inputValorIRRF" class="control-label">Valor IRRF</label>
+								<div class="input-group">
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-money"></span>
+									</span>
+									<input type="text" name="inputValorIRRF" id="inputValorIRRF" class="form-control" readonly>
+								</div>
+							</div>
+							<div class="form-group col-md-2">
+								<label for="inputValorLiquido" class="control-label">Valor Liquido</label>
+								<div class="input-group">
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-money"></span>
+									</span>
+									<input type="text" name="inputValorLiquido" id="inputValorLiquido" class="form-control" readonly>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-primary" id="painelAssinaturaRecibo" name="painelAssinaturaRecibo" style="display: none;">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Assinatura do recibo de pagamento</a>
+						</h2>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="form-group col-md-2">
+								<label for="dataAssinatura" class="control-label required">Data Assinatura</label>
+								<input type="date" class="form-control" id="dataAssinatura" name="dataAssinatura" max="2999-12-31"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required">Anexar recibo assinado</label>
+								<div class="componentAnexo" id="divAnexoRecibo">
+									<button type="button" class="btn btn-info" id="documentoAnexoRecibo" name="documentoAnexoRecibo" data-file-upload onclick="anexarArquivo();"><strong>Anexar Arquivos</strong></button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-primary" id="painelAprovadores" name="painelAprovadores">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Dados da Aprovação</a>
+						</h2>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="form-group col-md-2">
+								<label class="control-label required" atividades="27,55,25,34,41,5" for="aprovacaoCoordenador">Aprovação da Solicitação</label>
+								<select class="form-control" name="aprovacaoCoordenador" id="aprovacaoCoordenador">
+									<option value="" selected>---- Selecione ----</option>
+									<option value="Sim">Aprovado</option>
+									<option value="Nao">Reprovado</option>
+									<option value="Cancelado">Cancelado</option>
+								</select>
+							</div>
+							<div class="form-group col-md-2">
+								<label class="control-label" for="valorRequisicao">Valor Total da Solicitação</label>
+								<input type="text" class="form-control" id="valorRequisicao" name="valorRequisicao" readonly/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label for="origem">Observações:</label>
+								<div class="input-group">
+									<textarea class="form-control" name="origem" id="origem" rows="3"></textarea>
+									<span class="input-group-addon" id="preencheAcompanhamento">
+										<span class="fluigicon fluigicon-user-comment fluigicon-lg"></span>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<textarea class="form-control" name="destino" id="destino"	style="height: 200px; vertical-align: top; width: 100%; display:none;"	onKeyPress="alteraMaiusculo(this);" onkeyup="alteraMaiusculo(this);" value="" readonly></textarea>												
+							</div>
+						</div>
+					</div>
+				</div>
+				<div name="acompanhamento" id="acompanhamento" readonly></div>
+			</form>
+		</div>
+		<style>
+			.align-right{
+				float: right !important;
+			}
+		</style>
+	</body>
+</html>

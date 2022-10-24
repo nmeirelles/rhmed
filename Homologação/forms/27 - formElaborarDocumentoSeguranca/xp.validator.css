@@ -1,0 +1,142 @@
+form label.required:after{
+    color: #FF0000;
+    content: " *";
+}
+
+input.button-anexo {
+    background-image: url(fluigicon-paperclip.png); /* 16px x 16px */
+    background-color: transparent; /* make the button transparent */
+    background-repeat: no-repeat;  /* make the background image appear only once */
+    background-position: 0px 0px;  /* equivalent to 'top left' */
+    border: none;           /* assuming we don't want any borders */
+    cursor: pointer;        /* make the cursor like hovering over an <a> element */
+    height: 16px;           /* make this the size of your image */
+    padding-left: 16px;     /* make text start to the right of the image */
+    vertical-align: middle; /* align the text vertically centered */
+}
+
+input.button-download {
+    background-image: url(fluigicon-download.png); /* 16px x 16px */
+    background-color: transparent; /* make the button transparent */
+    background-repeat: no-repeat;  /* make the background image appear only once */
+    background-position: 0px 0px;  /* equivalent to 'top left' */
+    border: none;           /* assuming we don't want any borders */
+    cursor: pointer;        /* make the cursor like hovering over an <a> element */
+    height: 16px;           /* make this the size of your image */
+    padding-left: 16px;     /* make text start to the right of the image */
+    vertical-align: middle; /* align the text vertically centered */
+}
+
+input.button-viewer {
+    background-image: url(fluigicon-eye-open.png); /* 16px x 16px */
+    background-color: transparent; /* make the button transparent */
+    background-repeat: no-repeat;  /* make the background image appear only once */
+    background-position: 0px 0px;  /* equivalent to 'top left' */
+    border: none;           /* assuming we don't want any borders */
+    cursor: pointer;        /* make the cursor like hovering over an <a> element */
+    height: 16px;           /* make this the size of your image */
+    padding-left: 16px;     /* make text start to the right of the image */
+    vertical-align: middle; /* align the text vertically centered */
+}
+
+.panelCorPadrao {
+	background: #35b7a7;
+}
+
+form .zoom-alert {
+	position: absolute !important;
+	width: calc(100% - 30px) !important;
+	z-index: 999 !important;
+	-webkit-box-shadow: 2px 2px 2px -1px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 2px 2px 2px -1px rgba(0, 0, 0, 0.75);
+	box-shadow: 2px 2px 2px -1px rgba(0, 0, 0, 0.75);
+}
+
+.fluig-style-guide form .input-group .input-group-addon,.fluig-style-guide form .btn-primary,.fluig-style-guide form .select2-custom-theme .select2-fluigicon-zoom ,.fluig-style-guide form .panel.panel-default>.panel-heading{
+	background-color: #1a5952;
+	letter-spacing: 0.7px;
+	color:white;
+	border-color: inherit;
+}
+
+.fluig-style-guide form .fluigicon-trash,.fluig-style-guide form .fluigicon-fileadd{
+    color: rgb(94,156,179);
+}
+
+.fluig-style-guide form h1{
+	letter-spacing: -0.7px;
+}
+
+.fluig-style-guide form label{
+    font-size: 11.5	
+}
+
+.fluig-style-guide form label,.fluig-style-guide form,.fluig-style-guide form h1, .fluig-style-guide form h2, .fluig-style-guide form h3, .fluig-style-guide form h4, .fluig-style-guide form h5, .fluig-style-guide form h6{
+	font-family: Arial,bold;
+	color: #4b4b4b
+}
+
+.fluig-brand-color {
+	color: #e8255c !important;
+}
+
+.fluig-brand-bg-color {
+	background-color: #e8255c !important;
+}
+
+.fluig-brand-border-color {
+	border-color: #e8255c !important;
+}
+
+.menu-top,
+.img-menu-profile,
+.img-menu-profile-slim {
+	border-color: #e8255c !important;
+}
+     	
+.active-menu,
+.profile-pencil,
+.menu-item.back a {
+	color: #e8255c !important;
+}
+
+.fl-badge,
+.icon-list-item:hover, .icon-list-item.checked,
+.icon-list-item.checked::before,
+.fl-button-adjust,
+.fl-header .fl-li-button a:hover {
+	background-color: #e8255c !important;
+}
+
+.titulo-panel{
+	padding: 10px !important;
+}
+
+.wcm-menu-background{
+	background-color : #35b7a7 !important;
+}
+
+.wcm-menu-indicator-background{
+	border-top-color : #35b7a7 !important;
+	border-bottom-color : #35b7a7 !important;
+}
+
+.wcm-menu-more-indicator-background-top{
+	border-right-color : #35b7a7 !important;
+}
+
+.wcm-menu-more-indicator-background-bottom{
+	border-top-color : #35b7a7 !important;
+}
+
+.wcm-background{
+	background-color : rgb(255, 255, 255) !important;
+}
+
+.wcm-header-background{
+	background-color : rgb(255, 255, 255) !important;
+}
+
+[readonly] {
+ background-color: #EEEEEE !important;
+}

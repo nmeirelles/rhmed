@@ -1,0 +1,711 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+		<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+		<script src="jquery.mask.min.js"></script>
+		<script type="text/javascript" src="numeral.js"></script>
+		<script src="/webdesk/vcXMLRPC.js"></script>
+		<script type="text/javascript" src="complementos.js" charset="utf-8"></script>
+		<link type="text/css" rel="stylesheet" href="form_SCP-SolicitacaoContratacaoPessoal.css"/>
+		<link type="text/css" rel="stylesheet" href="style.css"/>		
+		<script type="text/javascript" src="form_SCP-SolicitacaoContratacaoPessoal.js" charset="utf-8"></script>
+		<style type="text/css">
+	      	select[readonly] {
+	      	  background: #eee;
+	      	  pointer-events: none;
+	      	  touch-action: none;
+	      	}
+		</style>
+		<script type="text/javascript">
+			$(function() {								
+				$('label').css('font-size', '12px');
+			});
+		</script>
+	</head>
+	<body class="fluig-style-guide sequoiacss">
+		<div class="fluig-style-guide">
+			<form name="form" role="form">
+				<!-- SLA -->
+				<input type="hidden" id="dataDisponibilidadeCF" name="dataDisponibilidadeCF" value="" />
+				<input type="hidden" id="dataAssumiuCF" name="dataAssumiuCF" value="" />
+				<input type="hidden" id="dataFinalizouCF" name="dataFinalizouCF" value="" />
+				<input type="hidden" id="usuarioCF" name="usuarioCF" value="" />
+
+				<input type="hidden" id="dataDisponibilidadeCFA" name="dataDisponibilidadeCFA" value="" />
+				<input type="hidden" id="dataAssumiuCFA" name="dataAssumiuCFA" value="" />
+				<input type="hidden" id="dataFinalizouCFA" name="dataFinalizouCFA" value="" />
+				<input type="hidden" id="usuarioCFA" name="usuarioCFA" value="" />
+
+				<input type="hidden" id="dataDisponibilidadeCP" name="dataDisponibilidadeCP" value="" />
+				<input type="hidden" id="dataAssumiuCP" name="dataAssumiuCP" value="" />
+				<input type="hidden" id="dataFinalizouCP" name="dataFinalizouCP" value="" />
+				<input type="hidden" id="usuarioCP" name="usuarioCP" value="" />
+
+				<input type="hidden" id="dataDisponibilidadeS" name="dataDisponibilidadeS" value="" />
+				<input type="hidden" id="dataAssumiuS" name="dataAssumiuS" value="" />
+				<input type="hidden" id="dataFinalizouS" name="dataFinalizouS" value="" />
+				<input type="hidden" id="usuarioS" name="usuarioS" value="" />
+
+				<input type="hidden" id="dataDisponibilidadeC" name="dataDisponibilidadeC" value="" />
+				<input type="hidden" id="dataAssumiuC" name="dataAssumiuC" value="" />
+				<input type="hidden" id="dataFinalizouC" name="dataFinalizouC" value="" />
+				<input type="hidden" id="usuarioC" name="usuarioC" value="" />
+
+				<input type="hidden" id="dataDisponibilidadeG" name="dataDisponibilidadeG" value="" />
+				<input type="hidden" id="dataAssumiuG" name="dataAssumiuG" value="" />
+				<input type="hidden" id="dataFinalizouG" name="dataFinalizouG" value="" />
+				<input type="hidden" id="usuarioG" name="usuarioG" value="" />
+
+				<input type="hidden" id="dataDisponibilidadeD" name="dataDisponibilidadeD" value="" />
+				<input type="hidden" id="dataAssumiuD" name="dataAssumiuD" value="" />
+				<input type="hidden" id="dataFinalizouD" name="dataFinalizouD" value="" />
+				<input type="hidden" id="usuarioD" name="usuarioD" value="" />
+				<!-- SLA -->
+				<!-- [Inicio] campos de controle -->
+				<input type="hidden" id="dataEntrada" name="dataEntrada" value="" />
+				<input type="hidden" id="mesEntrada" name="mesEntrada" value="" />
+				<input type="hidden" id="anoEntrada" name="anoEntrada" value="" />
+				<input type="hidden" id="numeroFluxo" name="numeroFluxo" value="" />
+				<input type="hidden" id="dataFinalizacao" name="dataFinalizacao" value="" />
+				<input type="hidden" id="situacao" name="situacao" value="" />
+				<input type="hidden" id="campoDescritor" name="campoDescritor" value="" />
+				<input type="hidden" id="solicitanteMatricula" name="solicitanteMatricula" value="" />
+				<input type="hidden" id="currentNome" name="currentNome" value="" />
+				<input type="hidden" id="currentLogin" name="currentLogin" value="" />
+				<input type="hidden" id="atividadeAtual" name="atividadeAtual" value="" />
+				<input type="hidden" id="currentEmail" name="currentEmail" value="">
+				<input type="hidden" id="loginAprovador" name="loginAprovador" value="">
+				<input type="hidden" id="nomeAprovador" name="nomeAprovador" value="">
+				<input type="hidden" id="loginAprovadorAnterior" name="loginAprovadorAnterior" value="">
+				<input type="hidden" id="nomeAprovadorAnterior" name="nomeAprovadorAnterior" value="">
+				<input type="hidden" id="aprovadorCoordenador" name="aprovadorCoordenador" value="" />
+				<input type="hidden" id="aprovadorSupervisor" name="aprovadorSupervisor" value="" />
+				<input type="hidden" id="aprovadorGerente" name="aprovadorGerente" value="" />
+				<input type="hidden" id="aprovadorDiretor" name="aprovadorDiretor" value="" />
+				<input type="hidden" id="aprovadorDestino" name="aprovadorDestino" value="" />
+				<input type="hidden" id="valorCoordenador" name="valorCoordenador" value="" />
+				<input type="hidden" id="valorSupervisor" name="valorSupervisor" value="" />
+				<input type="hidden" id="valorGerente" name="valorGerente" value="" />
+				<input type="hidden" id="valorDiretor" name="valorDiretor" value="" />
+				<input type="hidden" id="valorTotalDocumento" name="valorTotalDocumento" value="" />
+				<input type="hidden" class="form-control" id="naturezaFinanceira1" name="naturezaFinanceira1" value="" />
+				<input type="hidden" class="form-control" id="naturezaFinanceira2" name="naturezaFinanceira2" value="" />
+				<input type="hidden" id="idCentroCusto" name="idCentroCusto" value="" />
+				<input type="hidden" id="codFilial" name="codFilial" value="" />
+				<input type="hidden" id="hiddenSelectFuncao" name="hiddenSelectFuncao" value=""/>
+				<!-- <input type="hidden" id="CodItem" name="CodItem" value="" /> -->
+				<input type="hidden" class="form-control" id="cnpj" name="cnpj" value="" />
+				<input type="hidden" class="form-control" id="loja" name="loja" value="" />
+				<input type="hidden" class="form-control" id="codFornecedor" name="codFornecedor" value="" />
+				<input type="hidden" class="form-control" name="contaDebito" id="contaDebito" value="">
+				<input type="hidden" class="form-control" name="contaCredito" id="contaCredito" value="">
+				<input type="hidden" id="matriculaAprovador" name="matriculaAprovador" value=""> <!--Valida Substituto-->
+															
+				<div class="page-header">
+					<h2 class="panel-title"><img src="rhmed_rhvida_logo2.png" alt="logo RHMed" class="align-right"><span class="fluigicon fluigicon-sticky-note fluigicon-md"></span>&nbsp;RP - Requisição de Pessoal</h2>
+				</div>
+
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Dados do Solicitante</a>
+						</h2>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="form-group col-md-6">
+								<label class="control-label" for="solicitanteNome">Solicitante</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="solicitanteNome" name="solicitanteNome" readonly />
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-user"></span>
+									</span>
+								</div>
+							</div>									
+							<div class="form-group col-md-6">
+								<label class="control-label" for="solicitanteEmail">Email</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="solicitanteEmail" name="solicitanteEmail" readonly />
+									<span class="input-group-addon">@</span>
+								</div>
+							</div> 
+						</div>
+						<div class="row">
+							<div class="form-group col-lg-3 col-md-3 col-sm-12">
+								<label class="control-label" for="solicitanteTelefone">Telefone</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="solicitanteTelefone" name="solicitanteTelefone" readonly />
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-phone"></span>
+									</span>
+								</div>
+							</div>
+							<div class="form-group col-lg-3 col-md-3 col-sm-12">
+								<label class="control-label" for="solicitanteDepartamento">Departamento</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="solicitanteDepartamento" name="solicitanteDepartamento" readonly />
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-company"></span>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Status da Solicitação</a>
+						</h2>
+					</div>
+					<div class="panel-body">
+						<div class="form-group col-md-3">
+							<label id="lblDataCriacao" class="control-label required" for="Status">Status</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="Status" name="Status" readonly/>
+								<span class="input-group-addon">
+									<span class="fluigicon fluigicon-calendar"></span>
+								</span>
+							</div>
+						</div>
+						<div class="form-group col-md-3">
+							<label id="lblDataCriacao" class="control-label required" for="ultimoUsuario">Ultimo Usuário</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="ultimoUsuario" name="ultimoUsuario" readonly/>
+								<span class="input-group-addon">
+									<span class="fluigicon fluigicon-calendar"></span>
+								</span>
+							</div>
+						</div>
+						<div class="form-group col-md-3">
+							<label id="lblDataCriacao" class="control-label required" for="hora">Hora</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="hora" name="hora" readonly/>
+								<span class="input-group-addon">
+									<span class="fluigicon fluigicon-calendar"></span>
+								</span>
+							</div>
+						</div>
+						<div class="form-group col-md-2" style="display: none;">
+							<input type="text" class="form-control" id="hora2" name="hora2" readonly></input>
+						</div>
+						<div class="form-group col-md-3">
+							<label class="control-label" for="idSolicitacao">Nº Solicitação</label>
+							<input type="text" class="form-control" id="idSolicitacao" name="idSolicitacao" readonly/>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Dados da Vaga</a>
+						</h2>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,2,26" for="selectAreaRH">Área do RH (Responsável)</label>
+								<select class="form-control" name="selectAreaRH" id="selectAreaRH">
+									<option value="">---- Selecione ----</option>
+									<option value="rhEsterno" selected>RH Externo</option>
+								</select>
+							</div>
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,2,26" for="zoomCentroCusto">Centro de Custo</label>
+								<input type="zoom" class="form-control" id="zoomCentroCusto" name="zoomCentroCusto" value=""
+									data-zoom="{
+										'displayKey': 'ccusto',
+										'datasetId': 'dsCadastroCentrodeCusto',
+										'filterValues': 'CCbloqueado,nao',
+										'fields': [
+										   {
+											   'field': 'ccusto',
+											   'label': 'Centro de Custo',	
+											   'standard': 'true',					       
+											   'search': 'true'
+											}
+										 ]
+							   }"/>
+							</div>
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,2,26" for="selectUrgencia">Urgência</label>
+								<select class="form-control" name="selectUrgencia" id="selectUrgencia">
+									<option value="" selected>---- Selecione ----</option>
+									<option value="normal">Normal</option>
+									<option value="emergencial">Emergencial</option>
+								</select>
+							</div>							
+						</div>
+						<div class="row">
+							<div class="form-group col-md-1">
+								<label class="control-label required" atividades="0,2,26" for="empresaCod">Empresa</label>
+								<input type="number" class="form-control" id="empresaCod" name="empresaCod" maxlength="40" readonly></input>
+							</div>
+							<div class="form-group col-md-8">
+								<label class="control-label required" atividades="0,2,26" for="zoomFilial">Filial</label>
+								<input type="zoom" class="form-control" id="zoomFilial" name="zoomFilial" value=""
+									data-zoom="{
+										'displayKey': 'Filial',
+										'datasetId': 'dsCadastroFiliais',
+										'filterValues': 'Filial',
+										'fields': [
+										{
+											'field': 'Filial',
+											'label': 'Filial',	
+											'standard': 'true',					       
+											'search': 'true'
+										},{
+											'field': 'Empresa',
+											'label': 'Empresa',
+											'search': 'true'
+											
+										},{
+											'field': 'cnpjFilial',
+											'label': 'cnpjFilial',
+											'search': 'true'
+										},
+										{
+											'field': 'codFilial',
+											'label': 'codFilial',
+											'visible': 'false'
+										}]}"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,2,26" for="cnpjFilial">CNPJ Filial</label>
+								<input type="number" class="form-control" id="cnpjFilial" name="cnpjFilial" maxlength="40" readonly></input>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,2,26" for="selectMotivoContratacao">Motivo da Contratação</label>
+								<select class="form-control selectChange" name="selectMotivoContratacao" id="selectMotivoContratacao">
+									<option value="" selected>---- Selecione ----</option>
+									<option value="aumentoQuadro">Aumento de Quadro</option>
+									<option value="coberturaFalta">Cobertura - Falta</option>									
+									<option value="coberturaFerias">Cobertura - Férias</option>
+									<option value="implantacao">Implantação</option>
+									<option value="substituicao">Substituição</option>									
+								</select>
+							</div>							
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,2,26" for="selectTipoContratacao">Tipo da Contratação</label>
+								<select class="form-control selectChange" name="selectTipoContratacao" id="selectTipoContratacao">
+									<option value="" selected>---- Selecione ----</option>
+									<option value="cltIndeterminato">CLT (Tempo Indeterminado)</option>
+									<option value="cltDeterminato">CLT (Tempo Determinado)</option>
+									<option value="pj">PJ</option>
+									<option value="rpa">RPA</option>
+									<option value="credenciado">Credenciado</option>
+								</select>
+							</div>
+							<div class="col-md-4" id="divTempoDias" style="display: none;">
+								<label class="control-label required" atividades="0,2,26" for="inputTempoDias">Tempo em Dias</label>
+								<input type="text" class="form-control" id="inputTempoDias" name="inputTempoDias" mask="000"></input>
+							</div>							
+						</div>
+						<div class="row">
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,2,26" for="selectCargo">Cargo do Candidato</label>
+								<select class="form-control" name="selectCargo" id="selectCargo">
+									<option value="" selected>---- Selecione ----</option>
+									<option value="staff">Staff</option>
+									<option value="supervisor">Supervisor</option>
+									<option value="coordenador">Coordenador</option>
+									<option value="gerente">Gerente</option>
+								</select>
+							</div>								   
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,2,26" for="selectFuncao">Função do Candidato</label>
+								<select class="form-control selectChange" name="selectFuncao" id="selectFuncao">
+									<option value="" selected>---- Selecione ----</option>									
+								</select>
+							</div>							
+							<div class="form-group col-md-4">
+								<label class="required">Previsão de Início do Profissional</label>
+								<div class="input-group date">
+									<input type="text" class="form-control setData" id="dataPrevIniProf" name="dataPrevIniProf">
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-calendar"></span>
+									</span>
+								</div>
+							</div>	
+						</div>
+						<div class="row divNomeColabSubstituido" id="divNomeColabSubstituido" name="divNomeColabSubstituido" style="display: none;">
+							<div class="form-group col-md-6">
+								<label class="control-label required" atividades="0,2,26" for="inputNomeColabSubst">Nome do Colaborador Substituido</label>
+								<input type="text" class="form-control" id="inputNomeColabSubst" name="inputNomeColabSubst"></input>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-6">
+								<label class="control-label required" atividades="0,2,26" for="inputEscala">Escala</label>
+								<input type="text" class="form-control" id="inputEscala" name="inputEscala"></input>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="control-label required" atividades="0,2,26" for="inputHorario">Horário</label>
+								<input type="text" class="form-control" id="inputHorario" name="inputHorario"></input>
+							</div>												
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="control-label required" atividades="0,2,26" for="inputClienteUnidade">Cliente/Unidade</label>
+								<input type="text" class="form-control" id="inputClienteUnidade" name="inputClienteUnidade"></input>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="control-label required" atividades="0,2,26" for="inputEnderecoTrabalho">Endereço do Trabalho</label>
+								<input type="text" class="form-control" id="inputEnderecoTrabalho" name="inputEnderecoTrabalho"></input>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label atividades="0,2,26" for="obsDadosSolicitacao">Observações:</label>
+								<div class="input-group">
+									<textarea class="form-control" name="obsDadosSolicitacao" id="obsDadosSolicitacao" style="height: 70px" value=""></textarea>
+									<span class="input-group-addon fs-cursor-pointer" id="spanDadosSolicitação">
+										<span class="fluigicon fluigicon-user-comment fluigicon-lg"></span>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-4" id="divButtonAnexo" name="divButtonAnexo">
+								<label class="control-label">Anexo</label>
+								<div class="componentAnexo" id="divAnexo">
+									<button type="button" class="btn btn-info" id="documentoAnexo" name="documentoAnexo" data-file-upload onclick="anexarArquivo();"><strong>Anexar Arquivos</strong></button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>		
+				<div class="panel panel-primary painelSalarioBeneficios" id="painelSalarioBeneficios" name="painelSalarioBeneficios" style="display: none;">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Salário e Benefícios</a>
+						</h2>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,2,26" for="inputSalario">Salário</label>
+								<input type="text" class="form-control" id="inputSalario" name="inputSalario" mask="#00.000.000.000.000,00"></input>
+							</div>
+						</div>
+						<div class="row">							
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,2,26" for="selectResponsTecnica">Responsabilidade Técnica</label>
+								<select class="form-control" name="selectResponsTecnica" id="selectResponsTecnica">
+									<option value="" selected>---- Selecione ----</option>
+									<option value="sim">Sim</option>
+									<option value="nao">Não</option>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,2,26" for="selectRefeicaoLocal">Refeição Local</label>
+								<select class="form-control" name="selectRefeicaoLocal" id="selectRefeicaoLocal">
+									<option value="" selected>---- Selecione ----</option>
+									<option value="sim">Sim</option>
+									<option value="nao">Não</option>
+								</select>
+							</div>
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,2,26" for="selectPlanoMedico">Plano Médico</label>
+								<select class="form-control" name="selectPlanoMedico" id="selectPlanoMedico">
+									<option value="" selected>---- Selecione ----</option>
+									<option value="sim">Sim</option>
+									<option value="nao">Não</option>
+								</select>
+							</div>
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,2,26" for="selectPlanoOdonto">Plano Odontológico</label>
+								<select class="form-control" name="selectPlanoOdonto" id="selectPlanoOdonto">
+									<option value="" selected>---- Selecione ----</option>
+									<option value="sim">Sim</option>
+									<option value="nao">Não</option>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,2,26" for="selectVrVa">VR/VA</label>
+								<select class="form-control" name="selectVrVa" id="selectVrVa">
+									<option value="" selected>---- Selecione ----</option>
+									<option value="sim">Sim</option>
+									<option value="nao">Não</option>
+								</select>
+							</div>
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,2,26" for="selectFretadoCliente">Fretado pelo cliente</label>
+								<select class="form-control selectChange" name="selectFretadoCliente" id="selectFretadoCliente">
+									<option value="" selected>---- Selecione ----</option>
+									<option value="sim">Sim</option>
+									<option value="nao">Não</option>
+								</select>
+							</div>
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,2,26" for="selectVt">VT</label>
+								<select class="form-control selectChange" name="selectVt" id="selectVt">
+									<option value="" selected>---- Selecione ----</option>
+									<option value="sim">Sim</option>
+									<option value="nao">Não</option>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,2,26" for="selectAuxCombustivel">Auxílio Combustível</label>
+								<select class="form-control selectChange" name="selectAuxCombustivel" id="selectAuxCombustivel">
+									<option value="" selected>---- Selecione ----</option>
+									<option value="sim">Sim</option>
+									<option value="nao">Não</option>
+								</select>
+							</div>
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,2,26" for="selectVtFixo">VT Valor Fixo</label>
+								<select class="form-control selectChange" name="selectVtFixo" id="selectVtFixo">
+									<option value="" selected>---- Selecione ----</option>
+									<option value="sim">Sim</option>
+									<option value="nao">Não</option>
+								</select>
+							</div>
+							<div class="col-md-4 valorPrevistoAuxilio" style="display: none;">
+								<label class="control-label required" atividades="0,2,26" for="inputValorPrevisto">Valor Previsto Auxílio / VT</label>
+								<input type="text" class="form-control" id="inputValorPrevisto" name="inputValorPrevisto" mask="#00.000.000.000.000,00"></input>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,2,26" for="selectInsalubridade">Insalubridade</label>
+								<select class="form-control selectChange" name="selectInsalubridade" id="selectInsalubridade">
+									<option value="" selected>---- Selecione ----</option>
+									<option value="sim">Sim</option>
+									<option value="nao">Não</option>
+								</select>
+							</div>
+							<div class="form-group col-md-4 porcentInsalubridade" style="display: none;">
+								<label class="control-label required" atividades="0,2,26" for="inputPorcentInsalub">(%)</label>
+								<input type="text" class="form-control" id="inputPorcentInsalub" name="inputPorcentInsalub" mask="000"/>
+							</div>							
+						</div>
+						<div class="row">
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,2,26" for="selectPericulosidade">Periculosidade</label>
+								<select class="form-control selectChange" name="selectPericulosidade" id="selectPericulosidade">
+									<option value="" selected>---- Selecione ----</option>
+									<option value="sim">Sim</option>
+									<option value="nao">Não</option>
+								</select>
+							</div>
+							<div class="form-group col-md-4 porcentPericulosidade" style="display: none;">
+								<label class="control-label required" atividades="0,2,26" for="inputPorcentPericulos">(%)</label>
+								<input type="text" class="form-control" id="inputPorcentPericulos" name="inputPorcentPericulos" mask="000"/>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Outras Informações</a>
+						</h2>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,2,26" for="selectDocSolidaria">Documentação Solidária</label>
+								<select class="form-control" name="selectDocSolidaria" id="selectDocSolidaria">
+									<option value="" selected>---- Selecione ----</option>
+									<option value="sim">Sim</option>
+									<option value="nao">Não</option>
+								</select>
+							</div>
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,2,26" for="selectIntegracao">Integração</label>
+								<select class="form-control" name="selectIntegracao" id="selectIntegracao">
+									<option value="" selected>---- Selecione ----</option>
+									<option value="sim">Sim</option>
+									<option value="nao">Não</option>
+								</select>
+							</div>
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,2,26" for="selectCNH">Carteira de Habilitação</label>
+								<select class="form-control" name="selectCNH" id="selectCNH">
+									<option value="" selected>---- Selecione ----</option>
+									<option value="sim">Sim</option>
+									<option value="nao">Não</option>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="control-label required" atividades="0,2,26" for="textAreaDescAtividades">Descrição de Atividades</label>
+								<textarea class="form-control" name="textAreaDescAtividades" id="textAreaDescAtividades"></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="control-label required" atividades="0,2,26" for="textAreaHabilidades">Habilidades</label>
+								<textarea class="form-control" name="textAreaHabilidades" id="textAreaHabilidades"></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="control-label required" atividades="0,2,26" for="textAreaCompetencia">Competência</label>
+								<textarea class="form-control" name="textAreaCompetencia" id="textAreaCompetencia"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Equipamentos</a>
+						</h2>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,2,26" for="selectNotebook">Notebook</label>
+								<select class="form-control" name="selectNotebook" id="selectNotebook">
+									<option value="" selected>---- Selecione ----</option>
+									<option value="sim">Sim</option>
+									<option value="nao">Não</option>
+								</select>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,2,26" for="selectDesktop">Desktop</label>
+								<select class="form-control" name="selectDesktop" id="selectDesktop">
+									<option value="" selected>---- Selecione ----</option>
+									<option value="sim">Sim</option>
+									<option value="nao">Não</option>
+								</select>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,2,26" for="selectCelular">Celular</label>
+								<select class="form-control" name="selectCelular" id="selectCelular">
+									<option value="" selected>---- Selecione ----</option>
+									<option value="sim">Sim</option>
+									<option value="nao">Não</option>
+								</select>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,2,26" for="selectEPI">EPI</label>
+								<select class="form-control" name="selectEPI" id="selectEPI">
+									<option value="" selected>---- Selecione ----</option>
+									<option value="sim">Sim</option>
+									<option value="nao">Não</option>
+								</select>
+							</div>							
+						</div>
+						<div class="row">							
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,2,26" for="selectMesa">Mesa</label>
+								<select class="form-control" name="selectMesa" id="selectMesa">
+									<option value="" selected>---- Selecione ----</option>
+									<option value="sim">Sim</option>
+									<option value="nao">Não</option>
+								</select>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,2,26" for="selectCadeira">Cadeira</label>
+								<select class="form-control" name="selectCadeira" id="selectCadeira">
+									<option value="" selected>---- Selecione ----</option>
+									<option value="sim">Sim</option>
+									<option value="nao">Não</option>
+								</select>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,2,26" for="selectRamal">Ramal</label>
+								<select class="form-control" name="selectRamal" id="selectRamal">
+									<option value="" selected>---- Selecione ----</option>
+									<option value="sim">Sim</option>
+									<option value="nao">Não</option>
+								</select>
+							</div>
+						</div>						
+					</div>
+				</div>						
+				<div class="panel panel-primary" id="painelAprovadores" name="painelAprovadores">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Dados da Aprovação</a>
+						</h2>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="form-group col-md-2">
+								<label class="control-label required" atividades="0,2,26" for="aprovacaoCoordenador">Aprovação da Solicitação</label>
+								<select class="form-control" name="aprovacaoCoordenador" id="aprovacaoCoordenador" onchange="inputCodBarra(this.value)"/>
+									<option value="" selected>---- Selecione ----</option>
+									<option value="Sim">Aprovado</option>
+									<option value="Nao">Reprovado</option>
+									<option value="Cancelado">Cancelado</option>
+								</select>
+							</div>
+							<div class="form-group col-md-3 camposRecursosHumanos">
+								<label class="required">Data de Início Acordada</label>
+								<div class="input-group date">
+									<input type="text" class="form-control setData" id="inputDataInicioColab" name="inputDataInicioColab">
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-calendar"></span>
+									</span>
+								</div>
+							</div>
+							<div class="form-group col-md-3 camposRecursosHumanos">
+								<label class="control-label required" atividades="0,2,26" for="inputNomeColab">Nome do Colaborador</label>
+								<input type="text" class="form-control" id="inputNomeColab" name="inputNomeColab"/>
+							</div>
+							<div class="form-group col-md-3 camposRecursosHumanos">
+								<label class="control-label required" atividades="0,2,26" for="inputTelefoneContato">Telefone de Contato</label>
+								<input type="text" class="form-control" id="inputTelefoneContato" name="inputTelefoneContato"/>
+							</div>
+						</div>						
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label for="origem">Observações:</label>
+								<div class="input-group">
+									<textarea class="form-control" name="origem" id="origem" style="height: 70px" value=""></textarea>
+									<span class="input-group-addon fs-cursor-pointer" id="preencheAcompanhamento">
+										<span class="fluigicon fluigicon-user-comment fluigicon-lg"></span>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-4" id="divButtonAnexo2" name="divButtonAnexo2">
+								<label class="control-label">Anexo</label>
+								<div class="componentAnexo" id="divAnexo">
+									<button type="button" class="btn btn-info" id="documentoAnexo2" name="documentoAnexo2" data-file-upload onclick="anexarArquivo();"><strong>Anexar Arquivos</strong></button>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<textarea class="form-control" name="destino" id="destino"
+									style="height: 200px; vertical-align: top; width: 100%; display:none;"
+									onKeyPress="alteraMaiusculo(this);" onkeyup="alteraMaiusculo(this);"
+									value="" readonly></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div name="acompanhamento" id="acompanhamento" readonly></div>			
+			</form>
+		</div>
+		<style>
+			.align-right{
+				float: right !important;
+			}
+		</style>
+	</body>
+</html>

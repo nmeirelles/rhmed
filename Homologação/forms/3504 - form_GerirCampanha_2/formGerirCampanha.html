@@ -1,0 +1,1212 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+		<link type="text/css" rel="stylesheet" href="https://rhmedconsultores114678.fluig.cloudtotvs.com.br/style-guide/css/fluig-style-guide.min.css"/>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+		<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+		<script src="jquery.mask.min.js"></script>
+		<script type="text/javascript" src="numeral.js"></script>
+		<script src="/webdesk/vcXMLRPC.js"></script>
+		<link type="text/css" rel="stylesheet" href="formGerirCampanha.css"/>
+		<script type="text/javascript" src="formGerirCampanha.js" charset="utf-8"></script>
+		<script type="text/javascript" src="formGerirCampanhaAttach.js" charset="utf-8"></script>		
+		<script type="text/javascript" src="complementos.js" charset="utf-8"></script>
+		<script type="text/javascript" src="xp.validator.js" charset="utf-8"></script>	
+		<script type="text/javascript" src="xp.validatorExt.js" charset="utf-8"></script>
+		<link rel="stylesheet" href="xp.validator.css"/>
+		<script type="text/javascript" src="beforeSendValidate.js"></script>
+		<style type="text/css">
+			select[readonly] {
+		  	  background: #eee;
+		  	  pointer-events: none;
+		  	  touch-action: none;
+		  	}
+		</style>
+	</head>
+	<body class="formulario">
+		<div class="fluig-style-guide">
+			<form name="form" role="form">
+				<!-- [Dados Relatório]-->
+				<input type="hidden" name="historicoSolicitacao" id="historicoSolicitacao">
+				<!-- [Inicio] campos de controle -->
+				<input type="hidden" id="hiddenSwitchCredVinc" name="hiddenSwitchCredVinc" value="false"/>
+				<input type="hidden" id="hiddenSwitchKitColab" name="hiddenSwitchKitColab" value="false"/>
+				<input type="hidden" id="hiddenSwitchASO" name="hiddenSwitchASO" value="false"/>
+				<input type="hidden" id="hiddenSwitchResultExam" name="hiddenSwitchResultExam" value="false"/>
+				<input type="hidden" id="hiddenSwitchListaPresenca" name="hiddenSwitchListaPresenca" value="false"/>
+				<input type="hidden" id="dataListaPresenca" name="dataListaPresenca" value="" />
+				<input type="hidden" id="idSolicitante" name="idSolicitante" value="" />
+				<input type="hidden" id="loginSolicitante" name="loginSolicitante" value="" />
+				<input type="hidden" id="numeroFluxo" name="numeroFluxo" value="" />
+				<input type="hidden" id="dataFinalizacao" name="dataFinalizacao" value="" />
+				<input type="hidden" id="situacao" name="situacao" value="" />
+				<input type="hidden" id="campoDescritor" name="campoDescritor" value="" />
+				<input type="hidden" id="solicitanteMatricula" name="solicitanteMatricula" value="" />
+				<input type="hidden" id="currentNome" name="currentNome" value="" />
+				<input type="hidden" id="currentLogin" name="currentLogin" value="" />
+				<input type="hidden" id="atividadeAtual" name="atividadeAtual" value="" />
+				<input type="hidden" id="motivoCancelamento" name="motivoCancelamento" value="" />
+				<input type="hidden" id="dataInicioProcesso" name="dataInicioProcesso" value="" />
+				<input type="hidden" id="dataFinalProcesso" name="dataFinalProcesso" value="" />
+				<!-- Gateway POSSUI AUSENCIAS E TAXAS -->
+				<input type="hidden" id="qtdTotalAusencias" name="qtdTotalAusencias" value="" />
+				<input type="hidden" id="possuiTaxa" name="possuiTaxa" value="N" />
+				<input type="hidden" id="possuiTaxaR" name="possuiTaxaR" value="N" />
+				<!-- [Fim] campos de controle -->
+
+				<div class="page-header">
+					<h2><span class="fluigicon fluigicon-sticky-note fluigicon-md"></span>&nbsp;Gerir Campanha</h2>
+				</div>
+
+				<div class="panel-group">
+
+					<!-- DADOS SOLICITANTE -->
+					<div class="panel panel-default" id="panel_DadosSolicitante">
+		            	<div class="panel-heading">
+							<h2 class="panel-title">
+							    <a class="collapse-icon up titulo-panel" style="text-decoration: none;" data-toggle="collapse" href="#collapseDadosSolicitante">
+								    <span class="fluigicon fluigicon-user fluigicon-sm"></span>&nbsp;Dados do Solicitante
+								</a>
+							</h2>
+						</div>
+						<div id="collapseDadosSolicitante" class="panel-collapse collapse in">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-2 form-group">
+										<label id="lblDataCriacao" class="control-label required" for="dataCriacao">Data Criação</label>
+										<div class="input-group">
+											<input type="text" class="form-control" id="dataCriacao" name="dataCriacao" readonly />
+											<span class="input-group-addon">
+												<span class="fluigicon fluigicon-calendar"></span>
+											</span>
+										</div>
+									</div>
+									<div class="col-md-4 form-group">
+										<label id="lblSolicitante" class="control-label required" for="solicitanteNome">Solicitante</label>
+										<div class="input-group">
+											<input type="text" class="form-control" id="solicitanteNome" name="solicitanteNome" readonly />
+											<span class="input-group-addon">
+												<span class="fluigicon fluigicon-user"></span>
+											</span>
+										</div>
+									</div>
+									<div class="col-md-6 form-group">
+										<label class="control-label" for="solicitanteEmail">Email</label>
+										<div class="input-group">
+											<input type="text" class="form-control" id="solicitanteEmail" name="solicitanteEmail" readonly />
+											<span class="input-group-addon">@</span>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-3 form-group">
+										<label class="control-label" for="solicitanteTelefone">Telefone</label>
+										<div class="input-group">
+											<input type="text" class="form-control" id="solicitanteTelefone" name="solicitanteTelefone" readonly />
+											<span class="input-group-addon">
+												<span class="fluigicon fluigicon-phone"></span>
+											</span>
+										</div>
+									</div>
+									<div class="col-md-3 form-group">
+										<label class="control-label" for="solicitanteDepartamento">Departamento</label>
+										<div class="input-group">
+											<input type="text" class="form-control" id="solicitanteDepartamento" name="solicitanteDepartamento" readonly />
+											<span class="input-group-addon">
+												<span class="fluigicon fluigicon-company"></span>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- DADOS SOLICITAÇÃO -->
+					<div class="panel panel-default" id="panelDadosSolicitantacao">
+		            	<div class="panel-heading">
+							<h2 class="panel-title">
+							    <a class="collapse-icon up titulo-panel" style="text-decoration: none;" data-toggle="collapse" href="#collapseDadosSolicitacao">
+								    <span class="fluigicon fluigicon-sticky-note fluigicon-sm"></span>&nbsp;Dados da Solicitação
+								</a>
+							</h2>
+						</div>
+						<div id="collapseDadosSolicitacao" class="panel-collapse collapse in">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-3 form-group">
+										<label class="control-label required" atividades="0,4,27" for="zoomEmpresa">Empresa Contratada</label>
+										<input type="hidden" id="codEmpresa" name="codEmpresa" value="" />
+										<input type="hidden" id="codNomeEmpresa" name="codNomeEmpresa" value="" />
+										<input type="zoom" class="form-control" id="zoomEmpresa" name="zoomEmpresa"
+											data-zoom="{'displayKey': 'NOME','datasetId': 'dsEmpresas','filterValues': '','fields': [
+												{'field': 'NOME','label': 'Empresa','standard': 'true','search': 'true'}]}" value="" />
+									</div>
+									<div class="col-md-3 form-group">
+										<label class="control-label required" atividades="0,4,27" for="convocacao">Convocação</label> 
+										<select class="form-control" name="convocacao" id="convocacao">
+											<option value="" selected>---- Selecione ----</option>
+											<option value="1a">1a Convocação</option>
+											<option value="2a">2a Convocação</option>
+											<option value="3a">3a Convocação</option>
+										</select>
+									</div>
+									<div class="col-md-3 form-group">
+										<label class="control-label required" atividades="0,4,27" for="zoomNumeroSolicitacao">Nº da(s) Solicicitação(ões) Anteriore(s)</label>
+										<input type="zoom" class="form-control" id="zoomNumeroSolicitacao" name="zoomNumeroSolicitacao"
+											data-zoom="{'displayKey': 'processInstanceId','datasetId': 'workflowProcess','filterValues': 'processId,procGerirCampanha','maximumSelectionLength': '2','fields':[
+												{'field': 'processInstanceId','label': 'Nº Solicitação','standard': 'true','search': 'true'}]}" value=""/>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-4 form-group">
+										<label class="control-label required" atividades="0,4,27" for="tipoContrato">Tipo de Contrato</label> 
+										<select class="form-control" name="tipoContrato" id="tipoContrato">
+											<option value="" selected>---- Selecione ----</option>
+											<option value="inCompany">Contrato In Company</option>
+											<option value="os">Ordem de Serviço</option>
+											<option value="propCom">Proposta Comercial</option>
+											<option value="domiciliar">Atendimento Domiciliar</option>
+											<option value="semContrato">Serviço sem Contrato</option>
+										</select>
+									</div>
+						      		<div class="col-md-8 form-group">
+										<label class="control-label required" atividades="0,4,27" for="descCondicoesInCompany">Descrever as condições (Contrato In Company)</label>
+										<div class="input-group">
+								   	 		<textarea class="form-control" id="descCondicoesInCompany" name="descCondicoesInCompany" rows="4" readonly></textarea>
+								   	 		<span class="input-group-addon">
+								        		<span class="fluigicon fluigicon-comment"></span>
+								    		</span>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-9 form-group">
+										<label class="control-label" for="switchNecessarioPrecificacao">Necessário precificação?&nbsp;<span style="color: red">*</span></label>
+										<input class="checkbox" type="checkbox" id="switchNecessarioPrecificacao" name="switchNecessarioPrecificacao" 
+											data-on-text="Sim" 
+											data-off-text="Não" 
+											data-on-color="success" 
+											data-off-color="danger">
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-3 form-group">
+										<label class="control-label required" atividades="0,4,27" for="zoomPlataforma">Plataforma</label>
+										<input type="hidden" id="codPlataforma" name="codPlataforma" value="" />
+										<input type="zoom" class="form-control" id="zoomPlataforma" name="zoomPlataforma"
+											data-zoom="{'displayKey': 'PLATAFORMA','datasetId': 'dsPlataforma','fields': [
+												{'field': 'PLATAFORMA','label': 'Plataforma','standard': 'true','search': 'true'},
+												{'field': 'COD_PLATAFORMA','label': 'Código','standard': 'true','search': 'true','visible': 'false'}]}" value="" />
+									</div>
+							    </div>
+							    <div class="row">
+									<div class="col-md-4 form-group">
+										<label class="control-label required" atividades="0,4,27" for="nomeEmpresa">Empresa (Cliente)</label>
+										<input type="hidden" id="codBuscaEmpresa" name="codBuscaEmpresa" value="" />
+										<input type="hidden" id="codNomeBuscaEmpresa" name="codNomeBuscaEmpresa" value="" />
+										<input type="zoom" class="form-control" id="nomeEmpresa" name="nomeEmpresa"
+											data-zoom="{'displayKey': 'EMPRESA','datasetId': 'dsBuscarEmpresa','fields': [
+												{'field': 'EMPRESA','label': 'Empresa','standard': 'true','search': 'true'},
+												{'field': 'COD_EMPRESA','label': 'Código','standard': 'true','search': 'true'}]}" value="" />
+									</div>
+									<div class="col-md-2 form-group">
+										<label class="control-label required" atividades="0,4,27" for="zoomBuscaRegional">Regional</label>
+										<input type="hidden" id="codBuscaRegional" name="codBuscaRegional" value=""/>
+										<input type="hidden" id="codNomeBuscaRegional" name="codNomeBuscaRegional" value=""/>	
+										<input type="zoom" class="form-control" id="zoomBuscaRegional" name="zoomBuscaRegional"
+											data-zoom="{'displayKey': 'REGIONAL','datasetId': 'dsBuscarRegional','filterValues': 'COD_EMPRESA','fields': [
+												{'field': 'REGIONAL','label': 'Regional','standard': 'true','search': 'true'},
+												{'field': 'COD_REGIONAL','label': 'Código','standard': 'true','search': 'true'}]}" value=""/>
+									</div>
+							        <div class="form-group col-md-4" id="divNomeFilial">
+										<label class="control-label" atividades="0,4,27" for="nomeFilial">Unidade / Filial</label>
+										<input type="zoom" class="form-control" id="nomeFilial" name="nomeFilial" value=""
+											data-zoom="{'displayKey': 'UNIDADE', 'datasetId': 'dsBuscarUnidade', 'filterValues': 'COD_PLATAFORMA,COD_EMPRESA,COD_REGIONAL','fields': [
+												{'field': 'UNIDADE','label': 'Unidade','standard': 'true','search': 'true'},
+												{'field': 'COD_UNIDADE', 'label': 'Código', 'standard': 'true', 'search': 'true'}]}"/>
+									</div>
+									<div class="form-group col-md-2" id="divBuscaUnidade" style="display: none;">
+										<label class="control-label" atividades="0,4,27" for="codBuscaUnidade">Código Unidade / Filial</label>
+										<input type="text" class="form-control" id="codBuscaUnidade" name="codBuscaUnidade"/>
+									</div>
+									<div class="form-group col-md-4" id="divNomeBuscaUnidade" style="display: none;">
+										<label class="control-label" atividades="0,4,27" for="codNomeBuscaUnidade">Nome Unidade / Filial</label>
+										<input type="text" class="form-control" id="codNomeBuscaUnidade" name="codNomeBuscaUnidade"/>
+									</div>
+									<div class="col-md-2 form-group">
+										<label class="control-label" for="vidasAtivas">Vidas Ativas</label>
+										<div class="input-group">
+											<input type="text" class="form-control" id="vidasAtivas" name="vidasAtivas" readonly/>
+											<span class="input-group-addon">
+												<span class="fluigicon fluigicon-group icon-sm"></span>
+											</span>
+										</div>
+									</div>
+							    </div>
+							    <div class="row">
+									<div class="col-md-2 form-group">
+										<label class="control-label required" atividades="0,4,27" for="cep">CEP</label>
+										<div class="input-group">
+											<input type="text" class="form-control" id="cep" name="cep" mask="#-000" maxlength="9"/>
+											<span class="input-group-addon">
+												<span class="flaticon flaticon-pin-map icon-sm"></span>
+											</span>
+										</div>
+									</div>
+								</div>
+							    <div class="row">
+									<div class="col-md-4 form-group">
+										<label class="control-label required" atividades="0,4,27" for="logradouro">Logradouro</label>
+										<input type="text" class="form-control" id="logradouro" name="logradouro"/>
+									</div>
+									<div class="col-md-1 form-group">
+										<label class="control-label required" atividades="0,4,27" for="numEndereco">Número</label>
+										<input type="text" class="form-control" id="numEndereco" name="numEndereco"/>
+									</div>
+									<div class="col-md-2 form-group">
+										<label class="control-label" for="complementoEnd">Complemento</label>
+										<input type="text" class="form-control" id="complementoEnd" name="complementoEnd"/>
+									</div>
+									<div class="col-md-2 form-group">
+										<label class="control-label required" atividades="0,4,27" for="bairro">Bairro</label>
+										<input type="text" class="form-control" id="bairro" name="bairro"/>
+									</div>
+									<div class="col-md-2 form-group">
+										<label class="control-label required" atividades="0,4,27" for="nomeCidade">Cidade</label>
+										<input type="text" class="form-control" id="nomeCidade" name="nomeCidade"/>
+									</div>
+									<div class="col-md-1 form-group">
+										<label class="control-label required" atividades="0,4,27" for="nomeUF">UF</label>
+										<input type="text" class="form-control" id="nomeUF" name="nomeUF" maxlength="2"/>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-3 form-group">
+										<label class="control-label required" atividades="0,4,27" for="respCliente">Responsável Cliente</label>
+										<input type="text" class="form-control" id="respCliente" name="respCliente"/>
+									</div>
+									<div class="col-md-2 form-group">
+										<label class="control-label required" atividades="0,4,27" for="telRespImplementacao">Contato do Cliente</label>
+										<div class="input-group">
+											<input type="text" style="text-align: right;" onkeypress='mascaraMutuario(this,mtel)' style="text-align: right;" maxlength="15" class="form-control" id="telRespImplementacao" name="telRespImplementacao"/>
+											<span class="input-group-addon">
+												<span class="fluigicon fluigicon-phone"></span>
+											</span>
+										</div>
+									</div>
+									<div class="col-md-3 form-group">
+										<label class="control-label required" atividades="0,4,27" for="emailCliente">E-mail do Cliente</label>
+										<div class="input-group">
+										<input type="text" class="form-control" id="emailCliente" name="emailCliente"/>
+										<span class="input-group-addon">@</span>
+										</div>
+									</div>
+									<div class="col-md-2 form-group">
+										<label class="control-label required" atividades="0,4,27" for="possuiEstacionamento">Estacionamento Disponível?</label> 
+										<select class="form-control" name="possuiEstacionamento" id="possuiEstacionamento">
+											<option value="" selected>---- Selecione ----</option>
+											<option value="sim">Sim</option>
+											<option value="nao">Não</option>
+										</select>
+									</div>
+									<div class="col-md-2 form-group">
+										<label class="control-label required" atividades="0,4,27" for="valorEstacionamento">Valor do Estacionamento</label>
+										<div class="input-group">
+											<span class="input-group-addon">R$</span>
+											<input type="text" name="valorEstacionamento" id="valorEstacionamento" class="form-control" placeholder="0,00" style="text-align: right;"  mask="#,00" value="" maxlength="6" readonly/>
+										</div>
+									</div>
+								</div>
+								<br/>
+								<h3 class="panel-title" style="font-size: 12px;">Informe o horário de funcionamento da Filial:</h3>
+								<br/>
+								<div class="row">
+									<div class="col-md-2 form-group">
+										<label class="control-label required" atividades="0,4,27" for="horaFuncionamentoDe">De:</label>
+										<div class="input-group">
+											<input type="time" class="form-control" id="horaFuncionamentoDe" name="horaFuncionamentoDe" value="" maxlength="8"/>
+											<span class="input-group-addon">
+												<span class="fluigicon fluigicon-time icon-sm"></span>
+											</span>
+										</div>
+									</div>
+									<div class="col-md-2 form-group">
+										<label class="control-label required" atividades="0,4,27" for="horaFuncionamentoAte">Até:</label>
+										<div class="input-group">
+											<input type="time" class="form-control" id="horaFuncionamentoAte" name="horaFuncionamentoAte" value="" maxlength="8"/>
+											<span class="input-group-addon">
+												<span class="fluigicon fluigicon-time icon-sm"></span>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-4 form-group">
+										<label class="control-label required" atividades="0,4,27" for="modeloExame">Modelo de Contratação dos exames Clínicos</label> 
+										<select class="form-control" name="modeloExame" id="modeloExame">
+											<option value="" selected>---- Selecione ----</option>
+											<option value="perCapta">Per Capta</option>
+											<option value="evento">Por Evento</option>
+											<option value="nao">Não se aplica</option>
+										</select>
+									</div>
+									<div class="col-md-2 form-group">
+										<label class="control-label required" atividades="0,4,27" for="valorExame">Valor</label>
+										<div class="input-group">
+											<span class="input-group-addon">R$</span>
+											<input type="text" name="valorExame" id="valorExame" class="form-control" placeholder="0,00" style="text-align: right;"  mask="#,00" value="" maxlength="6" readonly>
+										</div>
+									</div>
+									<div class="col-md-4 form-group">
+										<label class="control-label required" atividades="0,4,27" for="possuiNoShow">Possui No Show no contrato?</label> 
+										<select class="form-control" name="possuiNoShow" id="possuiNoShow">
+											<option value="" selected>---- Selecione ----</option>
+											<option value="sim">Sim</option>
+											<option value="nao">Não</option>
+										</select>
+									</div>
+									<div class="col-md-2 form-group">
+										<label class="control-label required" atividades="0,4,27" for="qtdNoShow">Qtd No Show</label>
+										<input type="text" name="qtdNoShow" id="qtdNoShow" class="form-control" style="text-align: right;"  mask="000.000.000" value="" maxlength="10" readonly>
+									</div>
+								</div>
+								<br/>
+								<h3 class="panel-title" style="font-size: 13px;">
+									O Cliente dispõe de quais materiais para utilização do Profissional?
+								</h3>
+								<br/>
+								<div class="row">
+						    		<div class="col-md-4 form-group" id="checkboxMateriais">
+						    			<div class="custom-checkbox custom-checkbox-primary">
+										    <input type="checkbox" name="checkMaca" id="checkMaca" value="maca">
+										    <label for="checkMaca">MACA</label>
+										</div>
+										<div class="custom-checkbox custom-checkbox-primary">
+										    <input type="checkbox" name="checkBalanca" id="checkBalanca" value="balanca">
+										    <label for="checkBalanca">BALANÇA</label>
+										</div>
+										<div class="custom-checkbox custom-checkbox-primary">
+										   	<input type="checkbox" name="checkPapel" id="checkPapel" value="papel">
+										   	<label for="checkPapel">ROLO DE PAPEL</label>
+										</div>
+										<div class="custom-checkbox custom-checkbox-primary">
+										    <input type="checkbox" name="checkEsteto" id="checkEsteto" value="estetoscopio">
+										    <label for="checkEsteto">ESTETOSCÓPIO</label>
+										</div>
+						    			<div class="custom-checkbox custom-checkbox-primary">
+										    <input type="checkbox" name="checkEsfigmo" id="checkEsfigmo" value="esfigmomanometro">
+										    <label for="checkEsfigmo">ESFIGMOMANÔMETRO (Aparelho de Pressão)</label>
+										</div>
+						    			<div class="custom-checkbox custom-checkbox-primary">
+										    <input type="checkbox" name="checkMatEscritorio" id="checkMatEscritorio" value="matEscritorio">
+										    <label for="checkMatEscritorio">MATERIAL DE ESCRITÓRIO</label>
+										</div>
+										<div class="custom-checkbox custom-checkbox-primary">
+										    <input type="checkbox" name="checkComputador" id="checkComputador" value="computador">
+										    <label for="checkComputador">COMPUTADOR</label>
+										</div>
+										<div class="custom-checkbox custom-checkbox-primary">
+										    <input type="checkbox" name="checkSala" id="checkSala" value="sala">
+										    <label for="checkSala">SALA</label>
+										</div>
+										<div class="custom-checkbox custom-checkbox-primary">
+										    <input type="checkbox" name="checkMesaCadeira" id="checkMesaCadeira" value="mesaCadeira">
+										    <label for="checkMesaCadeira">MESA E CADEIRA</label>
+										</div>
+										<div class="custom-checkbox custom-checkbox-primary">
+										    <input type="checkbox" name="checkImpASO" id="checkImpASO" value="impASO">
+										    <label for="checkImpASO">IMPRESSÃO DE ASO</label>
+										</div>
+										<div class="custom-checkbox custom-checkbox-primary">
+										    <input type="checkbox" name="checkImpKit" id="checkImpKit" value="impKit">
+										    <label for="checkImpKit">IMPRESSÃO DE KIT (Aso, Ficha Médica e Pedidos de Exames)</label>
+										</div>
+						    			<div class="form-group">
+						    				<div class="custom-checkbox custom-checkbox-primary">
+											    <input type="checkbox" name="checkOutros" id="checkOutros" value="outros">
+											    <label for="checkOutros">OUTROS &nbsp;<span class="fluigicon fluigicon-info-sign fluigicon-xs" 
+											    data-toggle="tooltip" data-placement="top" title="DICA: Caso informe mais de um MATERIAL, 
+											    separe-os com um traço (-) ou utilize vírgulas (,)."></span></label>
+										    </div>
+										    <input type="text" class="form-control" id="matOutros" name="matOutros" readonly/>
+										</div>
+									</div>
+								</div>	
+							</div>
+						</div>
+					</div>
+
+					<!-- PROCEDIMENTOS -->
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h2 class="panel-title">
+								<a class="collapse-icon up titulo-panel" style="text-decoration: none;" data-toggle="collapse" href="#collapseProcedimento">
+									<span class="fluigicon fluigicon-community-selection icon-sm"></span>&nbsp;Procedimentos
+								</a>
+							</h2>
+						</div>
+						<div id="collapseProcedimento" class="panel-collapse collapse in">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-2 form-group"> 
+							            <label class="control-label required" atividades="0,4,27" for="mesRealizacao">Mês da Realização</label>
+										<div class="input-group">
+											<input type="month" class="form-control" name="mesRealizacao" id="mesRealizacao"> 
+											<span class="input-group-addon fs-cursor-pointer">
+												<span class="fluigicon fluigicon-calendar"></span>
+											</span>
+										</div>
+							        </div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 form-group">
+										<div class="table-responsive">
+											<table class="table table-striped" tablename="tabelaProcedimentosNew" noaddbutton="true" nodeletebutton="true">
+												<thead class="fs-display-none"><tr><th></th><th></th></tr></thead>
+												<tbody>
+													<tr>
+														<td class="BtnDeleteProcedimento">
+							                                <div class="control col-xs-12 fs-no-padding">
+							                                    <button type="button" valign="middle" title="Excluir Procedimento" onclick="Javascript:fnWdkRemoveChild(this);">
+							                                        <i class="fluigicon fluigicon-trash icon-sm"></i>
+							                                    </button>
+							                                </div>
+								                        </td>
+								                        <td class="row">
+															<div class="col-md-5 form-group">
+																<label class="control-label" for="zoomProcedimento">Procedimento &nbsp;<span style="color: red">*</span></label>
+																<input type="hidden" id="codProcedimento" name="codProcedimento" value="" />
+																<input type="hidden" id="descProcedimento" name="descProcedimento" value="" />
+																<input type="zoom" class="form-control" id="zoomProcedimento" name="zoomProcedimento"
+																	data-zoom="{'displayKey': 'PROCEDIMENTO','datasetId': 'dsProcedimentosCampanha','filterValues': '','fields': [
+																		{'field': 'PROCEDIMENTO','label': 'Procedimento','standard': 'true','search': 'true'}]}" value="" />
+															</div>
+															<div class="col-md-2 form-group">
+																<label class="control-label" for="qtdSolicitada">Qtd Prevista &nbsp;<span style="color: red">*</span></label>
+																<input type="text" name="qtdSolicitada" id="qtdSolicitada" class="form-control" style="text-align: right;" mask="000000000" value="" maxlength="9">
+															</div>
+															<div class="col-md-3 form-group">
+																<label class="control-label" for="precoClienteContrato">Preço do cliente em contrato &nbsp;<span style="color: red">*</span></label>
+																<div class="input-group">
+																	<span class="input-group-addon">R$</span>
+																	<input type="text" name="precoClienteContrato" id="precoClienteContrato" class="form-control" placeholder="0,00"
+																	style="text-align: right;"  mask="#00.000.000.000.000,00" value="" maxlength="15"/>
+																</div>
+															</div>
+															<div class="col-md-2 form-group" id="groupDataAtendDomiciliar">
+																<label class="control-label" for="dataAtendDomiciliar">Data (Atend Domiciliar) &nbsp;<span style="color: red">*</span></label>
+																<div class="input-group">
+																	<input type="date" class="form-control data-calendar" id="dataAtendDomiciliar" name="dataAtendDomiciliar" value="" maxlength="8" readonly/>
+																	<span class="input-group-addon">
+																		<span class="fluigicon fluigicon-calendar"></span>
+																	</span>
+																</div>
+															</div>
+														</td>
+													</tr>
+												</tbody>
+												<tfoot><tr><th></th><th></th></tr></tfoot>	
+											</table>
+										</div>
+										<div class="BtnAddProcedimento">
+											<div class="form-group">
+												<button type="button" class="btn btn-primary" onclick="addChildTable('tabelaProcedimentosNew'); habilitaDataContratoDomiciliar('tabelaProcedimentos')">Adicionar Procedimento</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- RESPONSÁVEL ATENDIMENTO -->
+					<div class="panel panel-default"  id="panelrespAtend">
+						<div class="panel-heading">
+							<h2 class="panel-title">
+								<a class="collapse-icon up titulo-panel" style="text-decoration: none;" data-toggle="collapse" href="#collapseRespAtendimento">
+									<span class="fluigicon fluigicon-user icon-sm"></span>&nbsp; Responsável pelo Atendimento
+								</a>
+							</h2>
+						</div>
+						<div id="#collapseRespAtendimento" class="panel-collapse collapse in">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-4 form-group">
+										<label class="control-label" for="zoomRespAtend">Definir Responsável Atendimento</label>&nbsp;<span style="color: red">*</span>
+										<input type="hidden" id="codRespAtend" name="codRespAtend" value="" />							        	
+										<input type="zoom" class="form-control" id="zoomRespAtend" name="zoomRespAtend"
+											data-zoom="{'displayKey': 'colleagueName','datasetId': 'colleague','filterValues': 'active,true','fields':[
+												{'field': 'colleagueName','label': 'Nome','standard': 'true','search': 'true'},
+												{'field': 'colleagueId','label': 'Matricula','visible': 'true'},
+												{'field': 'mail','label': 'Email','visible': 'false'}]}" value=""/>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- CREDENCIADO -->
+					<div class="panel panel-default"  id="panelAtend">
+						<div class="panel-heading">
+							<h2 class="panel-title">
+								<a class="collapse-icon up titulo-panel" style="text-decoration: none;" data-toggle="collapse" href="#collapseDadosAtendimento">
+									<span class="fluigicon fluigicon-file-user icon-sm"></span>&nbsp; Dados para Agendamento dos Credenciados
+								</a>
+							</h2>
+						</div>
+						<div id="collapseDadosAtendimento" class="panel-collapse collapse in">
+							<div class="panel-body">
+								<div class="row">
+									<h3 class="panel-title" style="font-size: 15px;">
+										<i class="fluigicon fluigicon-user-selection icon-sm"></i>&nbsp; Profissionais disponíveis para a Campanha:
+									</h3>
+								</div>
+								<div class="row fs-text-right" id="contrataCred">
+									<div class="col-md-6 form-group">
+										<label class="control-label" for="switchReagendamento">Necessário reagendamento?</label>
+										<div class="row">
+											<input class="checkbox" type="checkbox" id="switchReagendamento" name="switchReagendamento" 
+												data-on-text="Sim" data-off-text="Não" data-on-color="warning" data-off-color="success" autofocus="autofocus">
+										</div>
+									</div>
+									<div class="col-md-3 form-group">
+										<label class="control-label" for="switchContrataCred">Necessário contratar Credenciado?</label>
+										<div class="row">
+											<input class="checkbox" type="checkbox" id="switchContrataCred" name="switchContrataCred" data-on-text="Sim" data-off-text="Não" data-on-color="warning" 
+												data-off-color="success" autofocus="autofocus">
+										</div>
+									</div>
+							    </div>
+								<div class="row" id="tabelaCred">
+									<div class="col-md-12 form-group">
+										<div class="table-responsive">
+											<table class="table table-striped" tablename="tabelaCredenciadoNew" noaddbutton="true" nodeletebutton="true">
+												<thead class="fs-display-none"><tr><th></th><th></th></tr></thead>
+												<tbody>
+													<tr>
+														<td class="btnDeleteCredenciado">
+							                                <div class="control col-xs-12 fs-no-padding">
+							                                    <button type="button" valign="middle" title="Excluir Procedimento" onclick="Javascript:fnWdkRemoveChild(this);">
+							                                        <i class="fluigicon fluigicon-trash icon-sm"></i>
+							                                    </button>
+							                                </div>
+								                        </td>
+								                        <td>
+									                        <div class="row">
+									                        	<div class="col-md-3 form-group">
+																	<label class="control-label" for="selectProcedimento"><span style="color: white">*</span></label>
+																	<select onchange="getSelectProcedimentoNew(event);" class="form-control" name="selectProcedimento" id="selectProcedimento">
+																		<option value="" selected>Selecione o Procedimento</option>
+																	</select>
+																</div>
+									                        </div>
+								                        	<div class="row">
+																<div class="col-md-5 form-group">
+																	<label class="control-label" for="procedSelecionadoNew">Procedimento&nbsp;<span style="color: red">*</span>&nbsp;<span class="fluigicon fluigicon-info-sign fluigicon-xs" data-toggle="tooltip" data-placement="top" title="Selecione o procedimento no campo ao lado."></span></label>
+																	<div class="form-group">
+																		<input type="text" class="form-control" id="procedSelecionadoNew" name="procedSelecionadoNew" readonly/>
+																	</div> 
+																</div>
+																<div class="col-md-2 form-group">
+																	<label class="control-label" for="NfRpaNew">Nº NF / RPA&nbsp;<span style="color: red">*</span></label>
+																	<input type="text" name="NfRpaNew" id="NfRpaNew" class="form-control" value="" maxlength="15"/>
+																</div>
+																<div class="col-md-2 form-group">
+																	<label class="control-label" for="dataEnvioMaloteNew">Envio Malote&nbsp;<span style="color: red">*</span></label>
+																	<div class="form-group">
+																		<input type="date" class="form-control" id="dataEnvioMaloteNew" name="dataEnvioMaloteNew" value="" maxlength="8"/>
+																	</div>
+																</div>
+																<div class="col-md-3 form-group">
+																	<input type="button" value="REAGENDAR" id="reagendar" name="reagendar" class="btn btn-info" onclick="reagendarProcedimento(event);" style="margin-top: 21px;">
+																</div>
+								                        	</div>
+								                        	<hr/>
+								                        	<div class="row">
+																<div class="col-md-3 form-group">
+																	<label class="control-label" for="tipoContratacaoNew">Tipo Contratação&nbsp;<span style="color: red">*</span></label> 
+																	<select class="form-control" name="tipoContratacaoNew" id="tipoContratacaoNew" onchange="alterarTipoCredenciado(event)">
+																		<option value="" selected>---- Selecione ----</option>
+																		<option value="cred">Credenciado</option>
+																		<option value="medPJ">Médico PJ</option>
+																		<option value="rpa">RPA</option>
+																	</select>
+																</div>
+																<div class="col-md-3 form-group">
+																	<label class="control-label" for="cpfCnpjPrestadorNew">CPF / CNPJ&nbsp;<span style="color: red">*</span></label>
+																	<div class="input-group">
+																		<input type="" class="form-control" onkeypress='mascaraMutuario(this,cpfCnpj)' id="cpfCnpjPrestadorNew" name="cpfCnpjPrestadorNew" placeholder="Insira CPF ou CNPJ" maxlength="18"/>
+																		<span class="input-group-addon">
+																			<span class="fluigicon fluigicon-company icon-sm"></span>
+																		</span>
+																	</div>
+																</div>
+																<div class="col-md-3 form-group">
+																	<label class="control-label">Mesmo Credenciado?</label>
+																	<button type="button" valign="middle" title="Mesmo Credenciado" id="buttonMesmoCredenciado" onclick="mesmoCredenciado(this);">
+																		<i class="flaticon flaticon-copy icon-sm"></i>
+																	</button>
+																</div>
+															</div>
+															<div class="row" id="rowCredenciado">
+										                       	<div class="col-md-6 form-group">
+																	<label class="control-label" for="nomePrestadorNew">Credenciado&nbsp;<span style="color: red">*</span></label>
+																	<input type="text" class="form-control" id="nomePrestadorNew" name="nomePrestadorNew"/>
+														        </div>
+																<div class="col-md-2 form-group">
+																	<label class="control-label" for="telCredenciado">Telefone&nbsp;<span style="color: red">*</span></label>
+																	<div class="input-group">
+																		<input type="text" class="form-control" id="telCredenciado" name="telCredenciado" onkeypress='mascaraMutuario(this,mtel)' style="text-align: right;" maxlength="15"/>
+																		<span class="input-group-addon">
+																			<span class="fluigicon fluigicon-phone"></span>
+																		</span>
+																	</div>
+																</div>
+																<div class="col-md-4 form-group">
+																	<label class="control-label" for="emailCredenciado">E-mail&nbsp;<span style="color: red">*</span></label>
+																	<div class="input-group">
+																		<input type="text" class="form-control" id="emailCredenciado" name="emailCredenciado"/>
+																		<span class="input-group-addon">@</span>
+																	</div>
+																</div>
+															</div>
+														    <div class="row">
+																<div class="col-md-4 form-group">
+																	<label class="control-label" for="nomeProfissional">Nome Profissional&nbsp;<span style="color: red">*</span></label>
+																	<input type="text" class="form-control" id="nomeProfissional" name="nomeProfissional"/>
+																</div>
+																<div class="col-md-2 form-group">
+																	<label class="control-label" for="regProfissional">Registro de Classe&nbsp;<span style="color: red">*</span></label>
+																	<input type="text" class="form-control" id="regProfissional" name="regProfissional"/>
+																</div>
+																<div class="col-md-2 form-group">
+																	<label class="control-label" for="telProfissional">Telefone&nbsp;<span style="color: red">*</span></label>
+																	<div class="input-group">
+																		<input type="text" class="form-control" id="telProfissional" name="telProfissional" onkeypress='mascaraMutuario(this,mtel)' style="text-align: right;" maxlength="15"/>
+																		<span class="input-group-addon">
+																			<span class="fluigicon fluigicon-phone"></span>
+																		</span>
+																	</div>
+																</div>
+																<div class="col-md-4 form-group">
+																	<label class="control-label" for="emailProfissional">E-mail&nbsp;<span style="color: red">*</span></label>
+																	<div class="input-group">
+																		<input type="text" class="form-control" id="emailProfissional" name="emailProfissional"/>
+																		<span class="input-group-addon">@</span>
+																	</div>
+																</div>
+															</div>
+															<hr/>
+															<div class="row">
+																<div class="col-md-2 form-group">
+																	<label class="control-label" for="dataAtendAgendada">Data Agendada&nbsp;<span style="color: red">*</span></label>
+																	<div class="form-group">
+																		<input type="date" class="form-control" id="dataAtendAgendada" name="dataAtendAgendada" value="" maxlength="8"/>
+																	</div>
+																</div>
+																<div class="col-md-2 form-group">
+																	<label class="control-label" for="horaAtendEntrada">Entrada:&nbsp;<span style="color: red">*</span></label>
+																	<div class="form-group">
+																		<input type="time" class="form-control" id="horaAtendEntrada" name="horaAtendEntrada" onblur="calcularTempo(event)"/>
+																	</div>
+																</div>
+																<div class="col-md-2 form-group">
+																	<label class="control-label" for="inicioPausa">Pausa (Início):&nbsp;<span style="color: red">*</span></label>
+																	<div class="form-group">
+																		<input type="time" class="form-control" maxlenght="5" id="inicioPausa" name="inicioPausa" mask="00:00" onblur="calcularTempoPausa(event)"/>
+																	</div>
+																</div>
+																<div class="col-md-2 form-group">
+																	<label class="control-label" for="fimPausa">Pausa (Fim):&nbsp;<span style="color: red">*</span></label>
+																	<div class="form-group">
+																		<input type="time" class="form-control" maxlenght="5" id="fimPausa" name="fimPausa" mask="00:00" onblur="calcularTempoPausa(event)"/>
+																	</div>
+																</div>
+																<div class="col-md-2 form-group">
+																	<label class="control-label" for="horaAtendSaida">Saída:&nbsp;<span style="color: red">*</span></label>
+																	<div class="form-group">
+																		<input type="time" class="form-control" id="horaAtendSaida" name="horaAtendSaida" onblur="calcularTempo(event)"/>
+																	</div>
+																</div>
+																<div class="col-md-1 form-group">
+																	<label class="control-label" for="perAlocado">Período</label>
+																	<div class="input-group">
+																		<input type="text" placeholder="00:00" maxlength="5" class="form-control" id="perAlocado" name="perAlocado" readonly/>
+																	</div>
+																</div>
+																<div class="col-md-1 form-group">
+																	<label class="control-label" for="perPausa">Pausa</label>
+																	<div class="input-group">
+																		<input type="text" placeholder="00:00" maxlength="5" class="form-control" id="perPausa" name="perPausa" readonly/>
+																	</div>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-md-8 form-group">
+																	<label class="control-label" for="obsAtendimento">Obs Atendimento&nbsp;<span class="fluigicon fluigicon-info-sign fluigicon-xs" data-toggle="tooltip" data-placement="top" title="Inclua neste campo informações complementares sobre o agendamento. Exemplo:  Data de Coleta de Amostras, Entrega de resultados dos exames, etc."></span></label>
+																	<div class="input-group">
+															   	 		<textarea class="form-control" id="obsAtendimento" name="obsAtendimento" rows="3"></textarea>
+															   	 		<span class="input-group-addon">
+															        		<span class="fluigicon fluigicon-comment"></span>
+															    		</span>
+																	</div>
+																</div>
+															</div>
+															<hr/>
+															<div class="row" id="rowAtendRealizado">
+																<div class="col-md-2 form-group">
+																	<label class="control-label" for="tipoNegociacao">Tipo Negociação &nbsp;<span style="color: red">*</span></label>
+																	<select name="tipoNegociacao" id="tipoNegociacao" class="form-control" onblur="calcularTotalProcedimento(event)">
+																		<option value="" selected>---- Selecione ----</option>
+																		<option value="hora">Hora</option>
+																		<option value="exame">Exame</option>
+																	</select>
+																</div>
+																<div class="col-md-2 form-group">
+																	<label class="control-label" for="valorAcordado">Valor Acordado &nbsp;<span style="color: red">*</span></label>
+																	<div class="input-group">
+																		<span class="input-group-addon">R$</span>
+																		<input type="text" name="valorAcordado" id="valorAcordado" class="form-control" placeholder="0,00" onblur="calcularTotalProcedimento(event)"
+																		style="text-align: right;"  mask="#00.000.000.000.000,00" value="" maxlength="15"/>
+																	</div>
+																</div>
+																<div class="col-md-2 form-group">
+																	<label class="control-label" for="garantia">Garantia &nbsp;<span style="color: red">*</span></label>
+																	<input type="text" name="garantia" id="garantia" class="form-control" style="text-align: right;"  mask="000" value="" maxlength="7">
+																</div>
+																<div class="col-md-2 form-group">
+																	<label class="control-label" for="deslocamento">Deslocamento &nbsp;<span style="color: red">*</span></label>
+																	<div class="input-group">
+																		<span class="input-group-addon">R$</span>
+																		<input type="text" name="deslocamento" id="deslocamento" class="form-control" placeholder="0,00"
+																		style="text-align: right;"  mask="#00.000.000.000.000,00" value="" maxlength="15"/>
+																	</div>
+																</div>
+																<div class="col-md-2 form-group">
+																	<label class="control-label" for="qtdPrevista">Qtd Prevista &nbsp;<span style="color: red">*</span></label>
+																	<input type="text" name="qtdPrevista" id="qtdPrevista" class="form-control" style="text-align: right;"  mask="000" value="" maxlength="7">
+																</div>
+																<div class="col-md-2 form-group">
+																	<label class="control-label" for="qtdMinima">Quantidade Mínima&nbsp;<span style="color: red">*</span></label>
+																	<input type="text" onblur="somaTotalQtdMinima(); somaQtdAusencia(event); somaQtdTotalAusencia(); somaValorAusencia(event); somaValorTotalAusencia(); somaValorProcedimento(event);" name="qtdMinima" id="qtdMinima" class="form-control" style="text-align: right;" mask="000" value="" maxlength="7"/>
+																</div>
+																<div class="col-md-2 form-group">
+																	<label class="control-label" for="qtdTotalRealizada">Qtd Total Realizada &nbsp;<span style="color: red">*</span></label>
+																	<input type="text" onblur="somaQtdAusencia(event); somaQtdTotalAusencia(); somaValorAusencia(event); somaValorTotalAusencia(); somaValorProcedimento(event);" name="qtdTotalRealizada" id="qtdTotalRealizada" class="form-control" style="text-align: right;"  mask="000" value="" maxlength="3"/>
+																</div>
+																<div class="col-md-2 form-group">
+																	<label class="control-label" for="qtdAusencia">Qtd de Ausências &nbsp;<span style="color: red">*</span></label>
+																	<input type="text" name="qtdAusencia" id="qtdAusencia" class="form-control" value="0" style="text-align: right;"  mask="000" value="" maxlength="3" readonly/>
+																</div>
+																<div class="col-md-2 form-group">
+																	<label class="control-label" for="valorAusencia">Valor Ausências &nbsp;<span style="color: red">*</span></label>
+																	<div class="input-group">
+																		<span class="input-group-addon">R$</span>
+																		<input type="text" onblur="somaValorAusencia(event); somaValorTotalAusencia();" name="valorAusencia" id="valorAusencia" class="form-control" placeholder="0,00"
+																		style="text-align: right;"  mask="#00.000.000.000.000,00" value="" maxlength="15"/>
+																	</div>
+																</div>
+																<div class="col-md-2 form-group">
+																	<label class="control-label" for="taxa">Taxa &nbsp;<span style="color: red">*</span></label>
+																	<div class="input-group">
+																		<span class="input-group-addon">R$</span>
+																		<input type="text" name="taxa" id="taxa" onblur="somaValorTaxas()" class="form-control" placeholder="0,00"
+																		style="text-align: right;" value="" mask="#00.000.000.000.000,00" maxlength="15"/>
+																	</div>
+																</div>
+																<div class="col-md-2 form-group">
+																	<label class="control-label" for="valorTotalAusencia">Valor Total Ausências</label>
+																	<div class="input-group">
+																		<span class="input-group-addon">R$</span>
+																		<input type="text" name="valorTotalAusencia" id="valorTotalAusencia" class="form-control" placeholder="0,00" style="text-align: right;" value="" readonly/>
+																	</div>
+																</div>	
+																<div class="col-md-2 form-group">
+																	<label class="control-label" for="valorTotalProcedimento">Valor Total Procedimento</label>
+																	<div class="input-group">
+																		<span class="input-group-addon">R$</span>
+																		<input type="text" name="valorTotalProcedimento" id="valorTotalProcedimento" class="form-control" placeholder="0,00" style="text-align: right;" value="" readonly/>
+																	</div>
+																</div>	
+																<div>
+																	<input type="text" name="inputProcedimentoReagendado" id="inputProcedimentoReagendado" value="" style="display: none">
+																</div>
+															</div>
+														</td>
+													</tr>
+												</tbody>
+												<tfoot><tr><th></th><th></th></tr></tfoot>
+											</table>
+										</div>
+										<div class="btnAddCredenciado">
+											<div class="form-group">
+												<button type="button" class="btn btn-primary" onclick="addChildTable('tabelaCredenciadoNew');">Adicionar Profissional</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- ATIVIDADES -->
+					<div class="panel panel-default" id="panelControleAtividades">
+						<div class="panel-heading">
+							<h2 class="panel-title">
+								<a class="collapse-icon up titulo-panel" style="text-decoration: none;" data-toggle="collapse" href="#collapseDocsEntregue">
+									<span class="fluigicon fluigicon-questions icon-sm"></span> Controle das Atividades
+								</a>
+							</h2>
+						</div>
+						<div id="collapseDocsEntregue" class="panel-collapse collapse in">
+							<div class="panel-body">
+								<table width="100%">
+									<tr>
+										<td width="25%">
+											<div class="row">
+												<div class="col-md-12 form-group" style="margin-left: 15px; margin-top: -5px">
+													<label class="control-label" for="switchCredVinc" style="margin-left: -10px">Credenciado vinculado ao cliente?&nbsp;<span style="color: red">*</span></label>
+													<div class="row">
+														<input class="checkbox switchButton" type="checkbox" id="switchCredVinc" name="switchCredVinc" data-on-text="Sim" data-off-text="Não" data-on-color="success" 
+																data-off-color="danger" autofocus="autofocus">
+													</div>
+												</div>
+											</div>
+										</td>
+										<td width="25%">
+											<div class="row">
+												<div class="col-md-12 form-group" style="margin-left: 15px; margin-top: -5px">
+													<label class="control-label" for="switchKitColab" style="margin-left: -10px">Kit colaborador gerado?&nbsp;<span style="color: red">*</span></label>
+													<div class="row">
+														<input class="checkbox switchButton" type="checkbox" id="switchKitColab" name="switchKitColab" data-on-text="Sim" data-off-text="Não" data-on-color="success" 
+																data-off-color="danger" autofocus="autofocus">
+													</div>
+												</div>
+											</div>
+										</td>
+										<!--td width="25%">
+											<div class="row">
+												<div class="col-md-12 form-group" style="margin-left: 15px; margin-top: -5px">
+													<label class="control-label" for="switchPrepAtend" style="margin-left: -10px">Preparação de Atendimento Monitorado?&nbsp;<span style="color: red">*</span></label>
+													<div class="row">
+														<input class="checkbox" type="checkbox" id="switchPrepAtend" name="switchPrepAtend" data-on-text="Sim" data-off-text="Não" data-on-color="success" 
+																data-off-color="danger" autofocus="autofocus">
+													</div>
+												</div>
+											</div>
+										</td-->
+										<td width="25%">
+											<div class="row">
+												<div class="col-md-12 form-group">
+													<label class="control-label" for="confAtendRealizado">Realização do atendimento monitorado? &nbsp;<span style="color: red">*</span></label> 
+													<select class="form-control" name="confAtendRealizado" id="confAtendRealizado">
+														<option value="" selected>Não</option>
+														<option value="sim">Sim</option>
+														<option value="simInt">Sim - COM INTERCORRÊNCIA</option>
+													</select>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td width="20%"></td>
+										<td width="20%"></td>
+										<td width="40%" colspan="2">
+											<div class="row">
+												<div class="col-md-8 form-group" style="text-align: right;">
+													<label class="control-label" for="descIntercorrencia">Descrever intercorrência&nbsp;<span style="color: red">*</span></label>
+													<div class="form-group">
+											   	 		<textarea class="form-control" id="descIntercorrencia" name="descIntercorrencia" rows="6" readonly></textarea>
+													</div>
+												</div>
+											</div>
+										</td>
+									</tr>
+								</table>
+								<br/>
+								<h3 class="panel-title" style="font-size: 14px;">
+										Informe os Documentos Entregues:
+								</h3>
+								<br/>
+								<table border="0" width="100%">
+									<tr>
+										<td width="25%">
+											<div class="row">
+												<div class="col-md-12 form-group" style="margin-left: 15px; margin-top: -5px">
+													<label class="control-label" for="switchConfirmASO" style="margin-left: -10px">ASOs&nbsp;<span style="color: red">*</span></label>
+													<div class="row">
+														<input class="checkbox switchButton" type="checkbox" id="switchConfirmASO" name="switchConfirmASO" data-on-text="Sim" data-off-text="Não" data-on-color="success" 
+																data-off-color="danger" autofocus="autofocus">
+													</div>
+												</div>
+											</div>
+										</td>
+										<td width="25%">
+											<div class="row">
+												<div class="col-md-12 form-group" style="margin-left: 15px; margin-top: -5px">
+													<label class="control-label" for="switchConfirmResult" style="margin-left: -10px">Resultado de exames complementares &nbsp;<span style="color: red">*</span></label>
+													<div class="row">
+														<input class="checkbox switchButton" type="checkbox" id="switchConfirmResult" name="switchConfirmResult" data-on-text="Sim" data-off-text="Não" data-on-color="success" 
+																data-off-color="danger" autofocus="autofocus">
+													</div>
+												</div>
+											</div>
+										</td>
+										<td width="25%">
+											<div class="row">
+												<div class="col-md-12 form-group" style="margin-left: 15px; margin-top: -5px">
+													<label class="control-label" for="switchConfirmLista" style="margin-left: -10px">Lista de presença &nbsp;<span style="color: red">*</span></label>
+													<div class="row">
+														<input class="checkbox switchButton" type="checkbox" id="switchConfirmLista" name="switchConfirmLista" data-on-text="Sim" data-off-text="Não" data-on-color="success" 
+																data-off-color="danger" autofocus="autofocus">
+													</div>
+												</div>
+											</div>
+										</td>
+										<td width="25%">
+											<button type="button" class="btn btn-default btn-md" id="anexarLista" name="anexarLista" for="anexarLista" data-file-upload onclick="anexarArquivo();"><span class="fluigicon fluigicon-paperclip icon-sm"></span>&nbsp;<strong>Anexar lista de presença</strong></button>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+
+					<!-- FINANCEIRO -->
+					<div class="panel panel-default" id="panelFaturamento">
+						<div class="panel-heading">
+							<h2 class="panel-title">
+								<a class="collapse-icon up titulo-panel"
+									style="text-decoration: none;" data-toggle="collapse"> 
+									<span class="fluigicon fluigicon-money-circle icon-sm"></span>&nbsp; Faturamento </a>
+							</h2>
+						</div>
+						<div class="panel-collapse collapse in">
+							<div class="panel-body">
+							 	<div class="row">
+									<div class="col-md-3 form-group">
+										<label class="control-label" for="">Faturamento Realizado?&nbsp;</label>
+										<input class="checkbox" type="checkbox" id="switchConfirmFaturamento" name="switchConfirmFaturamento"
+											data-on-text="Sim" 
+											data-off-text="Não" 
+											data-on-color="success" 
+											data-off-color="danger">
+									</div>
+									<div class="col-md-3 form-group">
+										<label class="control-label required" atividades="61" for="dataFaturamento">Data da Baixa</label>
+										<div class="input-group">
+											<input type="date" class="form-control" id="dataFaturamento" name="dataFaturamento" value="" maxlength="8"/>
+											<span class="input-group-addon">
+											<span class="fluigicon fluigicon-calendar"></span>
+										</span>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-3 form-group">
+										<label class="control-label" for="qtdMinimaTotal">Total Geral (Quantidade Mínima)</label>
+										<input type="text" name="qtdMinimaTotal" id="qtdMinimaTotal" class="form-control" style="text-align: right;" value="" readonly/>
+									</div>
+									<div class="col-md-3 form-group">
+										<label class="control-label" for="qtdAusenciaTotal">Total Geral (Quantidade Ausências)</label>
+										<input type="text" name="qtdAusenciaTotal" id="qtdAusenciaTotal" class="form-control" style="text-align: right;" value="" readonly/>
+									</div>
+									<div class="col-md-3 form-group">
+										<label class="control-label" for="valorTotalTaxas">Total Geral (Taxas)</label>
+										<div class="input-group">
+											<span class="input-group-addon">R$</span>
+											<input type="text" name="valorTotalTaxas" id="valorTotalTaxas" class="form-control" placeholder="0,00" style="text-align: right;" value="" readonly/>
+										</div>
+									</div>
+									<div class="col-md-3 form-group">
+										<label class="control-label" for="valorTotalAusencias">Total Geral (Ausências)</label>
+										<div class="input-group">
+											<span class="input-group-addon">R$</span>
+											<input type="text" name="valorTotalAusencias" id="valorTotalAusencias" class="form-control" placeholder="0,00" style="text-align: right;" value="" readonly/>
+										</div>
+									</div>
+							 	</div>
+							</div>	
+						</div>
+					</div>					
+
+					<!-- PAINEL APROVAÇÃO ANALISE REQUISIÇÃO -->
+					<div class="panel panel-default" id="analiseRequisicao" name="analiseRequisicao" style="display: none">
+						<div class="panel-heading">
+							<h2 class="panel-title">
+								<a class="collapse-icon up titulo-panel" style="text-decoration: none;" data-toggle="collapse">
+									<span class="flaticon flaticon-message icon-sm"></span> Aprovação Análise da Requisição
+								</a>
+							</h2>
+						</div>
+						<div id="collapseDadosAdicionais" class="panel-collapse collapse in">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-2">
+										<label class="control-label required" for="aprovacaoAnaliseRequisicao">Aprovação Análise da Requisição</label>
+										<select class="form-control" name="aprovacaoAnaliseRequisicao" id="aprovacaoAnaliseRequisicao"/>
+											<option value="" selected>---- Selecione ----</option>
+											<option value="Sim">Aprovado</option>
+											<option value="Nao">Corrigir Informações</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- PAINEL APROVAÇÃO DE DISPONIBILIDADE -->
+					<div class="panel panel-default" id="verificarDisponibilidade" name="verificarDisponibilidade" style="display: none">
+						<div class="panel-heading">
+							<h2 class="panel-title">
+								<a class="collapse-icon up titulo-panel" style="text-decoration: none;" data-toggle="collapse">
+									<span class="flaticon flaticon-message icon-sm"></span> Aprovação de Disponibilidade
+								</a>
+							</h2>
+						</div>
+						<div id="collapseDadosAdicionais" class="panel-collapse collapse in">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-2">
+										<label class="control-label required" for="aprovacaoDisponibilidade">Aprovação de Disponibilidade</label>
+										<select class="form-control" name="aprovacaoDisponibilidade" id="aprovacaoDisponibilidade"/>
+											<option value="" selected>---- Selecione ----</option>
+											<option value="Sim">Aprovado</option>
+											<option value="Nao">Reprovado</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- PAINEL APROVAÇÃO DE AGENDA -->
+					<div class="panel panel-default" id="verificarAgenda" name="verificarAgenda" style="display: none">
+						<div class="panel-heading">
+							<h2 class="panel-title">
+								<a class="collapse-icon up titulo-panel" style="text-decoration: none;" data-toggle="collapse">
+									<span class="flaticon flaticon-message icon-sm"></span> Aprovação de Agenda
+								</a>
+							</h2>
+						</div>
+						<div id="collapseDadosAdicionais" class="panel-collapse collapse in">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-2">
+										<label class="control-label required" for="aprovacaoAgenda">Aprovação de Agenda</label>
+										<select class="form-control" name="aprovacaoAgenda" id="aprovacaoAgenda"/>
+											<option value="" selected>---- Selecione ----</option>
+											<option value="Sim">Aprovado</option>
+											<option value="Nao">Reprovado</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- PAINEL APROVAÇÃO DE MONITORAR ATENDIMENTO -->
+					<div class="panel panel-default" id="verificarMonitAtendimento" name="verificarMonitAtendimento" style="display: none">
+						<div class="panel-heading">
+							<h2 class="panel-title">
+								<a class="collapse-icon up titulo-panel" style="text-decoration: none;" data-toggle="collapse">
+									<span class="flaticon flaticon-message icon-sm"></span> Aprovação de Monitoramento
+								</a>
+							</h2>
+						</div>
+						<div id="collapseDadosAdicionais" class="panel-collapse collapse in">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-2">
+										<label class="control-label required" for="aprovacaoMonitAtendimento">Aprovação de Monitoramento</label>
+										<select class="form-control" name="aprovacaoMonitAtendimento" id="aprovacaoMonitAtendimento"/>
+											<option value="" selected>---- Selecione ----</option>
+											<option value="Sim">Aprovado</option>
+											<option value="Nao">Reprovado</option>
+											<option value="Reagendar">Reagendar</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- PAINEL APROVAÇÃO LISTA DE PRESENCA -->
+					<div class="panel panel-default" id="verificarListaPresenca" name="verificarListaPresenca" style="display: none">
+						<div class="panel-heading">
+							<h2 class="panel-title">
+								<a class="collapse-icon up titulo-panel" style="text-decoration: none;" data-toggle="collapse">
+									<span class="flaticon flaticon-message icon-sm"></span> Aprovação de Lista de Presença
+								</a>
+							</h2>
+						</div>
+						<div id="collapseDadosAdicionais" class="panel-collapse collapse in">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-2">
+										<label class="control-label required" for="aprovacaoListaPresenca">Aprovação de Lista de Presença</label>
+										<select class="form-control" name="aprovacaoListaPresenca" id="aprovacaoListaPresenca"/>
+											<option value="" selected>---- Selecione ----</option>
+											<option value="Sim">Aprovado</option>
+											<option value="Nao">Reprovado</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- OBSERVAÇÕES ADICIONAIS -->
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h2 class="panel-title">
+								<a class="collapse-icon up titulo-panel" style="text-decoration: none;" data-toggle="collapse">
+									<span class="flaticon flaticon-message icon-sm"></span> Dados Adicionais
+								</a>
+							</h2>
+						</div>
+						<div id="collapseDadosAdicionais" class="panel-collapse collapse in">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-12 form-group">
+										<label for="origem">Observações:</label>&nbsp;<span class="fluigicon fluigicon-info-sign fluigicon-sm" data-toggle="tooltip" data-placement="top" title="Após preencher a OBSERVAÇÃO, clicar no botão ENVIAR."></span>
+										<div class="input-group">
+											<textarea class="form-control" name="origem" id="origem"
+												style="height: 70px" value=""></textarea><span
+												class="input-group-addon fs-cursor-pointer" id="preencheAcompanhamento"
+												onclick="preencheAcompanhamento()" tabindex="0" onkeypress="preencheAcompanhamento()" onblur="preencheAcompanhamento()">
+												<!-- <span class="fluigicon fluigicon-user-comment fluigicon-lg"></span> -->
+												<span class="input-group-addon"><b>ENVIAR</b><br/>observação</span>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 form-group">
+										<textarea class="form-control" name="destino1" id="destino1"
+											style="height: 200px; vertical-align: top; width: 100%; display:none;"
+											onKeyPress="alteraMaiusculo(this);" onkeyup="alteraMaiusculo(this);"
+											value="" readonly></textarea>
+										<div name="acompanhamento" id="acompanhamento" readonly></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group row" style="display: none">
+						<div class="col-md-12">
+							<textarea class="form-control" name="destino" id="destino"	style="height: 200px; vertical-align: top; width: 100%; display:none;" value="" readonly></textarea>												
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
+<script type="text/template" class="alerta-zoom">
+	<div class="alert alert-warning zoom-alert" id="alert_template"><span>Selecione o campo <b>{{campo}}</b></span></div>
+</script>

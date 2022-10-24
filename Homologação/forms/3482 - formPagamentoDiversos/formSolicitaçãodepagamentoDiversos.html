@@ -1,0 +1,1017 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+		<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+		<script src="jquery.mask.min.js"></script>
+		<script type="text/javascript" src="numeral.js"></script>
+		<script src="/webdesk/vcXMLRPC.js"></script>
+		<script type="text/javascript" src="complementos.js" charset="utf-8"></script>		
+		<link type="text/css" rel="stylesheet" href="formSolicitaçãodepagamentoDiversos.css"/>
+		<link type="text/css" rel="stylesheet" href="style.css"/>		
+		<script type="text/javascript" src="formSolicitaçãodepagamentoDiversos.js" charset="utf-8"></script>
+		<style type="text/css">
+	      	select[readonly] {
+	      	  background: #eee;
+	      	  pointer-events: none;
+	      	  touch-action: none;
+	      	}
+		</style>
+		<script type="text/javascript">
+			$(function() {								
+				$('label').css('font-size', '12px');
+			});
+		</script>
+		<script type="text/javascript" src="beforeSendValidate.js"></script>
+	</head>
+	<body class="fluig-style-guide sequoiacss">
+		<div class="fluig-style-guide">
+			<form name="form" role="form">
+				<!-- SLA -->
+				<input type="hidden" id="dataDisponibilidadeCF" name="dataDisponibilidadeCF" value="" />
+				<input type="hidden" id="dataAssumiuCF" name="dataAssumiuCF" value="" />
+				<input type="hidden" id="dataFinalizouCF" name="dataFinalizouCF" value="" />
+				<input type="hidden" id="usuarioCF" name="usuarioCF" value="" />
+
+				<input type="hidden" id="dataDisponibilidadeCP" name="dataDisponibilidadeCP" value="" />
+				<input type="hidden" id="dataAssumiuCP" name="dataAssumiuCP" value="" />
+				<input type="hidden" id="dataFinalizouCP" name="dataFinalizouCP" value="" />
+				<input type="hidden" id="usuarioCP" name="usuarioCP" value="" />
+
+				<input type="hidden" id="dataDisponibilidadeS" name="dataDisponibilidadeS" value="" />
+				<input type="hidden" id="dataFinalizouS" name="dataFinalizouS" value="" />
+				<input type="hidden" id="usuarioS" name="usuarioS" value="" />
+
+				<input type="hidden" id="dataDisponibilidadeC" name="dataDisponibilidadeC" value="" />
+				<input type="hidden" id="dataFinalizouC" name="dataFinalizouC" value="" />
+				<input type="hidden" id="usuarioC" name="usuarioC" value="" />
+
+				<input type="hidden" id="dataDisponibilidadeG" name="dataDisponibilidadeG" value="" />
+				<input type="hidden" id="dataFinalizouG" name="dataFinalizouG" value="" />
+				<input type="hidden" id="usuarioG" name="usuarioG" value="" />
+
+				<input type="hidden" id="dataDisponibilidadeD" name="dataDisponibilidadeD" value="" />
+				<input type="hidden" id="dataFinalizouD" name="dataFinalizouD" value="" />
+				<input type="hidden" id="usuarioD" name="usuarioD" value="" />
+				<!-- SLA -->
+				<!-- [Inicio] campos de controle -->
+				<input type="hidden" id="dataEntrada" name="dataEntrada" value="" />
+				<input type="hidden" id="mesEntrada" name="mesEntrada" value="" />
+				<input type="hidden" id="anoEntrada" name="anoEntrada" value="" />
+				<input type="hidden" name="dataVencimentoDiversos" id="dataVencimentoDiversos">
+				<input type="hidden" name="mesVencimentoDiversos" id="mesVencimentoDiversos">
+				<input type="hidden" name="anoVencimentoDiversos" id="anoVencimentoDiversos">
+				<input type="hidden" id="numeroFluxo" name="numeroFluxo" value="" />
+				<input type="hidden" id="dataFinalizacao" name="dataFinalizacao" value="" />
+				<input type="hidden" id="situacao" name="situacao" value="" />
+				<input type="hidden" id="campoDescritor" name="campoDescritor" value="" />
+				<input type="hidden" id="solicitanteMatricula" name="solicitanteMatricula" value="" />
+				<input type="hidden" id="currentNome" name="currentNome" value="" />
+				<input type="hidden" id="currentLogin" name="currentLogin" value="" />
+				<input type="hidden" id="currentMatricula" name="currentMatricula" value="" />
+				<input type="hidden" id="atividadeAtual" name="atividadeAtual" value="" />
+				<input type="hidden" id="currentEmail" name="currentEmail" value="">
+				<input type="hidden" id="loginAprovador" name="loginAprovador" value="">
+				<input type="hidden" id="nomeAprovador" name="nomeAprovador" value="">
+				<input type="hidden" id="loginAprovadorAnterior" name="loginAprovadorAnterior" value="">
+				<input type="hidden" id="nomeAprovadorAnterior" name="nomeAprovadorAnterior" value="">
+				<input type="hidden" id="matriculaAprovador" name="matriculaAprovador" value=""> <!--Valida Substituto-->
+				<input type="hidden" id="matriculaProximoAprovador" name="matriculaProximoAprovador" value=""> <!--Valida Substituto-->
+				<input type="hidden" id="aprovacaoCelulaFiscal" name="aprovacaoCelulaFiscal" value="">
+				<input type="hidden" id="matriculaAprovadorSubst" name="matriculaAprovadorSubst" value="">
+				<!-- [Fim] campos de controle -->
+				<input type="hidden" id="aprovadorCoordenador" name="aprovadorCoordenador" value="" />
+				<input type="hidden" id="aprovadorSupervisor" name="aprovadorSupervisor" value="" />
+				<input type="hidden" id="aprovadorGerente" name="aprovadorGerente" value="" />
+				<input type="hidden" id="aprovadorDiretor" name="aprovadorDiretor" value="" />
+				<input type="hidden" id="aprovadorDestino" name="aprovadorDestino" value="" />					
+				<input type="hidden" id="valorCoordenador" name="valorCoordenador" value="" />
+				<input type="hidden" id="valorSupervisor" name="valorSupervisor" value="" />
+				<input type="hidden" id="valorGerente" name="valorGerente" value="" />
+				<input type="hidden" id="valorDiretor" name="valorDiretor" value="" />
+				<input type="hidden" id="valorTotalDocumentoReal" name="valorTotalDocumentoReal" value="" />
+				<input type="hidden" class="form-control" id="naturezaFinanceira1" name="naturezaFinanceira1" value="" />
+				<input type="hidden" class="form-control" id="naturezaFinanceira2" name="naturezaFinanceira2" value="" />
+				<input type="hidden" id="idCentroCusto" name="idCentroCusto" value="" />
+				<input type="hidden" id="codFilial" name="codFilial" value="" />
+				<input type="hidden" class="form-control" id="cnpj" name="cnpj" value="" />
+				<input type="hidden" class="form-control" id="loja" name="loja" value="" />
+				<input type="hidden" class="form-control" id="codFornecedor" name="codFornecedor" value="" />
+				<input type="hidden" class="form-control" id="nomeFornecedor" name="nomeFornecedor" value="" />
+				<div class="page-header">
+					<h2 class="panel-title"><img src="rhmed_rhvida_logo2.png" alt="logo RHMed" class="align-right"><span class="fluigicon fluigicon-sticky-note fluigicon-md"></span>&nbsp;SPD - Diversos</h2>
+				</div>
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Dados do Solicitante</a>
+						</h2>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="form-group col-md-6">
+								<label class="control-label" for="solicitanteNome">Solicitante</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="solicitanteNome" name="solicitanteNome" readonly />
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-user"></span>
+									</span>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="control-label" for="solicitanteEmail">Email</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="solicitanteEmail" name="solicitanteEmail" readonly />
+									<span class="input-group-addon">@</span>
+								</div>
+							</div>
+						</div> 
+						<div class="row">
+							<div class="form-group col-md-6">
+								<label class="control-label" for="solicitanteTelefone">Telefone</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="solicitanteTelefone" name="solicitanteTelefone" readonly />
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-phone"></span>
+									</span>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="control-label" for="solicitanteDepartamento">Departamento</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="solicitanteDepartamento" name="solicitanteDepartamento" readonly />
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-company"></span>
+									</span>
+								</div>
+							</div> 
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Status da Solicitação</a>
+						</h2>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="form-group col-md-3">
+								<label id="lblDataCriacao" class="control-label required" for="Status">Status</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="Status" name="Status" readonly/>
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-calendar"></span>
+									</span>
+								</div>
+							</div>
+							<div class="form-group col-md-3">
+								<label id="lblDataCriacao" class="control-label required" for="ultimoUsuario">Ultimo Usuário</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="ultimoUsuario" name="ultimoUsuario" readonly/>
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-calendar"></span>
+									</span>
+								</div>
+							</div>
+							<div class="form-group col-md-3">
+								<label id="lblDataCriacao" class="control-label required" for="hora">Hora</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="hora" name="hora" readonly/>
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-calendar"></span>
+									</span>
+								</div>
+							</div>
+							<div class="form-group col-md-2" style="display: none;">
+								<input type="text" class="form-control" id="hora2" name="hora2" readonly></input>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" for="idSolicitacao">Nº Solicitação</label>
+								<input type="text" class="form-control" id="idSolicitacao" name="idSolicitacao" readonly/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Dados da Solicitação</a>
+						</h2>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,4,86" for="colabForn">Natureza do Pagamento</label>
+								<!-- <input type="zoom" class="form-control" id="colabForn" name="colabForn" data-zoom="{'displayKey':'natPagas','datasetId':'dsNaturezaDiversos','filterValues':'CCbloqueado,nao',
+									'fields':[
+										{'field':'natPagas','label':'Naturezas','standard' : 'true','search':'true'},
+										{'field':'contaDebito','label':'contaDebito','visible': 'false'},
+										{'field':'contaCredito','label':'contaCredito','visible': 'false'}]}"/> -->
+								<select name="colabForn" id="colabForn" class="form-control">
+									<option value=""></option>
+								</select>
+								<input type="hidden" class="form-control" id="contaDebito" name="contaDebito" readonly></input>
+								<input type="hidden" class="form-control" id="contaCredito" name="contaCredito" readonly></input>
+							</div>
+							<div class="form-group col-md-4">
+									<label class="control-label required" atividades="0,4,86" for="zoomCentroCusto">Centro de Custo</label>
+									<input type="zoom" class="form-control" id="zoomCentroCusto" name="zoomCentroCusto"  value=""
+									data-zoom="{
+										'displayKey': 'ccusto',
+										'datasetId': 'dsCadastroCentrodeCusto',
+										'filterValues': 'CCbloqueado,nao',
+										'fields': [
+										   {
+											   'field': 'ccusto',
+											   'label': 'Centro de Custo',	
+											   'standard': 'true',					       
+											   'search': 'true'
+											}											
+										 ]
+							   }"/>
+							</div>
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,4,86" for="tipoPagamento">Tipo</label>
+								<select class="form-control" name="tipoPagamento" id="tipoPagamento">
+									<option value="" selected>---- Selecione ----</option>
+									<option value="Normal">Normal</option>
+									<option value="Emergencial">Emergencial</option>
+								</select>
+							</div>		
+						</div>
+						<div class="row">
+							<div class="form-group col-md-1">
+								<label class="control-label required" atividades="0,4,86" for="empresaCod">Empresa</label>
+								<input type="number" class="form-control" id="empresaCod" name="empresaCod" maxlength="40" readonly></input>
+							</div>
+							<div class="form-group col-md-8">
+									<label class="control-label required" atividades="0,4,86" for="zoomFilial">Filial</label>
+									<input type="zoom" class="form-control" id="zoomFilial" name="zoomFilial" value=""
+										data-zoom="{
+												'displayKey': 'Filial',
+												'datasetId': 'dsCadastroFiliais',
+												'filterValues': 'Filial',
+												'fields': [
+													{
+														'field': 'Filial',
+														'label': 'Filial',	
+														'standard': 'true',					       
+														'search': 'true'
+													},{
+														'field': 'Empresa',
+														'label': 'Empresa',
+														'search': 'true'
+
+													},{
+														'field': 'cnpjFilial',
+														'label': 'cnpjFilial',
+														'search': 'true'
+
+													},
+													{
+														'field': 'codFilial',
+														'label': 'codFilial',
+														'visible': 'false'
+													}
+													]}"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="cnpjFilial">CNPJ Filial</label>
+								<input type="number" class="form-control" id="cnpjFilial" name="cnpjFilial" maxlength="40" readonly></input>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-2">
+								<label for="selectTipoBusca" class="control-label required" atividades="0,4,86">Tipo Busca</label>
+								<select name="selectTipoBusca" id="selectTipoBusca" class="form-control">
+									<option value="nome" selected>Nome</option>
+									<option value="codigo">Código</option>
+									<option value="cpf">CPF</option>
+									<option value="cnpj">CNPJ</option>
+								</select>
+							</div>
+							<div class="form-group col-md-10">
+								<label class="control-label required" atividades="0,4,86" for="zoomCnpj">Nome do Fornecedor</label>
+								<input type="text" name="inputCodFornecedor" id="inputCodFornecedor" class="form-control" readonly style="display: none;">
+								<div class="input-group">
+									<input type="text" name="inputFornecedor" id="inputFornecedor" class="form-control" autocomplete="nope"/>
+									<span class="input-group-addon fs-cursor-pointer" id="consultaFornecedor" name="consultaFornecedor" style="background-color: #30aed6;">
+										<span><strong style="background-color: #30aed6; color: white;">Buscar</strong></span>
+									</span>
+								</div>
+							</div>
+						</div>	
+						<div class="row">
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,4,86" for="formaPagamento">Forma de Pagamento</label>
+								<select class="form-control" name="formaPagamento" id="formaPagamento">
+									<option value="" selected>---- Selecione ----</option>
+									<option value="semCodigo">Sem Código de Barras</option>
+									<option value="comCodigo">Com Código de Barras</option>
+									<!-- <option value="darf">DARF</option>
+									<option value="darm">DARM</option>
+									<option value="gps">GPS</option>
+									<option value="grf">GRF</option>
+									<option value="damsp">DAMSP</option>
+									<option value="darfWeb">DARF DCTFWEB</option> -->
+								</select>
+							</div>
+							<div class="form-group col-md-4" style="display: none;">
+								<label class="control-label" for="hiddenChaveProtheus">Chave Protheus</label>
+								<input type="text" class="form-control" id="hiddenChaveProtheus" name="hiddenChaveProtheus"/>
+							</div>
+							<div class="form-group col-md-2" style="display: none;">
+								<input type="text" class="form-control" id="hiddenDataVencimento" name="hiddenDataVencimento" />
+							</div>
+						</div>
+						<div id="divDadosBancarios" class="row" style="display: none;">
+							<div class="form-group col-md-4">
+								<label class="control-label" for="banco">Banco</label>
+								<input type="text" class="form-control" id="banco" name="banco" readonly />
+							</div>
+							<div class="form-group col-md-4">
+								<label class="control-label" for="agencia">Agência</label>
+								<input type="text" class="form-control" id="agencia" name="agencia" readonly />
+							</div>
+							<div class="form-group col-md-4">
+								<label class="control-label" for="conta">Conta</label>
+								<input type="text" class="form-control" id="conta" name="conta" readonly />
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label atividades="0,2,26" for="obsDadosSolicitacao">Observações:</label>
+								<div class="input-group">
+									<textarea class="form-control" name="obsDadosSolicitacao" id="obsDadosSolicitacao" style="height: 70px" value=""></textarea>
+									<span class="input-group-addon fs-cursor-pointer" id="spanDadosSolicitação">
+										<span class="fluigicon fluigicon-user-comment fluigicon-lg"></span>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-4" id="divButtonAnexo" name="divButtonAnexo">
+								<label class="control-label required">Anexo</label>
+								<div class="componentAnexo" id="divAnexo">
+									<button type="button" class="btn btn-info" id="documentoAnexo" name="documentoAnexo" data-file-upload onclick="anexarArquivo();"><strong>Anexar Arquivos</strong></button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-primary" id="divComCodigo" style="display: none;">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Dados de Pagamento com Código de Barras</a>
+						</h2>
+					</div>
+					<div class="panel-body formaPagamento">
+						<div class="row">
+							<!--div class="form-group col-md-4">
+								<label id="lblDataCriacao" class="control-label required" atividades="0,4,27" for="numCodigo">Número do Código de Barras</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="numCodigo" name="numCodigo" autocomplete="nope"/>
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-calendar"></span>
+									</span>
+								</div>
+							</div>
+							<div class="form-group col-md-4">
+								<label id="lblDataCriacao" class="control-label" atividades="0,4,27" for="competenciaPagamento">Competencia</label>
+								<div class="input-group">
+									<input type="date" class="form-control" id="competenciaPagamento" name="competenciaPagamento" autocomplete="nope"/>
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-calendar"></span>
+									</span>
+								</div>
+							</div>
+							<div class="form-group col-md-4">
+								<label id="lblDataCriacao" class="control-label" atividades="0,4,27" for="codigoPagamento">Código do Pagamento</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="codigoPagamento" name="codigoPagamento" autocomplete="nope"/>
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-calendar"></span>
+									</span>
+								</div>
+							</div-->
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="valorPrincipal">Valor Principal</label>
+								<input type="text" class="form-control" id="valorPrincipalCodBarras" name="valorPrincipalCodBarras" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="valorMulta">Valor da Multa</label>
+								<input type="text" class="form-control" id="valorMultaCodBarras" name="valorMultaCodBarras" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="valorJuros">Valor do Juros e/ou Encargo</label>
+								<input type="text" class="form-control" id="valorJurosCodBarras" name="valorJurosCodBarras" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="valorTotalComCodigo">Valor Total do Pagamento</label>
+								<input type="text" class="form-control" id="valorTotalComCodigo" name="valorTotalComCodigo" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00" readonly/>
+							</div>
+							<!--div class="form-group col-md-3">
+								<label id="lblDataCriacao" class="control-label required" atividades="0,4,27" for="valorTotalComCodigo">Valor Total do Pagamento</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="valorTotalComCodigo" name="valorTotalComCodigo" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorComCodigo()" style="text-align: right;" mask="#00.000.000.000.000,00" autocomplete="nope"/>
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-calendar"></span>
+									</span>
+								</div>
+							</div-->
+						</div>						
+						<div class="row">
+							<div class="form-group col-md-4">
+								<label id="lblDataCriacao" class="control-label required" atividades="0,4,86" for="dataVencimento">Data do Vencimento</label>
+								<div class="input-group">
+									<input type="date" class="form-control" id="dataVencimento" name="dataVencimento" autocomplete="nope" max="2999-12-31"/>
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-calendar"></span>
+									</span>
+								</div>
+							</div>
+							<div class="form-group col-md-4">
+								<label id="lblDataCriacao" class="control-label required" atividades="0,4,86" for="dataPagamento">Data do Pagamento</label>
+								<div class="input-group">
+									<input type="date" class="form-control" id="dataPagamento" name="dataPagamento" autocomplete="nope" max="2999-12-31"/>
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-calendar"></span>
+									</span>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label id="lblDataCriacao" class="control-label required" atividades="0,4,86" for="numCodigo">Número do Código de Barras</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="numCodigo" name="numCodigo" autocomplete="nope"/>
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-calendar"></span>
+									</span>
+								</div>
+							</div>						
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-primary" id="divSemCodigo" style="display: none;">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Dados de Pagamento Sem Código de Barras</a>
+						</h2>
+					</div>
+					<div class="panel-body formaPagamento">
+						<!--div class="row">
+							<div class="form-group col-md-4">
+								<label id="lblDataCriacao" class="control-label" atividades="0,4,27" for="dataApuracao">Data de Período da Apuração</label>
+								<div class="input-group">
+									<input type="date" class="form-control" id="dataApuracao" name="dataApuracao" autocomplete="nope"/>
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-calendar"></span>
+									</span>
+								</div>
+							</div>
+							<div class="form-group col-md-4">
+								<label id="lblDataCriacao" class="control-label" atividades="0,4,27" for="codigoReceita">Código da Receita</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="codigoReceita" name="codigoReceita" autocomplete="nope"/>
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-calendar"></span>
+									</span>
+								</div>
+							</div>
+							<div class="form-group col-md-4">
+								<label id="lblDataCriacao" class="control-label" atividades="0,4,27" for="numReferencia">Número de Referência</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="numReferencia" name="numReferencia" autocomplete="nope"/>
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-calendar"></span>
+									</span>
+								</div>
+							</div>
+						</div-->
+						<div class="row">
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="valorPrincipal">Valor Principal</label>
+								<input type="text" class="form-control" id="valorPrincipal" name="valorPrincipal" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="valorMulta">Valor da Multa</label>
+								<input type="text" class="form-control" id="valorMulta" name="valorMulta" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="valorJuros">Valor do Juros e/ou Encargo</label>
+								<input type="text" class="form-control" id="valorJuros" name="valorJuros" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="valorTotalDocumento">Valor Total do Pagamento</label>
+								<input type="text" class="form-control" id="valorTotalDocumento" name="valorTotalDocumento" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00" readonly/>
+							</div>
+						</div>
+						<div class="row">	
+							<div class="form-group col-md-4">
+								<label id="lblDataCriacao" class="control-label required" atividades="0,4,27" for="dataVencimentoNota">Data de Vencimento</label>
+								<div class="input-group">
+									<input type="date" class="form-control" id="dataVencimentoNota" name="dataVencimentoNota" autocomplete="nope" max="2999-12-31"/>
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-calendar"></span>
+									</span>
+								</div>
+							</div> 	
+							<div class="form-group col-md-4">
+								<label id="lblDataCriacao" class="control-label required" atividades="0,4,27" for="datapagamentoNota">Data de Pagamento</label>
+								<div class="input-group">
+									<input type="date" class="form-control" id="datapagamentoNota" name="datapagamentoNota" max="2999-12-31"/>
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-calendar"></span>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-primary" id="divDARF" style="display: none;">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Guia DARF</a>
+						</h2>
+					</div>
+					<div class="panel-body formaPagamento">
+						<div class="row">
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="codBarrasDARF">Possui Código de Barras</label>
+								<select class="form-control selectCodBarrasImposto" name="codBarrasDARF" id="codBarrasDARF">
+									<option selected value="nao">Não</option>
+									<option value="sim">Sim</option>
+								</select>
+							</div>
+							<div class="form-group col-md-6 divCodBarrasImposto" id="divCodBarrasDARF" name="divCodBarrasDARF" style="display: none;">
+								<label class="control-label required" atividades="0,4,86" for="nrCodigoBarrasDARF">Número do Código de Barras</label>
+								<input type="text" class="form-control" id="nrCodigoBarrasDARF" name="nrCodigoBarrasDARF" autocomplete="nope"/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="periodoApuracaoDARF">02 - Período de Apuração</label>
+								<input type="date" class="form-control" id="periodoApuracaoDARF" name="periodoApuracaoDARF" style="text-align: right;" autocomplete="nope" max="2999-12-31"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="nrCPFCNPJDARF">03 - Número CPF/CNPJ</label>
+								<input type="text" class="form-control" id="nrCPFCNPJDARF" name="nrCPFCNPJDARF" style="text-align: right;" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="codReceitaDARF">04 - Código da Receita</label>
+								<input type="text" class="form-control" id="codigoReceitaDARF" name="codigoReceitaDARF" style="text-align: right;" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="nrReferenciaDARF">05 - Número Referência</label>
+								<input type="text" class="form-control" id="nrReferenciaDARF" name="nrReferenciaDARF" style="text-align: right;" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="dataVencimentoDARF">06 - Data de Vencimento</label>
+								<input type="date" class="form-control" id="dataVencimentoDARF" name="dataVencimentoDARF" style="text-align: right;" autocomplete="nope" max="2999-12-31"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="valorPrincipalDARF">07 - Valor do Principal</label>
+								<input type="text" class="form-control" id="valorPrincipalDARF" name="valorPrincipalDARF" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="valorMultaDARF">08 - Valor Multa</label>
+								<input type="text" class="form-control" id="valorMultaDARF" name="valorMultaDARF" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="valorJurosEncargosDARF">09 - Valor Juros / Encargos</label>
+								<input type="text" class="form-control" id="valorJurosEncargosDARF" name="valorJurosEncargosDARF" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00"/>
+							</div>													
+							<div class="form-group col-md-offset-9 col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="valorTotalDARF">10 - Valor Total</label>
+								<input type="text" class="form-control" id="valorTotalDARF" name="valorTotalDARF" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00" readonly/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-primary" id="divDARM" style="display: none;">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Guia DARM</a>
+						</h2>
+					</div>
+					<div class="panel-body formaPagamento">
+						<div class="row">
+							<!-- <div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="codBarrasDARM">Possui Código de Barras</label>
+								<select class="form-control selectCodBarrasImposto" name="codBarrasDARM" id="codBarrasDARM">
+									<option selected value="nao">Não</option>
+									<option value="sim">Sim</option>									
+								</select>
+							</div> -->
+							<div class="form-group col-md-6">
+								<label class="control-label required" atividades="0,4,86" for="nrCodigoBarrasDARM">Número do Código de Barras</label>
+								<input type="text" class="form-control" id="nrCodigoBarrasDARM" name="nrCodigoBarrasDARM" autocomplete="nope"/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="nrReceitaDARM">01 - Receita</label>
+								<input type="text" class="form-control" id="nrReceitaDARM" name="nrReceitaDARM" style="text-align: right;" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-3 ">
+								<label class="control-label" atividades="0,4,86" for="nrContribuinteDARM">02 - Número do Contribuinte</label>
+								<input type="text" class="form-control" id="nrContribuinteDARM" name="nrContribuinteDARM" style="text-align: right;" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="dataVencimentoDARM">03 - Data Vencimento</label>
+								<input type="date" class="form-control" id="dataVencimentoDARM" name="dataVencimentoDARM" style="text-align: right;" autocomplete="nope" max="2999-12-31"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="nrCompetenciaDARM">04 - Competência</label>
+								<input type="text" class="form-control" id="nrCompetenciaDARM" name="nrCompetenciaDARM" mask="00/0000" placeholder="MM/AAAA" style="text-align: right;" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="nrGuiaDARM">05 - Guia (Uso da Repartição)</label>
+								<input type="text" class="form-control" id="nrGuiaDARM" name="nrGuiaDARM" style="text-align: right;" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="valorTributoDARM">06 - Valor do Tributo</label>
+								<input type="text" class="form-control" id="valorTributoDARM" name="valorTributoDARM" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="valorMoraDARM">07 - Valor da Mora</label>
+								<input type="text" class="form-control" id="valorMoraDARM" name="valorMoraDARM" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="valorMultaDARM">08 - Valor da Multa</label>
+								<input type="text" class="form-control" id="valorMultaDARM" name="valorMultaDARM" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00"/>
+							</div>													
+							<div class="form-group col-md-offset-9 col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="valorTotalDARM">09 - Valor Total</label>
+								<input type="text" class="form-control" id="valorTotalDARM" name="valorTotalDARM" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00" readonly/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-primary" id="divGPS" style="display: none;">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Guia GPS</a>
+						</h2>
+					</div>
+					<div class="panel-body formaPagamento">
+						<div class="row">
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="codBarrasGPS">Possui Código de Barras</label>
+								<select class="form-control selectCodBarrasImposto" name="codBarrasGPS" id="codBarrasGPS">
+									<option selected value="nao">Não</option>
+									<option value="sim">Sim</option>
+								</select>
+							</div>
+							<div class="form-group col-md-6 divCodBarrasImposto" id="divCodBarrasGPS" name="divCodBarrasGPS" style="display: none;">
+								<label class="control-label required" atividades="0,4,86" for="nrCodigoBarrasGPS">Número do Código de Barras</label>
+								<input type="text" class="form-control" id="nrCodigoBarrasGPS" name="nrCodigoBarrasGPS" autocomplete="nope"/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="codVencimentoGPS">02 - Vencimento</label>
+								<input type="date" class="form-control" id="codVencimentoGPS" name="codVencimentoGPS" style="text-align: right;" autocomplete="nope" max="2999-12-31"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="codPagamentoGPS">03 - Código Pagamento</label>
+								<input type="text" class="form-control" id="codPagamentoGPS" name="codPagamentoGPS" style="text-align: right;" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="nrCompetenciaGPS">04 - Competência</label>
+								<input type="text" class="form-control" id="nrCompetenciaGPS" name="nrCompetenciaGPS" mask="00/0000" placeholder="MM/AAAA" style="text-align: right;" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-3 ">
+								<label class="control-label required" atividades="0,4,86" for="nrIdentificadorGPS">05 - Identificador</label>
+								<input type="text" class="form-control" id="nrIdentificadorGPS" name="nrIdentificadorGPS" style="text-align: right;" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="valorInssGPS">06 - Valor do INSS</label>
+								<input type="text" class="form-control" id="valorInssGPS" name="valorInssGPS" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="valorOutrasGPS">09 - Valor Outras Entidades</label>
+								<input type="text" class="form-control" id="valorOutrasGPS" name="valorOutrasGPS" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="valorJurosGPS">10 - ATM/Multa e Juros</label>
+								<input type="text" class="form-control" id="valorJurosGPS" name="valorJurosGPS" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00"/>
+							</div>								
+							<div class="form-group col-md-offset-9 col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="valorTotalGPS">11 - Valor Total</label>
+								<input type="text" class="form-control" id="valorTotalGPS" name="valorTotalGPS" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00" readonly/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-primary" id="divGRF" style="display: none;">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Guia GRF</a>
+						</h2>
+					</div>
+					<div class="panel-body formaPagamento">
+						<div class="row">
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="codBarrasGRF">Possui Código de Barras</label>
+								<select class="form-control selectCodBarrasImposto" name="codBarrasGRF" id="codBarrasGRF">
+									<option selected value="nao">Não</option>
+									<option value="sim">Sim</option>									
+								</select>
+							</div>
+							<div class="form-group col-md-6 divCodBarrasImposto" id="divCodBarrasGRF" name="divCodBarrasGRF" style="display: none;">
+								<label class="control-label required" atividades="0,4,86" for="nrCodigoBarrasGRF">Número do Código de Barras</label>
+								<input type="text" class="form-control" id="nrCodigoBarrasGRF" name="nrCodigoBarrasGRF" autocomplete="nope"/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="nrTelefoneGRF">02 - DDD/Telefone</label>
+								<input type="text" class="form-control" id="nrTelefoneGRF" name="nrTelefoneGRF" style="text-align: right;" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-3 ">
+								<label class="control-label" atividades="0,4,86" for="nrFPASGRF">03 - FPAS</label>
+								<input type="text" class="form-control" id="nrFPASGRF" name="nrFPASGRF" style="text-align: right;" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="nrSimplesGRF">04 - Simples</label>
+								<input type="text" class="form-control" id="nrSimplesGRF" name="nrSimplesGRF" style="text-align: right;" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="valorRemuneracaoGRF">05 - Remuneração</label>
+								<input type="text" class="form-control" id="valorRemuneracaoGRF" name="valorRemuneracaoGRF" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="nrTrabalhadoresGRF">06 - Qtde Trabalhadores</label>
+								<input type="text" class="form-control" id="nrTrabalhadoresGRF" name="nrTrabalhadoresGRF" style="text-align: right;" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="aliquotaFGTSGRF">07 - Alíquota FGTS</label>
+								<input type="text" class="form-control" id="aliquotaFGTSGRF" name="aliquotaFGTSGRF" style="text-align: right;" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="codRecolhimentoGRF">08 - Cód. Recolhimento</label>
+								<input type="text" class="form-control" id="codRecolhimentoGRF" name="codRecolhimentoGRF" style="text-align: right;" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="idRecolhimentoGRF">09 - Id. Recolhimento</label>
+								<input type="text" class="form-control" id="idRecolhimentoGRF" name="idRecolhimentoGRF" style="text-align: right;" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="inscricaoGRF">10 - Inscrição/Tipo (0)</label>
+								<input type="text" class="form-control" id="inscricaoGRF" name="inscricaoGRF" style="text-align: right;" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="competenciaGRF">11 - Competência</label>
+								<input type="text" class="form-control" id="competenciaGRF" name="competenciaGRF" mask="00/0000" placeholder="MM/AAAA" style="text-align: right;" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="dataValidadeGRF">12 - Data Validade</label>
+								<input type="date" class="form-control" id="dataValidadeGRF" name="dataValidadeGRF" style="text-align: right;" autocomplete="nope" max="2999-12-31"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="valorDepostioGRF">13 - Depósito + Contrib. Social</label>
+								<input type="text" class="form-control" id="valorDepostioGRF" name="valorDepostioGRF" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="valorEncargosGRF">14 - Encargos</label>
+								<input type="text" class="form-control" id="valorEncargosGRF" name="valorEncargosGRF" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00"/>
+							</div>													
+							<div class="form-group col-md-offset-9 col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="valorTotalGRF">15 - Total à Recolher</label>
+								<input type="text" class="form-control" id="valorTotalGRF" name="valorTotalGRF" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00" readonly/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-primary" id="divDAMSP" style="display: none;">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Guia DAMSP</a>
+						</h2>
+					</div>
+					<div class="panel-body formaPagamento">
+						<div class="row">
+							<!-- <div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="codBarrasDAMSP">Possui Código de Barras</label>
+								<select class="form-control selectCodBarrasImposto" name="codBarrasDAMSP" id="codBarrasDAMSP">
+									<option selected value="nao">Não</option>
+									<option value="sim">Sim</option>									
+								</select>
+							</div> -->
+							<div class="form-group col-md-6">
+								<label class="control-label required" atividades="0,4,86" for="nrCodigoBarrasDAMSP">Número do Código de Barras</label>
+								<input type="text" class="form-control" id="nrCodigoBarrasDAMSP" name="nrCodigoBarrasDAMSP" autocomplete="nope"/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="nrCPFCNPJDAMSP">CPF/CNPJ</label>
+								<input type="text" class="form-control" id="nrCPFCNPJDAMSP" name="nrCPFCNPJDAMSP" style="text-align: right;" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="nrCCMDAMSP">CCM</label>
+								<input type="text" class="form-control" id="nrCCMDAMSP" name="nrCCMDAMSP" style="text-align: right;" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="nrIncidenciaDAMSP">Incidência</label>
+								<input type="text" class="form-control" id="nrIncidenciaDAMSP" name="nrIncidenciaDAMSP" style="text-align: right;" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="dataVencimentoDAMSP">Vencimento</label>
+								<input type="date" class="form-control" id="dataVencimentoDAMSP" name="dataVencimentoDAMSP" style="text-align: right;" autocomplete="nope" max="2999-12-31"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="valorDAMSP">Valor (R$)</label>
+								<input type="text" class="form-control" id="valorDAMSP" name="valorDAMSP" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="valorMultaDAMSP">Multa (R$)</label>
+								<input type="text" class="form-control" id="valorMultaDAMSP" name="valorMultaDAMSP" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="valorJurosDAMSP">Juros (R$)</label>
+								<input type="text" class="form-control" id="valorJurosDAMSP" name="valorJurosDAMSP" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="valorAtualizaMonetariaDAMSP">Atualização Monetária (R$)</label>
+								<input type="text" class="form-control" id="valorAtualizaMonetariaDAMSP" name="valorAtualizaMonetariaDAMSP" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="valorOutrosEncargosDAMSP">Outros Encargos (R$)</label>
+								<input type="text" class="form-control" id="valorOutrosEncargosDAMSP" name="valorOutrosEncargosDAMSP" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00"/>
+							</div>								
+							<div class="form-group col-md-offset-9 col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="valorTotalDAMSP">Total (R$)</label>
+								<input type="text" class="form-control" id="valorTotalDAMSP" name="valorTotalDAMSP" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00" readonly/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-primary" id="divDARFWEB" style="display: none;">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Guia DARF DCTFWEB</a>
+						</h2>
+					</div>
+					<div class="panel-body formaPagamento">
+						<div class="row">
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="codBarrasDARFWEB">Possui Código de Barras</label>
+								<select class="form-control selectCodBarrasImposto" name="codBarrasDARFWEB" id="codBarrasDARFWEB">
+									<option selected value="nao">Não</option>
+									<option value="sim">Sim</option>									
+								</select>
+							</div>
+							<div class="form-group col-md-6 divCodBarrasImposto" id="divCodBarrasDARFWEB" name="divCodBarrasDARFWEB" style="display: none;">
+								<label class="control-label required" atividades="0,4,86" for="nrCodigoBarrasDARFWEB">Número do Código de Barras</label>
+								<input type="text" class="form-control" id="nrCodigoBarrasDARFWEB" name="nrCodigoBarrasDARFWEB" autocomplete="nope"/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="cnpjDARFWEB">CNPJ</label>
+								<input type="text" class="form-control" id="cnpjDARFWEB" name="cnpjDARFWEB" style="text-align: right;" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="apuracaoDARFWEB">Período Apuração</label>&nbsp;<span class="fluigicon fluigicon-info-sign fluigicon-sm" data-toggle="tooltip" data-placement="top" title="O dia deve ser o primeiro dia (01) do mês de apuração."></span>
+								<input type="date" class="form-control" id="apuracaoDARFWEB" name="apuracaoDARFWEB" style="text-align: right;" autocomplete="nope" max="2999-12-31"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="codReceitaDARFWEB">Código da Receita</label>
+								<input type="text" class="form-control" id="codReceitaDARFWEB" name="codReceitaDARFWEB" style="text-align: right;" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="dataVencimentoDARFWEB">Data Vencimento</label>
+								<input type="date" class="form-control" id="dataVencimentoDARFWEB" name="dataVencimentoDARFWEB"style="text-align: right;" autocomplete="nope" max="2999-12-31"/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="dataPagamentoDARFWEB">Data Pagamento</label>
+								<input type="date" class="form-control" id="dataPagamentoDARFWEB" name="dataPagamentoDARFWEB"style="text-align: right;" autocomplete="nope" max="2999-12-31"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="nrDocumentoDARFWEB">Número do Documento</label>
+								<input type="text" class="form-control" id="nrDocumentoDARFWEB" name="nrDocumentoDARFWEB" style="text-align: right;" autocomplete="nope"/>
+							</div>
+							<!-- <div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="valorDocumentoDARFWEB">Valor do Documento</label>
+								<input type="text" class="form-control" id="valorDocumentoDARFWEB" name="valorDocumentoDARFWEB" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00"/>
+							</div> -->
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="valorPrincipalDARFWEB">Valor do Principal</label>
+								<input type="text" class="form-control" id="valorPrincipalDARFWEB" name="valorPrincipalDARFWEB" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="valorMultaDARFWEB">Valor Multa</label>
+								<input type="text" class="form-control" id="valorMultaDARFWEB" name="valorMultaDARFWEB" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" atividades="0,4,86" for="valorJurosEncargosDARFWEB">Valor Juros / Encargos</label>
+								<input type="text" class="form-control" id="valorJurosEncargosDARFWEB" name="valorJurosEncargosDARFWEB" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00"/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="control-label" atividades="0,4,86" for="observacoesDARFWEB">Observações</label>
+								<textarea name="observacoesDARFWEB" id="observacoesDARFWEB" rows="3" class="form-control"></textarea>
+							</div>								
+						</div>
+							<div class="form-group col-md-offset-9 col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="valorTotalDARFWEB">Valor Total do Documento</label>
+								<input type="text" class="form-control" id="valorTotalDARFWEB" name="valorTotalDARFWEB" placeholder="0,00" onkeypress="aplicaMask();" onchange="valorTotal();" style="text-align: right;"  mask="#00.000.000.000.000,00" readonly/>
+							</div>
+						</div>
+				</div>
+				<div class="panel panel-primary" id="painelAprovadores" name="painelAprovadores">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Dados da Aprovação</a>
+						</h2>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="form-group col-md-2">
+								<label class="control-label required" atividades="0,4,86" for="aprovacaoCoordenador">Aprovação da Solicitação</label>
+								<select class="form-control" name="aprovacaoCoordenador" id="aprovacaoCoordenador">
+									<option value="">---- Selecione ----</option>
+									<option value="Sim">Aprovado</option>
+									<option value="Nao">Reprovado</option>
+									<option value="Cancelado">Cancelado</option>
+								</select>
+							</div>
+							<div class="form-group col-md-2">
+								<label class="control-label required" atividades="0,4,86" for="valorRequisicao">Valor Total da Solicitação</label>
+								<input type="text" class="form-control" id="valorRequisicao" name="valorRequisicao" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label for="origem">Observações:</label>
+								<div class="input-group">
+									<textarea class="form-control" name="origem" id="origem" style="height: 70px" value=""></textarea>
+									<span class="input-group-addon fs-cursor-pointer" id="preencheAcompanhamento">
+										<span class="fluigicon fluigicon-user-comment fluigicon-lg"></span>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<textarea class="form-control" name="destino" id="destino"
+									style="height: 200px; vertical-align: top; width: 100%; display:none;"
+									onKeyPress="alteraMaiusculo(this);" onkeyup="alteraMaiusculo(this);"
+									value="" readonly></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<table id="tableAprovadores" tablename="tableAprovadores" nodeletebutton="true" noaddbutton="true" class="table">
+						<thead>
+							<tr>
+								<th style="text-align: center;">Nível</th>
+								<th style="text-align: center;">Matrícula</th>
+								<th style="text-align: center;">Responsável</th>
+								<th style="text-align: center;">Status</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<div class="form-group">
+										<input type="text" id="inputNivel" name="inputNivel" class="form-control nivel" readonly>
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<input type="text" id="inputMatricula" name="inputMatricula" class="form-control matricula" readonly>
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<input type="text" id="inputResponsavel" name="inputResponsavel" class="form-control responsavel" readonly>
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<input type="text" id="inputStatus" name="inputStatus" class="form-control status" readonly>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div name="acompanhamento" id="acompanhamento" readonly></div>
+			</form>
+		</div>
+		<style>
+			.align-right{
+				float: right !important;
+			}
+		</style>
+	</body>
+</html>

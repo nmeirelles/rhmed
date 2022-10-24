@@ -1,0 +1,667 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+		<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+		<script src="jquery.mask.min.js"></script>
+		<script type="text/javascript" src="numeral.js"></script>
+		<script src="/webdesk/vcXMLRPC.js"></script>
+		<script type="text/javascript" src="complementos.js" charset="utf-8"></script>		
+		<link type="text/css" rel="stylesheet" href="formGestaoContratos.css"/>
+		<link type="text/css" rel="stylesheet" href="style.css"/>
+		<script type="text/javascript" src="formGestaoContratos.js" charset="utf-8"></script>
+		<style type="text/css">
+	      	select[readonly] {
+	      	  background: #eee;
+	      	  pointer-events: none;
+	      	  touch-action: none;
+	      	}
+		</style>
+		<script type="text/javascript">
+			$(function() {								
+				$('label').css('font-size', '12px');
+			});
+		</script>
+	</head>
+	<body class="fluig-style-guide sequoiacss">
+		<div class="fluig-style-guide">
+			<form name="form" role="form">
+				<!-- SLA -->
+				<input type="hidden" id="dataDisponibilidadeS" name="dataDisponibilidadeS" value="" />
+				<input type="hidden" id="dataFinalizouS" name="dataFinalizouS" value="" />
+				<input type="hidden" id="usuarioS" name="usuarioS" value="" />
+
+				<input type="hidden" id="dataDisponibilidadeC" name="dataDisponibilidadeC" value="" />
+				<input type="hidden" id="dataFinalizouC" name="dataFinalizouC" value="" />
+				<input type="hidden" id="usuarioC" name="usuarioC" value="" />
+
+				<input type="hidden" id="dataDisponibilidadeG" name="dataDisponibilidadeG" value="" />
+				<input type="hidden" id="dataFinalizouG" name="dataFinalizouG" value="" />
+				<input type="hidden" id="usuarioG" name="usuarioG" value="" />
+
+				<input type="hidden" id="dataDisponibilidadeD" name="dataDisponibilidadeD" value="" />
+				<input type="hidden" id="dataFinalizouD" name="dataFinalizouD" value="" />
+				<input type="hidden" id="usuarioD" name="usuarioD" value="" />
+				
+				<input type="hidden" id="dataDisponibilidadeS1" name="dataDisponibilidadeS1" value="" />
+				<input type="hidden" id="dataAssumiuS1" name="dataAssumiuS1" value="" />
+				<input type="hidden" id="dataFinalizouS1" name="dataFinalizouS1" value="" />
+				<input type="hidden" id="usuarioS1" name="usuarioS1" value="" />
+
+				<input type="hidden" id="dataDisponibilidadeS2" name="dataDisponibilidadeS2" value="" />
+				<input type="hidden" id="dataAssumiuS2" name="dataAssumiuS2" value="" />
+				<input type="hidden" id="dataFinalizouS2" name="dataFinalizouS2" value="" />
+				<input type="hidden" id="usuarioS2" name="usuarioS2" value="" />
+				<!-- SLA -->
+				<!-- [Inicio] campos de controle -->
+				<input type="hidden" id="dataEntrada" name="dataEntrada" value="" />
+				<input type="hidden" id="mesEntrada" name="mesEntrada" value="" />
+				<input type="hidden" id="anoEntrada" name="anoEntrada" value="" />
+				<input type="hidden" id="nrAtividade" name="nrAtividade" value="" />
+				<input type="hidden" id="numeroFluxo" name="numeroFluxo" value="" />
+				<input type="hidden" id="dataFinalizacao" name="dataFinalizacao" value="" />
+				<input type="hidden" id="situacao" name="situacao" value="" />
+				<input type="hidden" id="campoDescritor" name="campoDescritor" value="" />
+				<input type="hidden" id="solicitanteMatricula" name="solicitanteMatricula" value="" />
+				<input type="hidden" id="currentNome" name="currentNome" value="" />
+				<input type="hidden" id="currentLogin" name="currentLogin" value="" />
+				<input type="hidden" id="atividadeAtual" name="atividadeAtual" value="" />
+				<input type="hidden" id="currentEmail" name="currentEmail" value="">
+				<input type="hidden" id="loginAprovador" name="loginAprovador" value="">
+				<input type="hidden" id="nomeAprovador" name="nomeAprovador" value="">
+				<input type="hidden" id="loginAprovadorAnterior" name="loginAprovadorAnterior" value="">
+				<input type="hidden" id="nomeAprovadorAnterior" name="nomeAprovadorAnterior" value="">
+				<input type="hidden" id="matriculaAprovador" name="matriculaAprovador" value=""> <!--Valida Substituto-->
+				<!-- [Fim] campos de controle -->
+				<input type="hidden" id="aprovadorCoordenador" name="aprovadorCoordenador" value="" />
+				<input type="hidden" id="aprovadorSupervisor" name="aprovadorSupervisor" value="" />
+				<input type="hidden" id="aprovadorGerente" name="aprovadorGerente" value="" />
+				<input type="hidden" id="aprovadorDiretor" name="aprovadorDiretor" value="" />
+				<input type="hidden" id="aprovadorDestino" name="aprovadorDestino" value="" />
+				<input type="hidden" id="valorCoordenador" name="valorCoordenador" value="" />
+				<input type="hidden" id="valorSupervisor" name="valorSupervisor" value="" />
+				<input type="hidden" id="valorGerente" name="valorGerente" value="" />
+				<input type="hidden" id="valorDiretor" name="valorDiretor" value="" />
+				<input type="hidden" id="valorTotalDocumento" name="valorTotalDocumento" value="" />
+				<input type="hidden" id="idCentroCusto" name="idCentroCusto" value="" />
+				<input type="hidden" id="codFilial" name="codFilial" value="" />
+
+
+				<div class="page-header">
+					<h2 class="panel-title"><img src="rhmed_rhvida_logo2.png" alt="logo Sicoob" class="align-right"><span class="fluigicon fluigicon-sticky-note fluigicon-md"></span>&nbsp;ACF - Aditivo Contratual de Fornecedor</h2>
+				</div>
+
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Dados do Solicitante</a>
+						</h2>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="form-group col-md-6">
+								<label class="control-label" for="solicitanteNome">Solicitante</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="solicitanteNome" name="solicitanteNome" readonly/>
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-user"></span>
+									</span>
+								</div>
+							</div>								
+							<div class="form-group col-md-6">
+								<label class="control-label" for="solicitanteEmail">Email</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="solicitanteEmail" name="solicitanteEmail" readonly />
+									<span class="input-group-addon">@</span>
+								</div>
+							</div> 
+						</div>
+						<div class="row">
+							<div class="form-group col-md-3">
+								<label class="control-label" for="solicitanteTelefone">Telefone</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="solicitanteTelefone" name="solicitanteTelefone" readonly />
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-phone"></span>
+									</span>
+								</div>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" for="solicitanteDepartamento">Departamento</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="solicitanteDepartamento" name="solicitanteDepartamento" readonly />
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-company"></span>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Dados da Requisição</a>
+						</h2>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="form-group col-md-3">
+								<label id="lblDataCriacao" class="control-label required" for="Status">Status</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="Status" name="Status" readonly/>
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-calendar"></span>
+									</span>
+								</div>
+							</div>
+							<div class="form-group col-md-3">
+								<label id="lblDataCriacao" class="control-label required" for="ultimoUsuario">Ultimo Usuário</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="ultimoUsuario" name="ultimoUsuario" readonly/>
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-calendar"></span>
+									</span>
+								</div>
+							</div>
+							<div class="form-group col-md-3">
+								<label id="lblDataCriacao" class="control-label required" for="hora">Hora</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="hora" name="hora" readonly/>
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-calendar"></span>
+									</span>
+								</div>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" for="agencia">Nº Solicitação</label>
+								<input type="text" class="form-control" id="idSolicitacao" name="idSolicitacao" readonly/>
+							</div>
+						</div>
+					</div>
+				</div>	
+
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Dados da Solicitação</a>
+						</h2>
+					</div>
+					<div class="panel-body">
+						<div class="row">   
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="tipoRequisicao">Tipo da Requisição</label>
+								<select class="form-control" name="tipoRequisicao" id="tipoRequisicao" onchange="inputCodBarra(this.value)">
+									<option value="" selected>---- Selecione ----</option>
+									<option value="aditivo">Aditivo Contratual</option>
+									<option value="pleito">Pleito</option>
+									<option value="reajuste">Reajuste</option>
+								</select>
+							</div>
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,4,86" for="zoomCentroCusto">Centro de Custo</label>
+								<input type="zoom" class="form-control" id="zoomCentroCusto" name="zoomCentroCusto"  value=""
+									data-zoom="{
+										'displayKey': 'ccusto',
+										'datasetId': 'dsCadastroCentrodeCusto',
+										'filterValues': 'CCbloqueado,nao',
+										'fields': [
+											{
+												'field': 'ccusto',
+												'label': 'Centro de Custo',	
+												'standard': 'true',					       
+												'search': 'true'
+											}
+											]
+								}"/>
+							</div>
+							<div class="form-group col-md-2">
+								<label class="control-label required" atividades="0,4,86" for="tipoPagamento">Tipo</label>
+								<select class="form-control" name="tipoPagamento" id="tipoPagamento" onchange="inputCodBarra(this.value)"/>
+									<option value="" selected>---- Selecione ----</option>
+									<option value="normal">Normal</option>
+									<option value="emergencial">Emergencial</option>
+								</select>
+							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<label class="control-label required" atividades="0,4,86" for="zoomFilial">Filial</label>
+									<select class="form-control" id="zoomFilial" name="zoomFilial">
+										<option value=""></option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-2">
+								<label for="selectTipoBusca" class="control-label required" atividades="0,4,86">Tipo Busca</label>
+								<select name="selectTipoBusca" id="selectTipoBusca" class="form-control">
+									<option value="nome">Nome</option>
+									<option value="codigo">Código</option>
+									<option value="cpf">CPF</option>
+									<option value="cnpj">CNPJ</option>													
+								</select>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="control-label required" atividades="0,4,86" for="inputFornecedor">Nome do Fornecedor</label>
+								<div class="input-group">
+									<input type="text" name="inputFornecedor" id="inputFornecedor" class="form-control" autocomplete="nope"/>
+									<span class="input-group-addon fs-cursor-pointer" id="consultaFornecedor" name="consultaFornecedor" style="background-color: #30aed6;">
+										<span><strong style="background-color: #30aed6; color: white;">Buscar</strong></span>
+									</span>
+								</div>
+								<input type="text" name="inputCodFornecedor" id="inputCodFornecedor" class="form-control" readonly style="display: none;">
+								<input type="hidden" class="form-control" id="cnpj" name="cnpj" value="" readonly />
+								<input type="hidden" class="form-control" id="loja" name="loja" value="" readonly />
+							</div>
+							<div class="form-group col-md-2">
+								<label class="control-label required" atividades="0,4,86" for="inputCidade">Cidade</label>
+								<input type="text" name="inputCidade" id="inputCidade" class="form-control" readonly/>
+							</div>
+							<div class="form-group col-md-2">
+								<label class="control-label required" atividades="0,4,86" for="inputUF">UF</label>
+								<input type="text" name="inputUF" id="inputUF" class="form-control" readonly/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,4,86" for="inputQuestionario3">Qualidade do atendimento do fornecedor</label>
+								<select class="form-control" name="selectQuestionario3" id="selectQuestionario3">
+									<option value=""></option>
+									<option value="otimo">Ótimo</option>
+									<option value="bom">Bom</option>
+									<option value="regular">Regular</option>
+									<option value="ruim">Ruim</option>
+									<option value="pessimo">Péssimo</option>
+								</select>
+							</div>							
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,4,86" for="inputQuestionario4">Spend total do contrato nos últimos 12 meses</label>
+								<div class="input-group">
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-money icon-sm"></span>
+									</span>
+									<input type="text" name="inputQuestionario4" id="inputQuestionario4" class="form-control" mask="#00.000.000.000.000,00" autocomplete="nope"/>
+								</div>
+							</div>
+						</div>
+						<div class="row" id="divJustQualiAtend" name="divJustQualiAtend" style="display: none;">
+							<div class="form-group col-md-12">
+								<label for="textJustQualiAtend" class="required">Justificativa (Qualidade Atendimento):</label>
+								<textarea class="form-control" name="textJustQualiAtend" id="textJustQualiAtend" style="height: 70px" value=""></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label for="origem">Observações:</label>
+								<div class="input-group">
+									<textarea class="form-control" name="obsDadosSolicitacao" id="obsDadosSolicitacao" style="height: 70px" value=""></textarea>
+									<span class="input-group-addon fs-cursor-pointer" id="spanDadosSolicitação">
+										<span class="fluigicon fluigicon-user-comment fluigicon-lg"></span>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>				
+				<div class="panel panel-primary" id="divQuestionario" name="divQuestionario" style="display: none;">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Questionário</a>
+						</h2>
+					</div>
+					<div class="panel-body">						
+						<div class="row">
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,4,86" for="inputQuestionario2">Quando foi aplicado o último reajuste?</label>
+								<input type="date" name="inputQuestionario2" id="inputQuestionario2" class="form-control" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,4,86" for="inputQuestionario2_1">Qual foi a porcentagem?</label>
+								<input type="text" name="inputQuestionario2_1" id="inputQuestionario2_1" class="form-control" autocomplete="nope"/>
+							</div>			
+						</div>
+						<legend>Outros Fornecedores da Cidade</legend>
+						<div class="row">
+							<div class="form-group col-md-8">
+								<label class="control-label required" atividades="0,4,86" for="inputQuestionario1">Nome do Fornecedor 1</label>
+								<input type="text" name="inputQuestionario1" id="inputQuestionario1" class="form-control" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,4,86" for="inputQuestionario1_1">Qualidade do atendimento do fornecedor 1</label>
+								<select class="form-control" name="inputQuestionario1_1" id="inputQuestionario1_1">
+									<option value=""></option>
+									<option value="otimo">Ótimo</option>
+									<option value="bom">Bom</option>
+									<option value="regular">Regular</option>
+									<option value="ruim">Ruim</option>
+									<option value="pessimo">Péssimo</option>
+								</select>
+							</div>
+						</div>
+						<div class="row" id="divJustQualiAtend1" name="divJustQualiAtend1" style="display: none;">
+							<div class="form-group col-md-12">
+								<label for="textJustQualiAtend1" class="required">Justificativa (Qualidade Atendimento Fornecedor 1):</label>
+								<textarea class="form-control" name="textJustQualiAtend1" id="textJustQualiAtend1" style="height: 70px" value=""></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-8">
+								<label class="control-label required" atividades="0,4,86" for="inputQuestionario5">Nome do Fornecedor 2</label>
+								<input type="text" name="inputQuestionario5" id="inputQuestionario5" class="form-control" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-4">
+								<label class="control-label required" atividades="0,4,86" for="inputQuestionario5_1">Qualidade do atendimento do fornecedor 2</label>
+								<select class="form-control" name="inputQuestionario5_1" id="inputQuestionario5_1">
+									<option value=""></option>
+									<option value="otimo">Ótimo</option>
+									<option value="bom">Bom</option>
+									<option value="regular">Regular</option>
+									<option value="ruim">Ruim</option>
+									<option value="pessimo">Péssimo</option>
+								</select>
+							</div>
+						</div>
+						<div class="row" id="divJustQualiAtend2" name="divJustQualiAtend2" style="display: none;">
+							<div class="form-group col-md-12">
+								<label for="textJustQualiAtend2" class="required">Justificativa (Qualidade Atendimento Fornecedor 2):</label>
+								<textarea class="form-control" name="textJustQualiAtend2" id="textJustQualiAtend2" style="height: 70px" value=""></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-8">
+								<label class="control-label" atividades="0,4,86" for="inputQuestionario6">Nome do Fornecedor 3</label>
+								<input type="text" name="inputQuestionario6" id="inputQuestionario6" class="form-control" autocomplete="nope"/>
+							</div>
+							<div class="form-group col-md-4">
+								<label class="control-label" atividades="0,4,86" for="inputQuestionario6_1">Qualidade do atendimento do fornecedor 3</label>
+								<select class="form-control" name="inputQuestionario6_1" id="inputQuestionario6_1">
+									<option value=""></option>
+									<option value="otimo">Ótimo</option>
+									<option value="bom">Bom</option>
+									<option value="regular">Regular</option>
+									<option value="ruim">Ruim</option>
+									<option value="pessimo">Péssimo</option>
+								</select>
+							</div>
+						</div>
+						<div class="row" id="divJustQualiAtend3" name="divJustQualiAtend3" style="display: none;">
+							<div class="form-group col-md-12">
+								<label for="textJustQualiAtend3" class="required">Justificativa (Qualidade Atendimento Fornecedor 3):</label>
+								<textarea class="form-control" name="textJustQualiAtend3" id="textJustQualiAtend3" style="height: 70px" value=""></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label for="obsQuestionario">Observações:</label>
+								<div class="input-group">
+									<textarea class="form-control" name="obsQuestionario" id="obsQuestionario" style="height: 70px" value=""></textarea>
+									<span class="input-group-addon fs-cursor-pointer" id="spanobsQuestionario">
+										<span class="fluigicon fluigicon-user-comment fluigicon-lg"></span>
+									</span>
+								</div>
+							</div>
+						</div>			
+					</div>
+				</div>
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Dados dos Itens</a>
+						</h2>
+					</div>
+					<div class="panel-body">
+						<span style="color: red;"><strong>*Favor anexar a planilha modelo com os itens a serem reajustados/acresentados no contrato.</strong></span>
+						<br/>
+						<div class="row">
+							<div class="form-group col-md-4" id="divButtonPlanilhaModelo" name="divButtonPlanilhaModelo">
+								<label class="control-label">&nbsp</label>
+								<div class="componentAnexo" id="divPlanilhaModelo">
+									<button type="button" class="btn btn-warning" id="planilhaModelo" name="planilhaModelo"><strong>Baixar Planilha Modelo    <span class="fluigicon fluigicon-download icon-sm"></span></strong></button>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col-md-4" id="divButtonAnexo" name="divButtonAnexo">
+								<label class="control-label">&nbsp</label>
+								<div class="componentAnexo" id="divAnexo">
+									<button type="button" class="btn btn-info" id="documentoAnexo" name="documentoAnexo" data-file-upload onclick="anexarArquivo();"><strong>Anexar Arquivos</strong></button><strong><span style="color: red;">*</span></strong>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Dados dos Itens - Serviços</a>
+						</h2>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="form-group col-md-12 fs-txt-left">
+								<input type="button" id="btnAddChild" name="btnAddChild" onclick="addChild(this)" value="Adicionar" />
+							</div>   
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<table tablename="tabelaItens" class="table" id="tabelaItens" noaddbutton=true nodeletebutton="true" customFnDelete="fnCustomDelete(this);">
+									<thead><tr><th></th></tr></thead>
+									<tbody>
+										<tr>
+											<td><i id="spanRemover" name="spanRemover" class="fluigicon fluigicon-remove-circle icon-lg fs-txt-center fs-cursor-pointer" onclick="fnCustomDelete(this);"></i></td>
+											<td style="vertical-align:middle;">   
+												<div class="row">
+													<div class="form-group col-md-6">
+														<label class="control-label required" atividades="0,4,86" for="inputProduto">Pesquisa do Item</label>
+														<input type="hidden" id="CodItem" name="CodItem" value=""/>
+														<div class="input-group">
+															<input type="text" name="inputCodProduto" id="inputCodProduto" class="form-control" readonly style="display: none;">
+															<input type="text" name="inputProduto" id="inputProduto" class="form-control" autocomplete="nope" onchange="changeTabelaItem(this.id);">
+															<span class="input-group-addon" id="spanBuscaProduto" name="spanBuscaProduto"><i class="fluigicon fluigicon-search icon-sm"></i></span>
+														</div>
+													</div>
+													<div class="form-group col-md-6">
+														<label class="control-label required" for="itemDescricao">Descrição do Item</label>
+														<div class="input-group">
+															<input type="text" class="form-control" id="itemDescricao" name="itemDescricao" readonly/>
+															<span class="input-group-addon">
+																<span class="flaticon flaticon-edit-square icon-sm"></span>
+															</span>
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="form-group col-md-2">
+														<label class="control-label required" for="unidadeMedida">Un. Medida</label>
+														<div class="input-group">
+															<input type="text" class="form-control" id="unidadeMedida" name="unidadeMedida" readonly/>
+															<span class="input-group-addon">
+																<span class="flaticon flaticon-edit icon-sm"></span>
+															</span>
+														</div>
+													</div>
+													<div class="form-group col-md-2">
+														<label class="control-label required" for="itemQuantidade">Qtd Solicitada</label>
+														<div class="input-group">
+															<input type="text" class="form-control" id="itemQuantidade" name="itemQuantidade" onchange="calculoValorTotal(this.id);"/>
+															<span class="input-group-addon">
+																<span class="flaticon flaticon-square-plus icon-sm"></span>
+															</span>
+														</div>
+													</div>
+													<div class="form-group col-md-2">
+														<label class="control-label required" for="itempreco">Preço Unitario</label>
+														<div class="input-group">
+															<input type="text" class="form-control" id="itempreco" name="itempreco" placeholeder="0,00" mask="#00.000.000.000.000,00" onchange="calculoValorTotal(this.id);"/>
+															<span class="input-group-addon">
+																<span class="fluigicon fluigicon-money-circle icon-sm"></span>
+															</span>
+														</div>
+													</div>
+													<div class="form-group col-md-2">
+														<label class="control-label required" for="itemVlrOrcado">Valor Total Orçado</label>
+														<div class="input-group">
+															<input type="text" class="form-control itemVlrOrcado" id="itemVlrOrcado" name="itemVlrOrcado" mask="#00.000.000.000.000,00" readonly/>
+															<span class="input-group-addon">
+																<span class="fluigicon fluigicon-money-circle icon-sm"></span>
+															</span>
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="form-group col-md-12">
+														<label class="control-label" for="itemObservacoes">Observações/Especificações</label>
+														<div class="input-group">
+															<input type="text" class="form-control" id="itemObservacoes" name="itemObservacoes"/>
+															<span class="input-group-addon">
+																<span class="fluigicon fluigicon-process-adhoc icon-sm"></span>
+															</span>
+														</div>
+													</div>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div-->
+				<div class="panel panel-primary" id="painelResultados" name="painelResultados" style="display: none;">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Resultado</a>
+						</h2>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="form-group col-md-2" id="divReajusteConcedido" name="divReajusteConcedido">
+								<label class="control-label required" atividades="0,4,86" for="selectReajuste">Reajuste Concedido?</label>
+								<select class="form-control" name="selectReajuste" id="selectReajuste">
+									<option value="" selected>---- Selecione ----</option>
+									<option value="Sim">Sim</option>
+									<option value="Nao">Não</option>
+								</select>
+							</div>
+							<div class="form-group col-md-2">
+								<label class="control-label required" atividades="0,4,86" for="inputDataInicialAcordo">Data Inicial do Acordo</label>
+								<input type="date" class="form-control" id="inputDataInicialAcordo" name="inputDataInicialAcordo" />
+							</div>
+							<div class="form-group col-md-2">
+								<label class="control-label required" atividades="0,4,86" for="inputDataFinalAcordo">Data Final do Acordo</label>
+								<input type="date" class="form-control" id="inputDataFinalAcordo" name="inputDataFinalAcordo" />
+							</div>
+							<div class="form-group col-md-2">
+								<label class="control-label required" atividades="0,4,86" for="inputImpactoAnualReajuste">Impacto Anual do Reajuste</label>
+								<div class="input-group">
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-money icon-sm"></span>
+									</span>
+									<input type="text" name="inputImpactoAnualReajuste" id="inputImpactoAnualReajuste" class="form-control" mask="#00.000.000.000.000,00" autocomplete="nope"/>
+								</div>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" atividades="0,4,86" for="inputPorcentagemImpactoAnual">Porcentagem impacto anual</label>
+								<div class="input-group">
+									<span class="input-group-addon">
+										<span class="flaticon flaticon-discount icon-sm"></span>
+									</span>
+									<input type="text" class="form-control" id="inputPorcentagemImpactoAnual" name="inputPorcentagemImpactoAnual" mask="#00.000,00%"/>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-4" id="divButtonAnexoResultado" name="divButtonAnexoResultado">
+								<label class="control-label">&nbsp</label>
+								<div class="componentAnexo" id="divAnexoResultado">
+									<button type="button" class="btn btn-info" id="resultadoAnexo" name="resultadoAnexo" data-file-upload onclick="anexarArquivo();"><strong>Anexar Resultado</strong></button><strong><span style="color: red;">*</span></strong>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel panel-primary" id="painelAprovadores" name="painelAprovadores">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Dados da Aprovação</a>
+						</h2>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="form-group col-md-2">
+								<label class="control-label required" atividades="0,4,86" for="aprovacaoCoordenador">Aprovação da Solicitação</label>
+								<select class="form-control" name="aprovacaoCoordenador" id="aprovacaoCoordenador" onchange="inputCodBarra(this.value)"/>
+									<option value="" selected>---- Selecione ----</option>
+									<option value="Sim">Aprovado</option>
+									<option value="Nao">Reprovado</option>
+									<option value="Cancelado">Cancelado</option>
+								</select>
+							</div>
+							<div class="form-group col-md-3" style="display: none;">
+								<label class="control-label required" atividades="0,4,86" for="valorRequisicao">Valor Total Spend nos "últimos 12 meses"</label>
+								<input type="text" class="form-control" id="valorRequisicao" name="valorRequisicao" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label for="origem">Observações:</label>
+								<div class="input-group">
+									<textarea class="form-control" name="origem" id="origem" style="height: 70px" value=""></textarea>
+									<span class="input-group-addon fs-cursor-pointer" id="preencheAcompanhamento">
+										<span class="fluigicon fluigicon-user-comment fluigicon-lg"></span>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<textarea class="form-control" name="destino" id="destino"
+									style="height: 200px; vertical-align: top; width: 100%; display:none;"
+									onKeyPress="alteraMaiusculo(this);" onkeyup="alteraMaiusculo(this);"
+									value="" readonly></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div name="acompanhamento" id="acompanhamento" readonly></div>
+			</form>
+		</div>
+		<style>
+			.align-right{
+				float: right !important;
+			}
+			.fluig-style-guide legend {
+				font-size: 14px;
+				font-weight: 700;
+				line-height: inherit;
+				display: block;
+				width: 100%;
+				margin-bottom: 20px;
+				padding: 0;
+				color: #58595b;
+				border: 0;
+				border-bottom: 1px solid #e5e5e5;
+				-webkit-tap-highlight-color: transparent;
+				font-family: 'Verdana' !important;
+			}
+			.fluig-style-guide .modal-footer .btn+.btn {
+				margin-bottom: 0;
+				margin-left: 5px;
+				background-color: darkgreen;
+			}
+			.fluig-style-guide .btn-default {
+				color: white;
+				background-color: #fff;
+				background-color: red;
+				box-shadow: inset 0 0 0 1px #58595b;
+			}
+		</style>
+	</body>
+</html>

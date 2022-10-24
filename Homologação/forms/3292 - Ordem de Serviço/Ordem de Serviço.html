@@ -1,0 +1,92 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+		<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+		<script type="text/javascript" src="ordemServico.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+		<style>
+			.panelPadrao {
+				background-color: #1a5952 !important;
+				letter-spacing: 0.7px !important;
+				color:white !important;
+				border-color: inherit !important;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="fluig-style-guide">
+			<form name="form" role="form">
+				<input type="text" name="numeroSolicitacao" id="numeroSolicitacao" style="display: none;">
+				<input type="text" name="numeroAtividadeAtual" id="numeroAtividadeAtual" style="display: none;">
+				<input type="text" name="campoDescritor" id="campoDescritor" style="display: none;">
+
+				<div class="panel panel-default">
+					<div class="panel-heading fs-txt-center panelPadrao">
+                        <h1 class="panel-title">Ordem de Serviço</h1>
+					</div>
+					<div class="panel-body">
+						<div class="panel panel-default"> <!-- DADOS DO SOLICITANTE -->
+							<div class="panel-heading panelPadrao">
+								<h3 class="panel-title">Dados da Solicitação</h3>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="form-group col-sm-3">
+										<label for="dataInclusao" class="control-label">Data Inclusão</label>
+										<input type="text" name="dataInclusao" id="dataInclusao" class="form-control" readonly>
+									</div>
+									<div class="form-group col-sm-3">
+										<label for="nomeResponsavel" class="control-label">Responsável</label>
+										<input type="text" name="nomeResponsavel" id="nomeResponsavel" class="form-control" readonly>
+									</div>
+									<div class="form-group col-sm-3">
+										<label for="status" class="control-label">Status</label>
+										<input type="text" name="status" id="status" class="form-control" readonly>
+									</div>
+									<div class="form-group col-sm-3">
+										<label for="numeroOrdemServico" class="control-label">Número OS</label>
+										<input type="text" name="numeroOrdemServico" id="numeroOrdemServico" class="form-control" readonly>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-6">
+										<label for="zoomCliente" class="control-label">Cliente</label>
+										<input type="zoom" class="form-control" id="zoomCliente" name="zoomCliente"
+										   data-zoom="{'displayKey': 'NOME','datasetId': 'ds_consulta_clientes_protheus','filterValues': '','fields': [
+													   {'field': 'NOME','label': 'Empresa','standard': 'true','search': 'true'}]}" />
+									</div>
+									<div class="form-group col-sm-3">
+										<label for="valorOrdemServico" class="control-label">Valor OS</label>
+										<input type="text" name="valorOrdemServico" id="valorOrdemServico" class="form-control" mask="#00.000.000.000.000,00">
+									</div>
+									<div class="form-group col-sm-3">
+										<label for="faturado">Faturado</label>
+										<select name="faturado" id="faturado" class="form-control">
+											<option value=""></option>
+											<option value="sim">Sim</option>
+											<option value="nao">Não</option>
+										</select>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-12">
+										<label class="control-label" for="descricao">Descrição</label>
+										<div class="input-group">
+											<textarea class="form-control" id="descricao" name="descricao" rows="2"></textarea>
+											<span class="input-group-addon">
+								        		<span class="fluigicon fluigicon-comment"></span>
+								    		</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>

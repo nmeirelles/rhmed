@@ -1,0 +1,570 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+		<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+		<script src="jquery.mask.min.js"></script>
+		<script type="text/javascript" src="numeral.js"></script>
+		<script src="/webdesk/vcXMLRPC.js"></script>
+		<script type="text/javascript" src="complementos.js" charset="utf-8"></script>
+		<link type="text/css" rel="stylesheet" href="form_SCA_CadastroAutonomo.css"/>
+		<link type="text/css" rel="stylesheet" href="style.css"/>		
+		<script type="text/javascript" src="form_SCA_CadastroAutonomo.js" charset="utf-8"></script>
+		<style type="text/css">
+	      	select[readonly] {
+	      	  background: #eee;
+	      	  pointer-events: none;
+	      	  touch-action: none;
+	      	}
+		</style>
+		<script type="text/javascript">
+			$(function() {								
+				$('label').css('font-size', '12px');
+			});
+		</script>
+	</head>
+	<body class="fluig-style-guide sequoiacss">
+		<div class="fluig-style-guide">
+			<form name="form" role="form">
+				<!-- SLA -->
+				<input type="hidden" id="dataDisponibilidadeRH" name="dataDisponibilidadeRH" value="" />
+				<input type="hidden" id="dataAssumiuRH" name="dataAssumiuRH" value="" />
+				<input type="hidden" id="dataFinalizouRH" name="dataFinalizouRH" value="" />
+				<input type="hidden" id="usuarioRH" name="usuarioRH" value="" />
+				<!-- SLA -->
+				<!-- [Inicio] campos de controle -->
+				<input type="hidden" id="dataEntrada" name="dataEntrada" value="" />
+				<input type="hidden" id="mesEntrada" name="mesEntrada" value="" />
+				<input type="hidden" id="anoEntrada" name="anoEntrada" value="" />
+				<input type="hidden" id="numeroFluxo" name="numeroFluxo" value="" />
+				<input type="hidden" id="dataFinalizacao" name="dataFinalizacao" value="" />
+				<input type="hidden" id="situacao" name="situacao" value="" />
+				<input type="hidden" id="campoDescritor" name="campoDescritor" value="" />
+				<input type="hidden" id="solicitanteMatricula" name="solicitanteMatricula" value="" />
+				<input type="hidden" id="currentNome" name="currentNome" value="" />
+				<input type="hidden" id="currentLogin" name="currentLogin" value="" />
+				<input type="hidden" id="atividadeAtual" name="atividadeAtual" value="" />
+				<input type="hidden" id="currentEmail" name="currentEmail" value="">
+				<input type="hidden" id="loginAprovador" name="loginAprovador" value="">
+				<input type="hidden" id="nomeAprovador" name="nomeAprovador" value="">
+				<input type="hidden" id="loginAprovadorAnterior" name="loginAprovadorAnterior" value="">
+				<input type="hidden" id="nomeAprovadorAnterior" name="nomeAprovadorAnterior" value="">
+				<input type="hidden" id="aprovadorCoordenador" name="aprovadorCoordenador" value="" />
+				<input type="hidden" id="aprovadorSupervisor" name="aprovadorSupervisor" value="" />
+				<input type="hidden" id="aprovadorGerente" name="aprovadorGerente" value="" />
+				<input type="hidden" id="aprovadorDiretor" name="aprovadorDiretor" value="" />
+				<input type="hidden" id="aprovadorDestino" name="aprovadorDestino" value="" />
+				<input type="hidden" id="valorCoordenador" name="valorCoordenador" value="" />
+				<input type="hidden" id="valorSupervisor" name="valorSupervisor" value="" />
+				<input type="hidden" id="valorGerente" name="valorGerente" value="" />
+				<input type="hidden" id="valorDiretor" name="valorDiretor" value="" />
+				<input type="hidden" id="valorTotalDocumento" name="valorTotalDocumento" value="" />
+				<input type="hidden" class="form-control" id="naturezaFinanceira1" name="naturezaFinanceira1" value="" />
+				<input type="hidden" class="form-control" id="naturezaFinanceira2" name="naturezaFinanceira2" value="" />
+				<input type="hidden" id="idCentroCusto" name="idCentroCusto" value="" />
+				<input type="hidden" id="codFilial" name="codFilial" value="" />
+				<input type="hidden" id="hiddenSelectFuncao" name="hiddenSelectFuncao" value=""/>
+				<!-- <input type="hidden" id="CodItem" name="CodItem" value="" /> -->
+				<input type="hidden" class="form-control" id="cnpj" name="cnpj" value="" />
+				<input type="hidden" class="form-control" id="loja" name="loja" value="" />
+				<input type="hidden" class="form-control" id="codFornecedor" name="codFornecedor" value="" />
+				<input type="hidden" class="form-control" name="contaDebito" id="contaDebito" value="">
+				<input type="hidden" class="form-control" name="contaCredito" id="contaCredito" value="">
+				<input type="hidden" id="matriculaAprovador" name="matriculaAprovador" value=""> <!--Valida Substituto-->
+															
+				<div class="page-header">
+					<h2 class="panel-title"><img src="rhmed_rhvida_logo2.png" alt="logo RHMed" class="align-right"><span class="fluigicon fluigicon-sticky-note fluigicon-md"></span>&nbsp;SCA - Solicitação de Cadastro de Autônomo (RM Labore)</h2>
+				</div>
+
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Dados do Solicitante</a>
+						</h2>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="form-group col-md-6">
+								<label class="control-label" for="solicitanteNome">Solicitante</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="solicitanteNome" name="solicitanteNome" readonly />
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-user"></span>
+									</span>
+								</div>
+							</div>									
+							<div class="form-group col-md-6">
+								<label class="control-label" for="solicitanteEmail">Email</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="solicitanteEmail" name="solicitanteEmail" readonly />
+									<span class="input-group-addon">@</span>
+								</div>
+							</div> 
+						</div>
+						<div class="row">
+							<div class="form-group col-lg-3 col-md-3 col-sm-12">
+								<label class="control-label" for="solicitanteTelefone">Telefone</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="solicitanteTelefone" name="solicitanteTelefone" readonly />
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-phone"></span>
+									</span>
+								</div>
+							</div>
+							<div class="form-group col-lg-3 col-md-3 col-sm-12">
+								<label class="control-label" for="solicitanteDepartamento">Departamento</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="solicitanteDepartamento" name="solicitanteDepartamento" readonly />
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-company"></span>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Status da Solicitação</a>
+						</h2>
+					</div>
+					<div class="panel-body">
+						<div class="form-group col-md-3">
+							<label id="lblDataCriacao" class="control-label required" for="Status">Status</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="Status" name="Status" readonly/>
+								<span class="input-group-addon">
+									<span class="fluigicon fluigicon-calendar"></span>
+								</span>
+							</div>
+						</div>
+						<div class="form-group col-md-3">
+							<label id="lblDataCriacao" class="control-label required" for="ultimoUsuario">Ultimo Usuário</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="ultimoUsuario" name="ultimoUsuario" readonly/>
+								<span class="input-group-addon">
+									<span class="fluigicon fluigicon-calendar"></span>
+								</span>
+							</div>
+						</div>
+						<div class="form-group col-md-3">
+							<label id="lblDataCriacao" class="control-label required" for="hora">Hora</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="hora" name="hora" readonly/>
+								<span class="input-group-addon">
+									<span class="fluigicon fluigicon-calendar"></span>
+								</span>
+							</div>
+						</div>
+						<div class="form-group col-md-2" style="display: none;">
+							<input type="text" class="form-control" id="hora2" name="hora2" readonly></input>
+						</div>
+						<div class="form-group col-md-3">
+							<label class="control-label" for="idSolicitacao">Nº Solicitação</label>
+							<input type="text" class="form-control" id="idSolicitacao" name="idSolicitacao" readonly/>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Dados da Solicitação</a>
+						</h2>
+					</div>
+					<div class="panel-body">
+						<legend>Informações Básicas</legend>
+						<div class="row">
+							<div class="form-group col-md-3">
+								<label class="control-label required" for="inputNome">Nome Completo</label>
+								<input type="text" class="form-control" id="inputNome" name="inputNome"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" for="inputEmail">E-mail</label>
+								<input type="text" class="form-control" id="inputEmail" name="inputEmail"/>
+							</div>
+							<!-- <div class="form-group col-md-2">
+								<label class="control-label required" for="inputDataInicio">Data de Início</label>
+								<input type="date" class="form-control" id="inputDataInicio" name="inputDataInicio"/>
+								<input type="hidden" class="form-control" id="inputMesInicio" name="inputMesInicio"/>
+								<input type="hidden" class="form-control" id="inputAnoInicio" name="inputAnoInicio"/>
+							</div>							 -->
+						</div>
+						<div class="row">
+							<div class="form-group col-md-2">
+								<label class="control-label required" for="inputDataNasc">Data de Nascimento</label>
+								<input type="date" class="form-control" id="inputDataNasc" name="inputDataNasc"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" for="inputLocalNasc">Local (Nascimento)</label>
+								<input type="text" class="form-control" id="inputLocalNasc" name="inputLocalNasc"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" for="inputUFNasc">UF (Nascimento)</label>
+								<select class="form-control" name="selectUFNasc" id="selectUFNasc">
+									<option value="">---Selecione---</option>
+									<option value="AC">Acre</option>
+									<option value="AL">Alagoas</option>
+									<option value="AP">Amapá</option>
+									<option value="AM">Amazonas</option>
+									<option value="BA">Bahia</option>
+									<option value="CE">Ceará</option>
+									<option value="DF">Distrito Federal</option>
+									<option value="ES">Espirito Santo</option>
+									<option value="GO">Goiás</option>
+									<option value="MA">Maranhão</option>
+									<option value="MS">Mato Grosso do Sul</option>
+									<option value="MT">Mato Grosso</option>
+									<option value="MG">Minas Gerais</option>
+									<option value="PA">Pará</option>
+									<option value="PB">Paraíba</option>
+									<option value="PR">Paraná</option>
+									<option value="PE">Pernambuco</option>
+									<option value="PI">Piauí</option>
+									<option value="RJ">Rio de Janeiro</option>
+									<option value="RN">Rio Grande do Norte</option>
+									<option value="RS">Rio Grande do Sul</option>
+									<option value="RO">Rondônia</option>
+									<option value="RR">Roraima</option>
+									<option value="SC">Santa Catarina</option>
+									<option value="SP">São Paulo</option>
+									<option value="SE">Sergipe</option>
+									<option value="TO">Tocantins</option>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-2">
+								<label class="control-label required" for="selectSexo">Gênero</label>
+								<select class="form-control" name="selectSexo" id="selectSexo">
+									<option value="">---- Selecione ----</option>
+									<option value="masculino">Masculino</option>
+									<option value="feminino">Feminino</option>
+									<option value="outro">Outro</option>
+									<option value="n/r">Não Responder</option>
+								</select>
+							</div>
+							<div class="form-group col-md-2">
+								<label class="control-label required" for="selectEstadoCivil">Estado Civil</label>
+								<select class="form-control" name="selectEstadoCivil" id="selectEstadoCivil">
+									<option value="">---- Selecione ----</option>
+									<option value="casado">Casado(a)</option>
+									<option value="solteiro">Solteiro(a)</option>
+									<option value="divorciado">Divorciado(a)</option>
+									<option value="viuvo">Viúvo(a)</option>
+								</select>
+							</div>
+						</div>
+						</br>
+						<legend>Documentos</legend>
+						<div class="row">
+							<div class="form-group col-md-2">
+								<label class="control-label required" for="inputNrCpf">Nº (CPF)</label>
+								<input type="text" class="form-control" id="inputNrCpf" name="inputNrCpf"/>
+							</div>
+							<div class="form-group col-md-2">
+								<label class="control-label required" for="inputNrPis">PIS/NIT</label> &nbsp;<span class="fluigicon fluigicon-info-sign fluigicon-sm" data-toggle="tooltip" data-placement="top" title="Favor anexar comprovante do PIS."></span>
+								<input type="text" class="form-control" id="inputNrPis" name="inputNrPis"/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-2">
+								<label class="control-label required" for="inputNrCTPS">Nº (CTPS)</label>
+								<input type="text" class="form-control" id="inputNrCTPS" name="inputNrCTPS"/>
+							</div>
+							<div class="form-group col-md-2">
+								<label class="control-label required" for="inputNrSerieCTPS">Série (CTPS)</label>
+								<input type="text" class="form-control" id="inputNrSerieCTPS" name="inputNrSerieCTPS"/>
+							</div>
+							<div class="form-group col-md-2">
+								<label class="control-label required" for="inputUfCTPS">UF (CTPS)</label>
+								<select class="form-control" name="selectUfCTPS" id="selectUfCTPS">
+									<option value="">---Selecione---</option>
+									<option value="AC">Acre</option>
+									<option value="AL">Alagoas</option>
+									<option value="AP">Amapá</option>
+									<option value="AM">Amazonas</option>
+									<option value="BA">Bahia</option>
+									<option value="CE">Ceará</option>
+									<option value="DF">Distrito Federal</option>
+									<option value="ES">Espirito Santo</option>
+									<option value="GO">Goiás</option>
+									<option value="MA">Maranhão</option>
+									<option value="MS">Mato Grosso do Sul</option>
+									<option value="MT">Mato Grosso</option>
+									<option value="MG">Minas Gerais</option>
+									<option value="PA">Pará</option>
+									<option value="PB">Paraíba</option>
+									<option value="PR">Paraná</option>
+									<option value="PE">Pernambuco</option>
+									<option value="PI">Piauí</option>
+									<option value="RJ">Rio de Janeiro</option>
+									<option value="RN">Rio Grande do Norte</option>
+									<option value="RS">Rio Grande do Sul</option>
+									<option value="RO">Rondônia</option>
+									<option value="RR">Roraima</option>
+									<option value="SC">Santa Catarina</option>
+									<option value="SP">São Paulo</option>
+									<option value="SE">Sergipe</option>
+									<option value="TO">Tocantins</option>
+								</select>
+							</div>
+							<div class="form-group col-md-2">
+								<label class="control-label required" for="inputDataEmissaoCTPS">Data de Emissão (CTPS)</label>
+								<input type="date" class="form-control" id="inputDataEmissaoCTPS" name="inputDataEmissaoCTPS"/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-2">
+								<label class="control-label required" for="inputNrIdentidade">Nº (RG)</label>
+								<input type="text" class="form-control" id="inputNrIdentidade" name="inputNrIdentidade"/>
+							</div>
+							<div class="form-group col-md-2">
+								<label class="control-label required" for="inputOrgaoEmissorIdent">Órgão Emissor (RG)</label>
+								<input type="text" class="form-control" id="inputOrgaoEmissorIdent" name="inputOrgaoEmissorIdent"/>
+							</div>
+							<div class="form-group col-md-2">
+								<label class="control-label required" for="inputUfIdentidade">UF (RG)</label>
+								<select class="form-control" name="selectUfIdentidade" id="selectUfIdentidade">
+									<option value="">---Selecione---</option>
+									<option value="AC">Acre</option>
+									<option value="AL">Alagoas</option>
+									<option value="AP">Amapá</option>
+									<option value="AM">Amazonas</option>
+									<option value="BA">Bahia</option>
+									<option value="CE">Ceará</option>
+									<option value="DF">Distrito Federal</option>
+									<option value="ES">Espirito Santo</option>
+									<option value="GO">Goiás</option>
+									<option value="MA">Maranhão</option>
+									<option value="MS">Mato Grosso do Sul</option>
+									<option value="MT">Mato Grosso</option>
+									<option value="MG">Minas Gerais</option>
+									<option value="PA">Pará</option>
+									<option value="PB">Paraíba</option>
+									<option value="PR">Paraná</option>
+									<option value="PE">Pernambuco</option>
+									<option value="PI">Piauí</option>
+									<option value="RJ">Rio de Janeiro</option>
+									<option value="RN">Rio Grande do Norte</option>
+									<option value="RS">Rio Grande do Sul</option>
+									<option value="RO">Rondônia</option>
+									<option value="RR">Roraima</option>
+									<option value="SC">Santa Catarina</option>
+									<option value="SP">São Paulo</option>
+									<option value="SE">Sergipe</option>
+									<option value="TO">Tocantins</option>
+								</select>
+							</div>
+							<div class="form-group col-md-2">
+								<label class="control-label required" for="inputDataEmissaoIdent">Data de Emissão (RG)</label>
+								<input type="date" class="form-control" id="inputDataEmissaoIdent" name="inputDataEmissaoIdent"/>
+							</div>						</div>
+						
+						</br>
+						<legend>Endereço</legend>						
+						<div class="row">
+							<div class="form-group col-md-2">
+								<label class="control-label required" for="inputCEP">CEP</label>
+								<input type="text" class="form-control" id="inputCEP" name="inputCEP" mask="00000-000"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label" for="inputTelefone">Telefone</label>
+								<input type="text" class="form-control" id="inputTelefone" name="inputTelefone" mask="(00)0000-0000"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" for="inputCelular">Celular</label>
+								<input type="text" class="form-control" id="inputCelular" name="inputCelular" mask="(00)00000-0000"/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-4">
+								<label class="control-label required" for="inputEndereco">Endereço</label>
+								<input type="text" class="form-control" id="inputEndereco" name="inputEndereco"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" for="inputBairro">Bairro</label>
+								<input type="text" class="form-control" id="inputBairro" name="inputBairro"/>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" for="inputCidade">Cidade</label>
+								<input type="text" class="form-control" id="inputCidade" name="inputCidade"/>
+							</div>
+							<div class="form-group col-md-2">
+								<label class="control-label required" for="selectEstado">Estado (UF)</label>
+								<select class="form-control" name="selectEstado" id="selectEstado">
+									<option value="">---Selecione---</option>
+									<option value="AC">Acre</option>
+									<option value="AL">Alagoas</option>
+									<option value="AP">Amapá</option>
+									<option value="AM">Amazonas</option>
+									<option value="BA">Bahia</option>
+									<option value="CE">Ceará</option>
+									<option value="DF">Distrito Federal</option>
+									<option value="ES">Espirito Santo</option>
+									<option value="GO">Goiás</option>
+									<option value="MA">Maranhão</option>
+									<option value="MS">Mato Grosso do Sul</option>
+									<option value="MT">Mato Grosso</option>
+									<option value="MG">Minas Gerais</option>
+									<option value="PA">Pará</option>
+									<option value="PB">Paraíba</option>
+									<option value="PR">Paraná</option>
+									<option value="PE">Pernambuco</option>
+									<option value="PI">Piauí</option>
+									<option value="RJ">Rio de Janeiro</option>
+									<option value="RN">Rio Grande do Norte</option>
+									<option value="RS">Rio Grande do Sul</option>
+									<option value="RO">Rondônia</option>
+									<option value="RR">Roraima</option>
+									<option value="SC">Santa Catarina</option>
+									<option value="SP">São Paulo</option>
+									<option value="SE">Sergipe</option>
+									<option value="TO">Tocantins</option>
+								</select>
+							</div>
+						</div>
+						</br>
+						<legend>Instrução</legend>
+						<div class="row">
+							<div class="form-group col-md-3">
+								<label class="control-label required" for="selectGrauEscolaridade">Grau de Escolaridade</label>
+								<select class="form-control" name="selectGrauEscolaridade" id="selectGrauEscolaridade">
+									<option value="">---- Selecione ----</option>
+									<option value="1">1º Grau</option>
+									<option value="2">2º Grau</option>
+									<option value="3">Graduado</option>
+									<option value="4">MBA/Pós Graduado</option>
+									<option value="5">Mestrado</option>
+									<option value="6">Doutorado</option>
+								</select>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" for="selectSituacao">Situação</label>
+								<select class="form-control" name="selectSituacao" id="selectSituacao">
+									<option value="">---- Selecione ----</option>
+									<option value="inompleto">Incompleto</option>
+									<option value="completo">Completo</option>
+									<option value="cursando">Cursando</option>
+								</select>
+							</div>
+							<div class="form-group col-md-3">
+								<label class="control-label required" for="inputFormado">Data de Conclusão</label>
+								<input type="date" class="form-control" id="inputFormado" name="inputFormado"/>
+							</div>							
+						</div>
+						<div class="row">
+							<div class="form-group col-md-3">
+								<label class="control-label required" for="selectEstudaAtual">Estuda Atualmente</label>
+								<select class="form-control selectChange" name="selectEstudaAtual" id="selectEstudaAtual">
+									<option value="">---- Selecione ----</option>
+									<option value="sim">Sim</option>
+									<option value="nao">Não</option>
+								</select>
+							</div>
+							<div class="form-group col-md-3 qualCurso" style="display: none;">
+								<label class="control-label required" for="inputQualCurso">Qual Curso?</label>
+								<input type="text" class="form-control" id="inputQualCurso" name="inputQualCurso"/>
+							</div>
+						</div>
+						</br>
+						<legend>Dados Bancários</legend>
+						<div class="row">
+							<div class="form-group col-md-2">
+								<label class="control-label required" for="inputCodBanco">Código do Banco</label>
+								<input type="text" class="form-control" id="inputCodBanco" name="inputCodBanco" mask="000"/>
+							</div>
+							<div class="form-group col-md-2">
+								<label class="control-label required" for="inputBanco">Nome do Banco</label>
+								<input type="text" class="form-control" id="inputBanco" name="inputBanco"/>
+							</div>
+							<div class="form-group col-md-2">
+								<label class="control-label required" for="inputAgencia">Agência</label>
+								<input type="text" class="form-control" id="inputAgencia" name="inputAgencia" mask="0000"/>
+							</div>
+							<div class="form-group col-md-2">
+								<label class="control-label required" for="inputContaCorrente">Conta Corrente</label>
+								<input type="text" class="form-control" id="inputContaCorrente" name="inputContaCorrente"/>
+							</div>
+							<div class="form-group col-md-1">
+								<label class="control-label required" for="inputDigito">Dígito</label>
+								<input type="text" class="form-control" id="inputDigito" name="inputDigito" mask="0"/>
+							</div>
+						</div>
+						<br>	
+						<legend>Anexos</legend>
+						<div class="row">
+							<div class="form-group col-md-4">
+								<label class="control-label required">Comprovante de Domicílio Bancário</label>
+								<div class="componentAnexo" id="divAnexo">
+									<button type="button" class="btn btn-info" id="btnComprovanteBancario" name="btnComprovanteBancario" data-file-upload onclick="anexarArquivo();"><strong>Anexar Arquivos</strong></button>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-4">
+								<label class="control-label required">Comprovante PIS</label>
+								<div class="componentAnexo" id="divAnexo">
+									<button type="button" class="btn btn-info" id="btnComprovantePIS" name="btnComprovantePIS" data-file-upload onclick="anexarArquivo();"><strong>Anexar Arquivos</strong></button>
+								</div>
+							</div>
+						</div>											
+					</div>
+				</div>						
+				<div class="panel panel-primary" id="painelAprovadores" name="painelAprovadores">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<span class="fluigicon fluigicon-enrollment fluigicon-sm"></span>&nbsp;Dados da Aprovação</a>
+						</h2>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="form-group col-md-2">
+								<label class="control-label required" atividades="0,2,26" for="aprovacaoCoordenador">Aprovação da Solicitação</label>
+								<select class="form-control" name="aprovacaoCoordenador" id="aprovacaoCoordenador" onchange="inputCodBarra(this.value)"/>
+									<option value="" selected>---- Selecione ----</option>
+									<option value="Sim">Aprovado</option>
+									<option value="Nao">Reprovado</option>
+									<option value="Cancelado">Cancelado</option>
+								</select>
+							</div>							
+						</div>						
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label for="origem">Observações:</label>
+								<div class="input-group">
+									<textarea class="form-control" name="origem" id="origem" style="height: 70px" value=""></textarea>
+									<span class="input-group-addon fs-cursor-pointer" id="preencheAcompanhamento">
+										<span class="fluigicon fluigicon-user-comment fluigicon-lg"></span>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<textarea class="form-control" name="destino" id="destino"
+									style="height: 200px; vertical-align: top; width: 100%; display:none;"
+									onKeyPress="alteraMaiusculo(this);" onkeyup="alteraMaiusculo(this);"
+									value="" readonly></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div name="acompanhamento" id="acompanhamento" readonly></div>			
+			</form>
+		</div>
+		<style>
+			.align-right{
+				float: right !important;
+			}
+
+			legend{
+				font-weight: bold;
+			}
+		</style>
+	</body>
+</html>

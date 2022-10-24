@@ -1,0 +1,681 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+		<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+		<script type="text/javascript" src="script.js" charset="utf-8"></script>
+		<script type="text/javascript" src="complemento.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+		<style>
+			.panelPadrao {
+				background-color: #1a5952 !important;
+				letter-spacing: 0.7px !important;
+				color:white !important;
+				border-color: inherit !important;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="fluig-style-guide">
+			<form name="form" role="form">
+				<input type="text" id="dataDisponibilidadeSaude" name="dataDisponibilidadeSaude" style="display: none;">
+				<input type="text" id="dataAssumiuSaude" name="dataAssumiuSaude" style="display: none;">
+				<input type="text" id="dataFinalizouSaude" name="dataFinalizouSaude" style="display: none;">
+				<input type="text" id="usuarioSaude" name="usuarioSaude" style="display: none;">
+
+				<input type="text" id="dataDisponibilidadeSeguranca" name="dataDisponibilidadeSeguranca" style="display: none;">
+				<input type="text" id="dataAssumiuSeguranca" name="dataAssumiuSeguranca" style="display: none;">
+				<input type="text" id="dataFinalizouSeguranca" name="dataFinalizouSeguranca" style="display: none;">
+				<input type="text" id="usuarioSeguranca" name="usuarioSeguranca" style="display: none;">
+
+				<input type="text" name="inputEmpresa" id="inputEmpresa" style="display: none;">
+				<input type="text" name="inputGrupoAprovacao" id="inputGrupoAprovacao" style="display: none;">
+
+				<input type="text" name="inputNumeroSolicitacao" id="inputNumeroSolicitacao" style="display: none;">
+				<input type="text" name="inputCurrentAtividade" id="inputCurrentAtividade" style="display: none;">
+
+				<input type="text" name="inputCurrentNome" id="inputCurrentNome" style="display: none;">
+				<input type="text" name="inputCurrentLogin" id="inputCurrentLogin" style="display: none;">
+				<input type="text" name="inputCurrentMatricula" id="inputCurrentMatricula" style="display: none;">
+				<input type="text" name="inputCurrentEmail" id="inputCurrentEmail" style="display: none;">
+
+				<input type="text" name="inputSolicitanteLogin" id="inputSolicitanteLogin" style="display: none;">
+				<input type="text" name="inputSolicitanteMatricula" id="inputSolicitanteMatricula" style="display: none;">
+
+				<input type="text" name="inputMesCriacao" id="inputMesCriacao" style="display: none;">
+				<input type="text" name="inputAnoCriacao" id="inputAnoCriacao" style="display: none;">
+
+				<input type="text" name="inputDataFim" id="inputDataFim" style="display: none;">
+				<input type="text" name="inputMesFim" id="inputMesFim" style="display: none;">
+				<input type="text" name="inputAnoFim" id="inputAnoFim" style="display: none;">
+
+				<input type="text" name="inputDataCancelamento" id="inputDataCancelamento" style="display: none;">
+				<input type="text" name="inputMesCancelamento" id="inputMesCancelamento" style="display: none;">
+				<input type="text" name="inputAnoCancelamento" id="inputAnoCancelamento" style="display: none;">
+
+				<input type="text" name="campoDescritor" id="campoDescritor" style="display: none;">
+				<div class="panel panel-default">
+
+				<div class="panel panel-default">
+					<div class="panel-heading fs-txt-center panelPadrao">
+                        <h1 class="panel-title">Atualização de Cadastro de Função, Riscos e Exames</h1>
+					</div>
+					<div class="panel-body">
+						<div class="panel panel-default"> <!-- DADOS DO SOLICITANTE -->
+							<div class="panel-heading panelPadrao">
+								<h3 class="panel-title">Dados do Solicitante</h3>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="form-group col-sm-3">
+										<label for="inputDataCriacao" class="control-label">Data Criação</label>
+										<input type="text" name="inputDataCriacao" id="inputDataCriacao" class="form-control" readonly>
+									</div>
+									<div class="form-group col-sm-3">
+										<label for="inputNomeSolicitante" class="control-label">Solicitante</label>
+										<input type="text" name="inputNomeSolicitante" id="inputNomeSolicitante" class="form-control" readonly>
+									</div>
+									<div class="form-group col-sm-3">
+										<label for="inputEmailSolicitante" class="control-label">Email</label>
+										<input type="text" name="inputEmailSolicitante" id="inputEmailSolicitante" class="form-control" readonly>
+									</div>
+									<div class="form-group col-sm-3">
+										<label for="inputTelefoneSolicitante" class="control-label">Telefone</label>
+										<input type="text" name="inputTelefoneSolicitante" id="inputTelefoneSolicitante" class="form-control" readonly>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-3">
+										<label for="inputDepartamentoSolicitante" class="control-label">Departamento</label>
+										<input type="text" name="inputDepartamentoSolicitante" id="inputDepartamentoSolicitante" class="form-control" readonly>
+									</div>
+									<div class="form-group col-sm-1" style="display: none;">
+										<label for="inputCodigoEmpresa">Código</label>
+										<input type="text" id="inputCodigoEmpresa" name="inputCodigoEmpresa" class="form-control" readonly/>
+									</div>
+									<div class="form-group col-sm-3">
+										<label for="zoomEmpresa" class="control-label">Empresa</label>
+										<input type="zoom" class="form-control" id="zoomEmpresa" name="zoomEmpresa"
+										   data-zoom="{'displayKey': 'NOME','datasetId': 'dsEmpresas','filterValues': '','fields': [
+													   {'field': 'NOME','label': 'Empresa','standard': 'true','search': 'true'}]}" />
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="inputStatusSolicitacao" class="control-label">Status Solicitação</label>
+										<input type="text" name="inputStatusSolicitacao" id="inputStatusSolicitacao" class="form-control" readonly>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default"> <!-- DADOS DA SOLICITACAO -->
+							<div class="panel-heading panelPadrao">
+								<h3 class="panel-title">Dados da Solicitação</h3>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="form-group col-sm-2">
+										<label for="selectCondicao" class="control-label">Condição</label>
+										<select name="selectCondicao" id="selectCondicao" class="form-control">
+											<option value=""></option>
+											<option value="normal">Normal</option>
+											<option value="urgente">Urgente</option>
+										</select>
+									</div>
+									<div class="form-group col-sm-2">
+										<label for="selectTipoServico" class="control-label">Tipo de Serviço</label>
+										<select name="selectTipoServico" id="selectTipoServico" class="form-control">
+											<option value=""></option>
+											<option value="saude">Saúde</option>
+											<option value="seguranca">Segurança</option>
+										</select>
+									</div>
+									<div class="form-group col-sm-3">
+										<label for="selectTipoDemanda" class="control-label">Tipo de Demanda</label>
+										<select name="selectTipoDemanda" id="selectTipoDemanda" class="form-control">
+											<option value=""></option>
+											<option value="atrelamentoRisco">Atualização de Risco e Exame</option>
+											<option value="atualizacaoBancoDados">Atualização de Banco de Dados</option>
+											<option value="cadastroFuncaoSetor">Cadastro de Função e/ou Setor</option>
+											<option value="cadastroFilialFuncaoSetor">Cadastro de Filial/Função/Setor</option>
+										</select>
+									</div>
+									<div class="form-group col-sm-3">
+										<label for="selectTipoProduto" class="control-label">Tipo de Produto</label>
+										<select name="selectTipoProduto" id="selectTipoProduto" class="form-control">
+											<option value=""></option>
+											<option value="todos">Todos os Produtos</option>
+											<option value="clienteEmpresa">PGR Cliente e PCMSO RHMed/RHVida</option>
+											<option value="clienteCliente">PGR Cliente e PCMSO Cliente</option>
+											<option value="empresaCliente">PGR RHMed/RHVida e PCMSO Cliente</option>
+										</select>
+									</div>
+									<div class="form-group col-sm-2">
+										<label for="inputQuantidade" class="control-label">Quantidade</label>
+										<input type="number" name="inputQuantidade" id="inputQuantidade" class="form-control" min="0" max="999999" readonly>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-2">
+										<input type="hidden" id="inputCodigoPlataforma" name="inputCodigoPlataforma" />
+										<label for="zoomPlataforma" class="control-label">Plataforma</label>
+										<input type="zoom" class="form-control" id="zoomPlataforma" name="zoomPlataforma"
+											data-zoom="{'displayKey': 'PLATAFORMA','datasetId': 'dsPlataforma','fields': [
+												{'field': 'PLATAFORMA','label': 'Plataforma','standard': 'true','search': 'true'},
+												{'field': 'COD_PLATAFORMA','label': 'Código','standard': 'true','search': 'true','visible': 'false'}]}" />
+									</div>
+									<div class="form-group col-sm-1" style="display: none;">
+										<label for="inputCodigoEmpresaCliente">Código</label>
+										<input type="text" id="inputCodigoEmpresaCliente" name="inputCodigoEmpresaCliente" class="form-control" readonly/>
+									</div>
+									<div class="form-group col-sm-3">
+										<label for="zoomEmpresaCliente" class="control-label">Empresa (Cliente)</label>
+										<input type="zoom" class="form-control" id="zoomEmpresaCliente" name="zoomEmpresaCliente"
+											data-zoom="{'displayKey': 'EMPRESA','datasetId': 'dsBuscarEmpresa','fields': [
+												{'field': 'EMPRESA','label': 'Empresa','standard': 'true','search': 'true'},
+												{'field': 'COD_EMPRESA','label': 'Código','standard': 'true','search': 'true'},
+												{'field': 'COD_PLATAFORMA','label': 'Plataforma','standard': 'true','search': 'true','visible': 'false'}]}" />
+									</div>
+									<div class="form-group col-sm-1" style="display: none;">
+										<label for="inputCodigoRegional">Código</label>
+										<input type="text" id="inputCodigoRegional" name="inputCodigoRegional" class="form-control" readonly/>
+									</div>
+									<div class="form-group col-sm-2">
+										<label for="zoomRegionalCliente" class="control-label">Regional</label>
+										<input type="zoom" class="form-control" id="zoomRegionalCliente" name="zoomRegionalCliente"
+											data-zoom="{'displayKey': 'REGIONAL','datasetId': 'dsBuscarRegional','filterValues': 'COD_EMPRESA','fields': [
+												{'field': 'REGIONAL','label': 'Regional','standard': 'true','search': 'true'},
+												{'field': 'COD_REGIONAL','label': 'Código','standard': 'true','search': 'true'},
+												{'field': 'COD_PLATAFORMA','label': 'Plataforma','standard': 'true','search': 'true','visible': 'false'}]}" />
+									</div>
+									<div class="form-group col-sm-1" style="display: none;">
+										<label for="inputCodigoUnidadeCliente" class="control-label">Código</label>
+										<input type="text" class="form-control" id="inputCodigoUnidadeCliente" name="inputCodigoUnidadeCliente" readonly/>
+									</div>
+							        <div class="form-group col-sm-3">
+										<label for="zoomUnidadeCliente" class="control-label">Unidade / Filial</label>
+										<input type="zoom" class="form-control" id="zoomUnidadeCliente" name="zoomUnidadeCliente" 
+											data-zoom="{'displayKey': 'UNIDADE', 'datasetId': 'dsBuscarUnidade', 'filterValues': 'COD_PLATAFORMA,COD_EMPRESA,COD_REGIONAL','fields': [
+												{'field': 'UNIDADE','label': 'Unidade','standard': 'true','search': 'true'},
+												{'field': 'COD_UNIDADE', 'label': 'Código', 'standard': 'true', 'search': 'true'}]}"/>
+									</div>
+							        <div class="form-group col-sm-3" style="display: none;">
+										<label for="inputUnidadeCliente" class="control-label">Unidade / Filial</label>
+										<input type="text" name="inputUnidadeCliente" id="inputUnidadeCliente" class="form-control">
+									</div>
+									<div class="form-group col-sm-2">
+										<label for="inputPostoTrabalho" class="control-label">Posto de Trabalho</label>
+										<input type="text" name="inputPostoTrabalho" id="inputPostoTrabalho" class="form-control">
+									</div>
+							    </div>
+								<div class="row">
+									<div class="form-group col-sm-2">
+										<label for="inputSetor" class="control-label">Setor</label>
+										<input type="text" name="inputSetor" id="inputSetor" class="form-control">
+									</div>
+									<div class="form-group col-sm-3">
+										<label for="inputDescritivoAtividade" class="control-label">Descritivo da Atividade</label>
+										<input type="text" name="inputDescritivoAtividade" id="inputDescritivoAtividade" class="form-control">
+									</div>
+									<div class="form-group col-sm-2">
+										<label for="inputNumeroCBO" class="control-label">Número CBO</label>
+										<input type="text" name="inputNumeroCBO" id="inputNumeroCBO" class="form-control">
+									</div>
+									<div class="form-group col-sm-3">
+										<label for="inputFuncao" class="control-label">Função</label>
+										<input type="text" name="inputFuncao" id="inputFuncao" class="form-control">
+									</div>
+									<div class="form-group col-sm-2">
+										<label for="inputTotalFuncoes" class="control-label">Total Funções</label>
+										<input type="text" name="inputTotalFuncoes" id="inputTotalFuncoes" class="form-control">
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-2">
+										<label for="selectCustoContrato" class="control-label">Custo em Contrato?</label>
+										<select name="selectCustoContrato" id="selectCustoContrato" class="form-control">
+											<option value=""></option>
+											<option value="sim">Sim</option>
+											<option value="nao">Não</option>
+										</select>
+									</div>
+									<div class="form-group col-sm-3">
+										<label for="inputNomeFuncionario" class="control-label">Nome Funcionário</label>
+										<input type="text" name="inputNomeFuncionario" id="inputNomeFuncionario" class="form-control">
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-12">
+										<label for="observacoes" class="control-label">Observações</label>
+										<textarea name="observacoes" id="observacoes" rows="3" class="form-control"></textarea>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-12">
+										<input type="button" class="btn btn-success" id="btnAnexarDocumento" name="btnAnexarDocumento" value="ANEXAR PGR/PCMSO">
+										<input type="button" class="btn btn-info" id="btnAdicionarRisco" name="btnAdicionarRisco" value="ADICIONAR RISCO/EXAME">
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-12">
+										<div class="panel">
+											<div class="panel-body table-responsive">
+												<table id="tabelaRisco" tablename="tabelaRisco" class="table table-striped" noaddbutton=true nodeletebutton=true>
+													<thead>
+														<tr>
+															<th class="fs-txt-center">Risco e Exame</th>
+															<th class="fs-txt-center">&nbsp;</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td class="fs-no-margin fs-no-padding" style="width: 95%;">
+																<div class="row">
+																	<div class="form-group col-sm-2">
+																		<label for="inputTabelaRisco" class="control-label">Risco</label>
+																		<input type="text" name="inputTabelaRisco" id="inputTabelaRisco" class="form-control">
+																	</div>
+																	<div class="form-group col-sm-2">
+																		<label for="inputTabelaTempo" class="control-label">Tempo</label>
+																		<input type="text" name="inputTabelaTempo" id="inputTabelaTempo" class="form-control">
+																	</div>
+																	<div class="form-group col-sm-2">
+																		<label for="inputTabelaExame" class="control-label">Exame</label>
+																		<input type="text" name="inputTabelaExame" id="inputTabelaExame" class="form-control">
+																	</div>
+																	<div class="form-group col-sm-2">
+																		<label for="inputTabelaPeriodicidade" class="control-label">Periodicidade</label>
+																		<input type="text" name="inputTabelaPeriodicidade" id="inputTabelaPeriodicidade" class="form-control">
+																	</div>
+																	<div class="form-group col-sm-2">
+																		<label for="inputTabelaTipoExame" class="control-label">Tipo Exame</label>
+																		<input type="text" name="inputTabelaTipoExame" id="inputTabelaTipoExame" class="form-control">
+																	</div>
+																	<div class="form-group col-sm-2">
+																		<label for="inputTabelaFuncao" class="control-label">Função</label>
+																		<input type="text" name="inputTabelaFuncao" id="inputTabelaFuncao" class="form-control">
+																	</div>
+																</div>
+															</td>
+															<td class="fs-no-margin fs-no-padding fs-txt-center" style="width: 5%;">
+																<i id="btnExcluirRisco" name="btnExcluirRisco" style="color: darkred;" class="fluigicon fluigicon-remove-circle icon-lg fs-txt-center fs-cursor-pointer" onclick="fnCustomDelete(this);"></i>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default"> <!-- PRODUTOS QUIMICOS -->
+							<div class="panel-heading panelPadrao">
+								<h3 class="panel-title">Produtos Químicos</h3>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="form-group col-sm-4">
+										<label class="control-label">Utiliza produtos químicos?</label>
+										<label class="radio-inline">
+											<input type="radio" name="radioUtilizaProdutoQuimico" id="radioUtilizaProdutoQuimicoNao" value="nao" checked> Não
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="radioUtilizaProdutoQuimico" id="radioUtilizaProdutoQuimicoSim" value="sim"> Sim
+										</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-12" style="display: none;">
+										<label for="textareaTiposProdutoQuimico" class="control-label">Quais os tipos de produtos utilizados?</label>
+										<textarea name="textareaTiposProdutoQuimico" id="textareaTiposProdutoQuimico" rows="3" class="form-control"></textarea>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-12" style="display: none;">
+										<label for="textareaFreqProdutoQuimico" class="control-label">Quais são as frequências de utilização dos produtos?</label>
+										<textarea name="textareaFreqProdutoQuimico" id="textareaFreqProdutoQuimico" rows="3" class="form-control"></textarea>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-12" style="display: none;">
+										<label for="textareaQuandoProdutoQuimico" class="control-label">Quando e para quê são utilizados estes produtos?</label>
+										<textarea name="textareaQuandoProdutoQuimico" id="textareaQuandoProdutoQuimico" rows="3" class="form-control"></textarea>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-12" style="display: none;">
+										<label for="textareaOndeProdutoQuimico" class="control-label">Onde e como são utilizados estes produtos?</label>
+										<textarea name="textareaOndeProdutoQuimico" id="textareaOndeProdutoQuimico" rows="3" class="form-control"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default"> <!-- ATIVIDADE EM CAMPO -->
+							<div class="panel-heading panelPadrao">
+								<h3 class="panel-title">Atividade em Campo</h3>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="form-group col-sm-4">
+										<label class="control-label">Realiza atividade em campo?</label>
+										<label class="radio-inline">
+											<input type="radio" name="radioAtividadeEmCampo" id="radioAtividadeEmCampoNao" value="nao" checked> Não
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="radioAtividadeEmCampo" id="radioAtividadeEmCampoSim" value="sim"> Sim
+										</label>
+									</div>
+									<div class="form-group col-sm-4" style="display: none;">
+										<label class="control-label">Quando vai a campo, realiza atividades operacionais?</label>
+										<label class="radio-inline">
+											<input type="radio" name="radioAtividadesOperacionais" id="radioAtividadesOperacionaisNao" value="nao" checked> Não
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="radioAtividadesOperacionais" id="radioAtividadesOperacionaisSim" value="sim"> Sim
+										</label>
+									</div>
+									<div class="form-group col-sm-4" style="display: none;">
+										<label for="selectTipoCampo" class="control-label">Tipo de Campo</label>
+										<select name="selectTipoCampo" id="selectTipoCampo" class="form-control">
+											<option value=""></option>
+											<option value="embarcacao">Embarcação</option>
+											<option value="fabrica">Fábrica</option>
+											<option value="outros">Outros</option>
+										</select>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-12" style="display: none;">
+										<label for="textareaDescricaoCampo" class="control-label">Descrição de outras atividades realizadas em campo</label>
+										<textarea name="textareaDescricaoCampo" id="textareaDescricaoCampo" rows="3" class="form-control"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default"> <!-- ATIVIDADES ESPECIAIS -->
+							<div class="panel-heading panelPadrao">
+								<h3 class="panel-title">Atividades Especiais</h3>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="form-group col-sm-12">
+										<label class="control-label">Realiza atividade em altura (atividades em alturas iguais ou superiores a 2m)?</label>
+										<label class="radio-inline">
+											<input type="radio" name="radioAtividadeAltura" id="radioAtividadeAlturaNao" value="nao" checked> Não
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="radioAtividadeAltura" id="radioAtividadeAlturaSim" value="sim"> Sim
+										</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-12" style="display: none;">
+										<label for="textareaAtividadeAltura" class="control-label">Observação</label>
+										<textarea name="textareaAtividadeAltura" id="textareaAtividadeAltura" rows="3" class="form-control"></textarea>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-12">
+										<label class="control-label">Realiza trabalho com eletricidade de alta voltagem?</label>
+										<label class="radio-inline">
+											<input type="radio" name="radioAtividadeEletricidade" id="radioAtividadeEletricidadeNao" value="nao" checked> Não
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="radioAtividadeEletricidade" id="radioAtividadeEletricidadeSim" value="sim"> Sim
+										</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-12" style="display: none;">
+										<label for="textareaAtividadEletricidade" class="control-label">Observação</label>
+										<textarea name="textareaAtividadEletricidade" id="textareaAtividadEletricidade" rows="3" class="form-control"></textarea>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-12">
+										<label class="control-label">Realiza trabalho em espaço confinado?</label>
+										<label class="radio-inline">
+											<input type="radio" name="radioAtividadeConfinado" id="radioAtividadeConfinadoNao" value="nao" checked> Não
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="radioAtividadeConfinado" id="radioAtividadeConfinadoSim" value="sim"> Sim
+										</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-12" style="display: none;">
+										<label for="textareaAtividadeConfinado" class="control-label">Observação</label>
+										<textarea name="textareaAtividadeConfinado" id="textareaAtividadeConfinado" rows="3" class="form-control"></textarea>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-12">
+										<label class="control-label">Realiza atividade de manipulação de alimentos?</label>
+										<label class="radio-inline">
+											<input type="radio" name="radioAtividadeAlimento" id="radioAtividadeAlimentoNao" value="nao" checked> Não
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="radioAtividadeAlimento" id="radioAtividadeAlimentoSim" value="sim"> Sim
+										</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-12" style="display: none;"> 
+										<label for="textareaAtividadeAlimento" class="control-label">Observação</label>
+										<textarea name="textareaAtividadeAlimento" id="textareaAtividadeAlimento" rows="3" class="form-control"></textarea>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-12">
+										<label class="control-label">Realiza atividade de vigilância armada?</label>
+										<label class="radio-inline">
+											<input type="radio" name="radioAtividadeArmada" id="radioAtividadeArmadaNao" value="nao" checked> Não
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="radioAtividadeArmada" id="radioAtividadeArmadaSim" value="sim"> Sim
+										</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-12" style="display: none;">
+										<label for="textareaAtividadeArmada" class="control-label">Observação</label>
+										<textarea name="textareaAtividadeArmada" id="textareaAtividadeArmada" rows="3" class="form-control"></textarea>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-12">
+										<label class="control-label">Realiza atividade de condução de veículo?</label>
+										<label class="radio-inline">
+											<input type="radio" name="radioAtividadeVeiculo" id="radioAtividadeVeiculoNao" value="nao" checked> Não
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="radioAtividadeVeiculo" id="radioAtividadeVeiculoSim" value="sim"> Sim
+										</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-3" style="display: none;">
+										<label for="selectTipoVeiculo" class="control-label">Tipo de Veículo</label>
+										<select name="selectTipoVeiculo" id="selectTipoVeiculo" class="form-control">
+											<option value=""></option>
+											<option value="veiculoLeve">Veículo leve</option>
+											<option value="veiculoPesado">Veículo pesado (carreta, caminhão, etc)</option>
+											<option value="empilhadeira">Empilhadeira/Paleteira</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default"> <!-- EPI EPC -->
+							<div class="panel-heading panelPadrao">
+								<h3 class="panel-title">EPI/EPC</h3>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="form-group col-sm-4">
+										<label class="control-label">Utiliza EPI?</label>
+										<label class="radio-inline">
+											<input type="radio" name="radioEPI" id="radioEPINao" value="nao" checked> Não
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="radioEPI" id="radioEPISim" value="sim"> Sim
+										</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-12" style="display: none;">
+										<label for="textareaEPI" class="control-label">Descreva quais EPIs são utilizados e seus C.A correspondente</label>
+										<textarea name="textareaEPI" id="textareaEPI" rows="3" class="form-control"></textarea>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-4">
+										<label class="control-label">Utiliza EPC?</label>
+										<label class="radio-inline">
+											<input type="radio" name="radioEPC" id="radioEPCNao" value="nao" checked> Não
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="radioEPC" id="radioEPCSim" value="sim"> Sim
+										</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-12" style="display: none;">
+										<label for="textareaEPC" class="control-label">Descreva quais EPCs são utilizados</label>
+										<textarea name="textareaEPC" id="textareaEPC" rows="3" class="form-control"></textarea>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-12">
+										<label for="textareaEPIEPC" class="control-label">Observação</label>
+										<textarea name="textareaEPIEPC" id="textareaEPIEPC" rows="3" class="form-control"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default" id="panelAprovacaoCadastro" name="panelAprovacaoCadastro"> <!-- APROVACAO CADASTRO -->
+							<div class="panel-heading panelPadrao">
+								<h3 class="panel-title">Aprovação Cadastro</h3>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="form-group col-sm-3">
+										<label for="selectAprovacaoCadastro" class="control-label">Aprovado</label>
+										<select name="selectAprovacaoCadastro" id="selectAprovacaoCadastro" class="form-control">
+											<option value=""></option>
+											<option value="aprovado">Aprovado</option>
+											<option value="reprovado">Reprovado</option>
+										</select>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-12">
+										<label for="textareaAprovacaoCadastro" class="control-label">Observação</label>
+										<textarea name="textareaAprovacaoCadastro" id="textareaAprovacaoCadastro" rows="3" class="form-control"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default" id="panelAprovacaoSeguranca" name="panelAprovacaoSeguranca"> <!-- APROVACAO SEGURANÇA -->
+							<div class="panel-heading panelPadrao">
+								<h3 class="panel-title">Aprovação Segurança</h3>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="form-group col-sm-3">
+										<label for="selectAprovacaoSeguranca" class="control-label">Aprovado</label>
+										<select name="selectAprovacaoSeguranca" id="selectAprovacaoSeguranca" class="form-control">
+											<option value=""></option>
+											<option value="aprovado">Aprovado</option>
+											<option value="reprovado">Reprovado</option>
+											<option value="cancelado">Cancelado</option>
+										</select>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-12">
+										<label for="textareaAprovacaoSeguranca" class="control-label">Observação</label>
+										<textarea name="textareaAprovacaoSeguranca" id="textareaAprovacaoSeguranca" rows="3" class="form-control"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default" id="panelAprovacaoSaude" name="panelAprovacaoSaude"> <!-- APROVACAO SAUDE -->
+							<div class="panel-heading panelPadrao">
+								<h3 class="panel-title">Aprovação Saúde</h3>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="form-group col-sm-3">
+										<label for="selectAprovacaoSaude" class="control-label">Aprovado</label>
+										<select name="selectAprovacaoSaude" id="selectAprovacaoSaude" class="form-control">
+											<option value=""></option>
+											<option value="aprovado">Aprovado</option>
+											<option value="reprovado">Reprovado</option>
+											<option value="enviarParaSeguranca">Enviar para Segurança</option>
+											<option value="cancelado">Cancelado</option>
+										</select>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-12">
+										<label for="textareaAprovacaoSaude" class="control-label">Observação</label>
+										<textarea name="textareaAprovacaoSaude" id="textareaAprovacaoSaude" rows="3" class="form-control"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default" id="panelFinanceiro" name="panelFinanceiro"> <!-- FINANCEIRO -->
+							<div class="panel-heading panelPadrao">
+								<h3 class="panel-title">Financeiro</h3>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="form-group col-sm-3">
+										<label for="inputDataFinanceiro" class="control-label">Data de Controller</label>
+										<input type="date" name="inputDataFinanceiro" id="inputDataFinanceiro" class="form-control">
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- OBSERVAÇÕES ADICIONAIS -->
+						<div class="panel panel-default">
+							<div class="panel-heading panelPadrao">
+								<h3 class="panel-title">Dados Adicionais</h3>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-12 form-group">
+										<label for="origem">Observações:</label>&nbsp;<span class="fluigicon fluigicon-info-sign fluigicon-sm" data-toggle="tooltip" data-placement="top" title="Após preencher a OBSERVAÇÃO, clicar no botão ENVIAR."></span>
+										<div class="input-group">
+											<textarea class="form-control" name="origem" id="origem"
+												style="height: 70px" value=""></textarea><span
+												class="input-group-addon fs-cursor-pointer" id="preencheAcompanhamento"
+												onclick="preencheAcompanhamento()" tabindex="0" onkeypress="preencheAcompanhamento()" onblur="preencheAcompanhamento()">
+												<!-- <span class="fluigicon fluigicon-user-comment fluigicon-lg"></span> -->
+												<span class="input-group-addon"><b>ENVIAR</b><br/>observação</span>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 form-group">
+										<textarea class="form-control" name="destino" id="destino"
+											style="height: 200px; vertical-align: top; width: 100%; display:none;"
+											onKeyPress="alteraMaiusculo(this);" onkeyup="alteraMaiusculo(this);"
+											value="" readonly></textarea>
+										<div name="acompanhamento" id="acompanhamento" readonly></div>
+									</div>
+								</div>
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
